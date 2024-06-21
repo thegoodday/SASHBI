@@ -1,0 +1,2 @@
+아래 파일 추가
+C:\SASConf\Lev2\Web\Common\LogConfig\SASBITreeViewer-log4j.xml

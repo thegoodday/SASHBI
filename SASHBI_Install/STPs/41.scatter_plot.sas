@@ -1,0 +1,36 @@
+%inc "C:\SASHBI\Macro\hbi_init.sas";
+
+
+DATA WORK.PLOT;
+	LENGTH GROUP $10;
+	ARRAY SP{5} $ ('circle', 'cross', 'triangle-up', 'diamond', 'square');
+	S1=1; E1=100;
+	S2=10; E2=1000;
+	S3=0.1; E3=2;
+	DO GRP=1 TO 5;
+		GROUP=LEFT(PUT(GRP,8.));
+		GROUP_NAME='Group '||COMPRESS(GROUP);
+		DO II=1 TO 1000;
+			shape=SP{GRP};
+			size=0.00001;*ranuni(0) *(e3-s3+1)+s3;
+			x=int(ranuni(0) *(e1-s1+1)+s1);
+			y=int(ranuni(0) *(e2-s2+1)+s2);
+			KEEP GROUP GROUP_NAME SHAPE SIZE X Y;
+			OUTPUT;
+		END;
+	END;
+RUN;
+
+%LET CLASS_VARS_NAME	=GROUP ;
+%LET CLASS_VARS_LABEL	=GROUP_NAME ;
+
+PROC SORT DATA=WORK.PLOT NODUPKEY OUT=UNIQ_CLASS;
+	BY &CLASS_VARS_NAME GROUP_NAME SHAPE;
+RUN;
+
+%JSON4SCATTER(
+	DATA						=WORK.PLOT,
+	CLASS_INFO				=WORK.UNIQ_CLASS,
+	CLASS_VAR_NAME	=&CLASS_VARS_NAME,
+	CLASS_VAR_LABEL	=&CLASS_VARS_LABEL
+);

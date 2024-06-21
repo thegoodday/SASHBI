@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <appender
+            class="org.apache.log4j.ConsoleAppender"
+            name="SAS_CONSOLE">
+        <layout
+                class="com.sas.svcs.logging.CustomPatternLayout">
+            <param
+                    name="ConversionPattern"
+                    value="%d [%t] %-5p [%s%u] %c - %m%n"/>
+        </layout>
+    </appender>
+    <appender
+            class="org.apache.log4j.DailyRollingFileAppender"
+            name="SAS_FILE">
+        <param
+                name="datePattern"
+                value="'.'yyyy-MM-dd"/>
+        <param
+                name="append"
+                value="true"/>
+        <param
+                name="file"
+                value="${config.lev.web.appserver.logs.dir}/SASHBI.log"/>
+        <layout
+                class="com.sas.svcs.logging.CustomPatternLayout">
+            <param
+                    name="ConversionPattern"
+                    value="%d [%t] %-5p [%u] (%13F:%L) - %m%n"/>
+        </layout>
+    </appender>
+    <category additivity="false" name="com.sas">
+        <priority value="ERROR"/>
+        <appender-ref ref="SAS_CONSOLE"/>
+        <appender-ref ref="SAS_FILE"/>
+    </category>
+    <category additivity="false" name="com.sas.services">
+        <priority value="ERROR"/>
+        <appender-ref ref="SAS_CONSOLE"/>
+        <appender-ref ref="SAS_FILE"/>
+    </category>
+    <category additivity="false" name="com.sas.services.deployment">
+        <priority value="ERROR"/>
+        <appender-ref ref="SAS_CONSOLE"/>
+        <appender-ref ref="SAS_FILE"/>
+    </category>
+    <category additivity="false" name="com.sas.services.discovery">
+        <priority value="ERROR"/>
+        <appender-ref ref="SAS_CONSOLE"/>
+        <appender-ref ref="SAS_FILE"/>
+    </category>
+    <category additivity="false" name="com.sas.services.util">
+        <priority value="ERROR"/>
+        <appender-ref ref="SAS_CONSOLE"/>
+        <appender-ref ref="SAS_FILE"/>
+    </category>
+    <category additivity="false" name="com.sas.services.session">
+        <priority value="ERROR"/>
+        <appender-ref ref="SAS_CONSOLE"/>
+        <appender-ref ref="SAS_FILE"/>
+    </category>
+    <category additivity="false" name="com.sas.hbi">
+        <priority value="INFO"/>
+        <appender-ref ref="SAS_CONSOLE"/>
+        <appender-ref ref="SAS_FILE"/>
+    </category>
+    <root>
+        <priority value="ERROR"/>
+        <appender-ref ref="SAS_CONSOLE"/>
+        <appender-ref ref="SAS_FILE"/>
+    </root>
+</log4j:configuration>
+

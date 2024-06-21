@@ -1,0 +1,51 @@
+%inc "C:\SASHBI\Macro\hbi_init.sas";
+
+
+
+
+%MACRO GET_DATA;
+	%IF %SYMEXIST(BASE_DATE) %THEN %DO;
+		DATA _NULL_;
+			BASE_DT=(&BASE_DATE + (365*10*24*60*60*1000) + (3*24*60*60*1000))/(24*60*60*1000);
+			CALL SYMPUT('BASE_DT',BASE_DT);
+		RUN;
+		%PUT NOTE: &BASE_DT;
+		PROC SQL;
+			CREATE TABLE WORK.CURRENCY_RATE AS
+			SELECT * FROM HBIDEMO.CURRENCY_RATE
+			WHERE BASE_DT = &BASE_DT
+				/*
+				AND CURRENCY_NAME = "&CURRENCY_NAME"
+				*/
+			;
+		QUIT;
+	%END;
+	%ELSE %DO;
+		PROC SQL;
+			CREATE TABLE WORK.CURRENCY_RATE AS
+			SELECT * FROM HBIDEMO.CURRENCY_RATE
+			WHERE BASE_DT BETWEEN INPUT("&BASE_DT_START",YYMMDD10.) AND INPUT("&BASE_DT_END",YYMMDD10.)
+				AND CURRENCY_NAME = "&CURRENCY_NAME"
+			;
+		QUIT;
+	%END;
+	DATA WORK.CURRENCY_RATE;
+		SET WORK.CURRENCY_RATE;
+		FORMAT CURRENCY_RATE Z11.6;
+	RUN;
+%MEND GET_DATA;
+%GET_DATA;
+
+%json4Slick(
+	tableName=work.currency_rate,
+	columns	=%str(BASE_DT CURRENCY_NAME CURRENCY_RATE FROM TO),
+	width	=%str(90 90 190 90 90 90 90 90 90 120 120), 
+	css		=%str(c l r l l l l l l r r),
+	sort	=%str(1 1 1 1 1 1 1 1 1 1 1),
+	resize	=%str(1 1 1 1 1 1 1 1 1 0 0),	
+	enableCellNavigation=true, 
+	enableColumnReorder=false, 
+	multiColumnSort=true
+);
+/*
+*/

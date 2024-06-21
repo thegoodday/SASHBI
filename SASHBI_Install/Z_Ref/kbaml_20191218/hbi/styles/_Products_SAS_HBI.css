@@ -1,0 +1,13 @@
+#banner{
+	height:43px;
+	font-family: 'Malgun Gothic',Tahoma, Gulim, Helvetica, Helv;
+	vertical-align:middle;
+	padding:10px 0px 0 18px;
+}
+#topMenu{
+	position: absolute;
+	top : 13px;
+	right:32px;
+}
+#topMenu span {padding-left:15px; font-weight:bold; font-size:11px; background:url('../images/icon_person.png') no-repeat 0 0;}
+#topMenu a {color:#ffffff; font-size:11px; display:inline-block; height:20px; line-height:20px; font-family:Tahoma; padding:0 10px; border-radius:3px;background:#a5a6a1; }

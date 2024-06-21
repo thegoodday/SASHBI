@@ -1,0 +1,13 @@
+ProxyPass /SASBITreeViewer balancer://korpmo.apac.sas.com_Cluster1/SASBITreeViewer
+ProxyPassReverse /SASBITreeViewer balancer://korpmo.apac.sas.com_Cluster1/SASBITreeViewer
+
+<IfModule mod_cache.c>
+  <IfModule mod_disk_cache.c>
+    CacheRoot "C:/SASConf/Lev1/Web/WebServer/cacheroot"
+    CacheEnable disk /SASTheme_default
+    CacheEnable disk /SASFlexThemes
+    CacheEnable disk /SASBITreeViewer
+    CacheDirLevels 5
+    CacheDirLength 3
+  </IfModule> 
+</IfModule> 

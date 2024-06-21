@@ -1,0 +1,4 @@
+ex> \Lev1\Web\WebAppServer\SASServer2_1\sas_webapps\sas.hbi.war\WEB-INF\class\config.properties 파일을 편집기에서 열어서 설치 환경에 맞게 수정
+
+stp.installpath=C:\SASConf\Lev1\Web\WebAppServer\SASServer1_1\sas_webapps\sas.storedprocess.war
+hbi.exceptWord=Environment
