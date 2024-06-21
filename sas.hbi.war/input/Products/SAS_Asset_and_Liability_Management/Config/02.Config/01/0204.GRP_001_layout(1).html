@@ -1,0 +1,99 @@
+<style>
+.modalWin {
+    z-index: 10000;
+    display: inline-block;
+    border: 1px solid black;
+    padding: 10px;
+    background: #efefef;
+    -moz-box-shadow: 0px 0px 15px black;
+    -webkit-box-shadow: 0px 0px 15px black;
+    box-shadow: 0px 0px 15px black;
+    position: absolute;
+    top: 1100px;
+    width: 800px;
+}    
+</style>
+<div id="dvMain" style="border:0px solid #dddddd;height:500px;overflow-y:auto;overflow-x:hidden;">
+  <div >
+		<table width=100% border=0 cellspacing=0 >
+			<tr>
+				<td style="padding-left:3px;width:10px;vertical-align: middle;">
+					<img src="/SASHBI/images/tragl01.gif" border=0 height=15px>
+				</td>
+				<td style="width:180px;vertical-align: middle;">
+					<span class="grTitle">
+			 		Group ID & Settings
+			 		</span>
+				</td>
+				<td style="vertical-align: bottom;"><span class="grTitle" style="display:block;padding-bottom:5px;border-top:3px solid #0E579A;"></span></td>
+			</tr>
+		</table>
+  	<table style="width:100%;table-layout:fixed;border:0px solid #ffdddd;" border=0>
+  		<tr>
+  			<td style="width:25%">
+  				<img src="/SASHBI/images/tragl02.gif" border=0 height=12px>
+  				<span style='padding-left:3px;font-size:13px;font-weight:bold;'>Selected Segment Set</span>
+  				<div>
+  					: Select Segment ID to Join
+  				</div>
+  			</td>
+  			<td>
+  				<img src="/SASHBI/images/tragl02.gif" border=0 height=12px>
+  				<span style='padding-left:3px;font-size:13px;font-weight:bold;'>Select Filtering Attributes</span>
+  			</td>
+  		</tr>
+  		<tr>
+  			<td style="width:25%">
+    			<div id="dvSegList" style="border:1px solid #dddddd;height:315px;"></div>
+  			</td>
+  			<td style="width:75%">
+			    <div id="dvAttrSetSelect" style="border:0px solid #dddddd;">
+			    	<div id="dvColumnAttr" style="overflow-y:scroll;overflow-x:hidden;border-top:1px solid #dddddd;	border-left:1px solid #dddddd;border-right:1px solid #dddddd;	height:150px;"></div>
+			    	<div>
+		  				<img src="/SASHBI/images/tragl02.gif" border=0 height=12px>
+		  				<span style='padding-left:3px;font-size:13px;font-weight:bold;'>Filtered Attribute Sets</span> 
+		  				<div>
+		  					: Select Attribute Set to Join
+		  				</div>
+	  				</div>
+			    	<div id="dvAttrSet" style="border:1px solid #dddddd;height:150px;overflow-y:auto;overflow-x:hidden;"></div>
+			    </div>
+  			</td>
+  		</tr>
+  	</table>
+    <div align=center>
+			<input type=button id="btnRun" class="condBtn" value="Add Group" onclick="saveSegAttrList();">
+		</div>
+  </div>	
+  <div>
+  	<table style="width:100%;table-layout:fixed;border:0px solid #ffdddd;" border=0>
+  		<tr>
+  			<td colspan=2 style="">
+			    	<div>
+		  				<img src="/SASHBI/images/tragl02.gif" border=0 height=12px>
+		  				<span style='padding-left:3px;font-size:13px;font-weight:bold;'>Generated Group ID</span>
+		  				<!--div>
+		  					: Join Segment ID & Attribute Set
+		  				</div-->
+	  				</div>
+  				<div id="dvGRPSet" style="border:1px solid #dddddd;height:192px;overflow-y:auto;overflow-x:hidden;"></div>
+  			</td>
+  		</tr>
+  	</table>
+  </div>
+	<div align=right>
+		<input type=button id="btnDelete" class="condBtn" value="Delete" onclick="deleteGRPSet();">	
+		<input type=button id="btnClose" class="condBtn" value="Save" onclick="saveGRPSet();">	
+	</div>
+</div>
+<div id=dvModalGRPSetList style="position: absolute;top:1000px;width:800px;display:inline-block;padding: 15px;z-index: 10000;
+	background: #efefef;box-shadow: 0px 0px 15px black;-moz-box-shadow: 0px 0px 15px black;-webkit-box-shadow: 0px 0px 15px black;">
+	<div id="dvGRPSetList" style="border:1px solid #dddddd;height:325px;overflow-y:auto;overflow-x:hidden;"></div>
+  <div align=right style="width:100%;">
+		<input type=button id="" class="condBtn" value="Save Group Set" onclick="saveGR1Row();">	
+		<input type=button id="" class="condBtn" value="Delete Group Set" onclick="deleteGRPSetList();">
+		<input type=button id="" class="condBtn" value="Copy Group Set" onclick="copyGRPSetList();">
+		<input type=button id="" class="condBtn" value="Close" onclick="$('#dvModalGRPSetList').hide();">
+	</div>
+</div>
+<ul id="contextMenu" class="contextMenu" style="display:none;position:absolute"></ul>

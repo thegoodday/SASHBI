@@ -1,0 +1,50 @@
+<div id="dvTitle" style="display:none;"></div>
+<div id="dvToolBar" style="display:none;"></div>
+<div style="display:block;height:250px">
+	<div id=sasGrid style="display:none;height:250px"></div>
+</div>
+<div id="dvFooter" style="display:none;"></div>
+<style>
+.mm{
+	padding:10px 10px 10px 10px;
+	font-size:10pt;	
+}
+#contextMenu {
+	background: #C0C0C0;
+	border: 1px solid gray;
+	padding: 4px 4px 4px 4px ;
+	display: inline-block;
+	min-width: 100px;
+	-moz-box-shadow: 2px 2px 2px silver;
+	-webkit-box-shadow: 2px 2px 2px silver;
+	z-index: 100003;
+}
+
+#contextMenu span {
+	padding: 4px 4px 4px 14px;
+	list-style: none;
+	cursor: pointer;
+	font-size : 10pt;
+	/* background: url("../images/arrow_right_peppermint.png") no-repeat center left; */
+}
+
+#contextMenu li:hover {
+	background-color: white;
+}
+</style>
+
+<div id=dvModalWin class=popup1 style="display:none;;padding: 15px;border:3px solid #B0B7BB;background-color:white;position:absolute;z-index:100002;" align=center>
+	<form method='post' id='fomUpload' action='/SASStoredProcess/do' method='post' enctype='multipart/form-data'>
+		<!--input type='hidden' name='_program' value='SBIP://METASERVER/KFI_NY/AML Compliance/02.CodeMgt/01.CodeMgt/07.FinCEN314(a)(StoredProcess)' /-->
+		<input type='hidden' name='_program' value='SBIP://METASERVER/KFI_NY/AML Compliance/00.Environments/StoredProcess/0209_saveUploadFile(StoredProcess)' />
+		<input type='hidden' name='task' value='upload_file' />
+		
+	<div align=left style="margin:3px;pardding:3px;text-align:right;">
+		<input name='upfile' type='file' style="width:200px;" />
+	</div>
+	<div id="dvActionBar" align=right>
+		<input type=button id="btnMatch" class="condBtn" value="Match" onclick="fnScan();">
+		<input type=button id="btnClose" class="condBtn" value="Cancel" onclick="$('#dvModalWin').hide();$('#dvBG').hide();">
+	</div>
+	</form>
+</div>

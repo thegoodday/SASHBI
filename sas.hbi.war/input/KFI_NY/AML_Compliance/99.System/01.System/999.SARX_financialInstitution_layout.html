@@ -1,0 +1,326 @@
+<div id="dvTitle" style="display:none;"></div>
+<div id="dvToolBar" style="display:none;"></div>
+<div style="display:block;height:250px">
+	<div id=sasGrid style="display:none;height:250px"></div>
+</div>
+<div id="dvFooter" style="display:none;"></div>
+<style>
+/*	
+.colorVH{background-color:#FF0000;}	
+.colorH{background-color:#FF8080;}	
+.colorM{background-color:#FF8040;}	
+.colorL{background-color:#FFFF00;}	
+*/
+
+.grid_cell_hidden{
+	display:none !important
+}
+
+.table
+{
+  border-top-width: 2px;
+  border-top-color:#6fa6ff;
+  /*
+  border-bottom-width: 0px;
+  border-top-width: 1px;
+  border-color: #C1C1C1;
+  */
+  border-collapse: separate;
+  border-left-width: 1px;
+  border-right-width: 0px;
+  border-spacing: 0px;
+  border-style: solid;
+}
+.rowHeader{
+	background-color:#B6B6B6;
+	width:400px;
+	font-size:9pt;
+	background-color: #EDF2F9;
+	border-bottom-width: 1px;
+	border-color: #B0B7BB;
+	border-left-width: 0px;
+	border-right-width: 1px;
+	border-style: solid;
+	border-top-width: 0px;
+	color: #112277;
+	/*
+	font-family: dotum, 'Malgun Gothic',Arial, 'Albany AMT', Helvetica, Helv;
+	*/
+	font-family: 'Malgun Gothic','돋움', Dotum, AppleGothic, sans-serif;
+	font-size: 9pt; /* x-small; */
+	font-style: normal;
+	font-weight: bold; /*bold;*/
+	padding : 7px 7px 7px 7px;	
+ }
+.data{
+	background-color:white;
+	/*
+	width:400px;
+	*/
+	background-color: #FFFFFF;
+	border-bottom-width: 1px;
+	border-color: #C1C1C1;
+	border-left-width: 0px;
+	border-right-width: 1px;
+	border-style: solid;
+	border-top-width: 0px;
+	/*
+	font-family: dotum, 'Malgun Gothic',Arial, 'Albany AMT', Helvetica, Helv;
+	*/
+	font-family:'Malgun Gothic', '돋움', Dotum, AppleGothic, sans-serif;
+	font-size: 9pt /*9pt*/;
+	font-style: normal;
+	font-weight: normal;
+	padding : 7px 7px 7px 7px;	
+}
+</style>
+<form method='post' id='fomUpload' action='/SASStoredProcess/do' method='post' enctype='multipart/form-data'>
+	<input type='hidden' name='_program' value='SBIP://METASERVER/KFI_NY/AML Compliance/00.Environments/StoredProcess/0301_save(StoredProcess)' />	
+<div id=dvModalWin class=popup1 style="display:none;;padding: 15px;border:3px solid #B0B7BB;background-color:white;position:absolute;z-index:100001;" align=center>
+	<div align=left style="margin:3px;pardding:3px;">
+		<div align=left style="background-color:#000040;color:white;font-size: 9pt;padding : 7px 7px 7px 7px;">Information about Financial Institution Where Activity Occurred</div>
+		<div id="dvCont" style="overflow:auto;">
+		<table id=tbInfo border="0" class="popup_tbWrite table" cellspacing=1 cellpadding=1 width="950px">
+			<tr>
+				<th class='l rowHeader' style="width:300px;">*51 Type of financial institution</th>
+			   <td class='data' colspan=3>
+					<select id="INSTITUTION_TYPE_CODE" name="INSTITUTION_TYPE_CODE" style="width:190px" onChange="fnSetInstType(this);">
+					    <option value=""></option>
+                        <option value="A">Casino/Card Club</option>
+                        <option value="B">Depository institution</option>
+                        <option value="C">Insurance company</option>
+                        <option value="D">MSB</option>
+                        <option value="E">Securities/Futures</option>
+                        <option value="F">Loan or Finance Company</option>
+                        <option value="G">Housing GSE</option>
+                        <option value="Z">Other</option>
+					</select>
+				    <span>&nbsp;</span>
+				    <input type="text" id="INSTITUTION_TYPE_CODE_TEXT" size="60" style="border-bottom-color:#000000;" disabled>
+			    </td>
+			</tr>
+			<tr>
+		        <th class='l rowHeader'>*52 Primary federal regulator</th>
+			    <td class='data' colspan=3>
+					<select id="INSTITUTION_PRIM_FED_REG_CODE" name="INSTITUTION_PRIM_FED_REG_CODE" style="width:360px">
+					</select>
+					
+			    </td>
+			</tr>
+			<tr>
+				 <th class='l rowHeader'>53 Type of gaming institution</th>
+			    <td class='data' colspan=3>
+                    <input type="checkbox" name="INSTITUTION_GAMING_TYPE_CODE" class="institution_gaming_type_code" value="A"> State licensed casino
+                    <input type="checkbox" name="INSTITUTION_GAMING_TYPE_CODE" class="institution_gaming_type_code" value="B"> Tribal authorized casino
+                    <input type="checkbox" name="INSTITUTION_GAMING_TYPE_CODE" class="institution_gaming_type_code" value="C"> Card club
+                    <input type="checkbox" name="INSTITUTION_GAMING_TYPE_CODE" class="institution_gaming_type_code" value="Z" onClick="fnCheck2(this, 'INSTITUTION_GAMING_TYPE_CODE');"> Other
+				    <span>&nbsp;</span>
+				    <input type="text" id="INSTITUTION_GAMING_TYPE_CODE_TEXT" size="20" style="border-bottom-color:#000000;" disabled>
+			    </td>
+			</tr>
+			<tr>
+		        <th class='l rowHeader' colspan="4">54 Type of Securities and Futures institution of individual where activity occurred:</th>
+		   </tr>
+			<tr>
+			    <td class='data' colspan="4">
+			        <table border=0  cellspacing=1 cellpadding=1 width="100%">
+			            <tr>
+			                <td width="30%"><input type="checkbox" name="INSTITUTION_SF_TYPE_CODE" class="institution_sf_type_code" value="A"> Clearing broker-securities</td>
+                         <td width="30%"><input type="checkbox" name="INSTITUTION_SF_TYPE_CODE" class="institution_sf_type_code" value="F"> Introducing broker-securities</td>
+                         <td width="40%"><input type="checkbox" name="INSTITUTION_SF_TYPE_CODE" class="institution_sf_type_code" value="L"> Subsidiary of financial/bank holding company</td>
+                     </tr>
+			            <tr>
+			                <td><input type="checkbox" name="INSTITUTION_SF_TYPE_CODE" class="institution_sf_type_code" value="X"> Execution-only broker securities</td>
+                         <td><input type="checkbox" name="INSTITUTION_SF_TYPE_CODE" class="institution_sf_type_code" value="G"> Investment Adviser</td>
+                         <td><input type="checkbox" name="INSTITUTION_SF_TYPE_CODE" class="institution_sf_type_code" value="Z" onClick="fnCheck2(this, 'INSTITUTION_SF_TYPE_CODE');"> Other
+			                <span>&nbsp;</span>
+			                <input type="text" id="INSTITUTION_SF_TYPE_CODE_TEXT" size="30" style="border-bottom-color:#000000;" disabled>                                
+                         </td>
+                     </tr>
+			            <tr>
+			                <td><input type="checkbox" name="INSTITUTION_SF_TYPE_CODE" class="institution_sf_type_code" value="C"> Futures Commission Merchant</td>
+                         <td><input type="checkbox" name="INSTITUTION_SF_TYPE_CODE" class="institution_sf_type_code" value="H"> Investment company</td>
+                         <td>&nbsp;</td>
+                     </tr>
+			            <tr>
+			                <td><input type="checkbox" name="INSTITUTION_SF_TYPE_CODE" class="institution_sf_type_code" value="D"> Holding company</td>
+                         <td><input type="checkbox" name="INSTITUTION_SF_TYPE_CODE" class="institution_sf_type_code" value="I"> Retail foreign exchange dealer</td>
+                         <td>&nbsp;</td>
+                     </tr>
+			            <tr>
+			                <td><input type="checkbox" name="INSTITUTION_SF_TYPE_CODE" class="institution_sf_type_code" value="E"> Introducing broker-commodities</td>
+                         <td><input type="checkbox" name="INSTITUTION_SF_TYPE_CODE" class="institution_sf_type_code" value="Y"> Self-clearing broker securitie</td>
+                         <td>&nbsp;</td>
+                     </tr>
+
+<!--			        	
+			            <tr>
+			                <td width="30%"><input type="checkbox" name="INSTITUTION_SF_TYPE_CODE" class="institution_sf_type_code" value="A"> Clearing broker-securities</td>
+                         <td width="30%"><input type="checkbox" name="INSTITUTION_SF_TYPE_CODE" class="institution_sf_type_code" value="E"> Introducing broker-securities</td>
+                         <td width="40%"><input type="checkbox" name="INSTITUTION_SF_TYPE_CODE" class="institution_sf_type_code" value="I"> Subsidiary of financial/bank holding company</td>
+                     </tr>
+			            <tr>
+			                <td><input type="checkbox" name="INSTITUTION_SF_TYPE_CODE" class="institution_sf_type_code" value="X"> Execution-only broker securities</td>
+                         <td><input type="checkbox" name="INSTITUTION_SF_TYPE_CODE" class="institution_sf_type_code" value="F"> Investment Adviser</td>
+                         <td><input type="checkbox" name="INSTITUTION_SF_TYPE_CODE" class="institution_sf_type_code" value="Z" onClick="fnCheck2(this, 'INSTITUTION_SF_TYPE_CODE');"> Other
+			                <span>&nbsp;</span>
+			                <input type="text" id="INSTITUTION_SF_TYPE_CODE_TEXT" size="30" style="border-bottom-color:#000000;" disabled>                                
+                         </td>
+                     </tr>
+			            <tr>
+			                <td><input type="checkbox" name="INSTITUTION_SF_TYPE_CODE" class="institution_sf_type_code" value="B"> Futures Commission Merchant</td>
+                         <td><input type="checkbox" name="INSTITUTION_SF_TYPE_CODE" class="institution_sf_type_code" value="G"> Investment company</td>
+                         <td>&nbsp;</td>
+                     </tr>
+			            <tr>
+			                <td><input type="checkbox" name="INSTITUTION_SF_TYPE_CODE" class="institution_sf_type_code" value="C"> Holding company</td>
+                         <td><input type="checkbox" name="INSTITUTION_SF_TYPE_CODE" class="institution_sf_type_code" value="H"> Retail foreign exchange dealer</td>
+                         <td>&nbsp;</td>
+                     </tr>
+			            <tr>
+			                <td><input type="checkbox" name="INSTITUTION_SF_TYPE_CODE" class="institution_sf_type_code" value="D"> Introducing broker-commodities</td>
+                         <td><input type="checkbox" name="INSTITUTION_SF_TYPE_CODE" class="institution_sf_type_code" value="Y"> Self-clearing broker securitie</td>
+                         <td>&nbsp;</td>
+                     </tr>
+-->                     
+				    </table>
+			    </td>
+			</tr>
+			<tr>
+				 <th class='l rowHeader'>55 Financial institution identification</th>
+			    <td class='data' colspan=3>
+			        
+                    <table border=0  cellspacing=1 cellpadding=1 width="100%">
+			            <tr>
+			                <td width="15%">Type</td>
+			                <td>
+            					<select id="INSTITUTION_ID_TYPE_CODE" name="INSTITUTION_ID_TYPE_CODE" style="width:460px">
+            					    <option value=""></option>
+                                    <option value="A">Central Registration Depository (CRD) number</option>
+                                    <option value="B">Investment Advisor Registration Depository (IARD) number</option>
+                                    <option value="C">National Futures Association (NFA) number</option>
+                                    <option value="D">Research, Statistics, Supervision, and Discount (RSSD) number</option>
+                                    <option value="E">Securities and Exchange Commission (SEC) number</option>
+                                    <option value="F">National Association of Insurance Commissioners (NAIC Code)</option>
+                                    <option value="G">Mortgage (NMLS ID)</option>
+            					</select>			        
+			                </td>
+			            </tr>
+			            <tr>
+			                <td width="15%">Number</td>
+			                <td><input type="text" id="INSTITUTION_ID_NUMBER" size="30" style="border-bottom-color:#000000;"></td>
+			            </tr>
+			        </table>				    
+			    </td>
+			</tr>
+			<tr>
+				 <th class='l rowHeader'>56 Financial institution's role in transaction</th>
+			    <td class='data' colspan=3>		
+					<input type="checkbox" name="INSTITUTION_ROLE_CODE" class="institution_role_code" value="A"> Selling location
+					<input type="checkbox" name="INSTITUTION_ROLE_CODE" class="institution_role_code" value="B"> Paying location
+					<input type="checkbox" name="INSTITUTION_ROLE_CODE" class="institution_role_code" value="C"> Both
+			    </td>
+			</tr>
+			
+			<tr>
+				 <th class='l rowHeader'>*57 Legal name of financial institutio</th>
+			    <td class='data' colspan=3>
+                    <input type="checkbox" id="INSTITUTION_LEGAL_NAME_UNKNOWN" name="INSTITUTION_LEGAL_NAME_UNKNOWN" value="UNKNOWN" onClick="fnCheck('INSTITUTION_LEGAL_NAME');"> Unknown
+				    <span>&nbsp;</span>
+				    <input type="text" id="INSTITUTION_LEGAL_NAME" size="20" style="border-bottom-color:#000000;">
+			    </td>
+			</tr>
+			<tr>
+				<th class='l rowHeader' class="width:300px">58 Alternate name, e.g., AKA - individual or trade name, DBA - entit</th>
+				<td class='data' colspan=3>
+					<input type="text" id="INSTITUTION_ALTERNATE_NAME" size="20" style="border-bottom-color:#000000;">
+				</td>
+			</tr>
+			
+			<tr>
+				<th class='l rowHeader'>*59 TIN</th>
+				<td class='data' style="width:400px;">
+					<input type="checkbox" id="INSTITUTION_TAX_ID_UNKNOWN" name="INSTITUTION_TAX_ID_UNKNOWN" value="UNKNOWN" onClick="fnCheck('INSTITUTION_TAX_ID');"> Unknown
+					<span>&nbsp;</span>
+					<input type="text" id="INSTITUTION_TAX_ID" size="25" style="border-bottom-color:#000000;">			                    
+				</td>				
+				<th class='l rowHeader' style="width:160px;">60 TIN type</td>
+				<td class='data' style="width:300px;">		                    
+					<select id="INSTITUTION_TAX_ID_TYPE_CODE" name="INSTITUTION_TAX_ID_TYPE_CODE" style="width:150px">
+						<option value=""></option>
+						<option value="A">EIN</option>
+						<option value="B">SSN/ITIN</option>
+						<option value="C">Foreign</option>
+					</select>			        
+				</td>				
+			</tr>
+			<tr>
+		        <th class='l rowHeader'>*61 Address</th>
+			    <td class='data' colspan=3>
+                    <input type="checkbox" id="INSTITUTION_ADDRESS_UNKNOWN" name="INSTITUTION_ADDRESS_UNKNOWN" value="UNKNOWN" onClick="fnCheck('INSTITUTION_ADDRESS');"> Unknown
+				    <span>&nbsp;</span>
+				    <input type="text" id="INSTITUTION_ADDRESS" size="80" style="border-bottom-color:#000000;">
+			    </td>
+			</tr>
+			<tr>
+		        <th class='l rowHeader'>*62 City</th>
+			    <td class='data' colspan=3>
+                    <input type="checkbox" id="INSTITUTION_CITY_NAME_UNKNOWN" name="INSTITUTION_CITY_NAME_UNKNOWN" value="UNKNOWN" onClick="fnCheck('INSTITUTION_CITY_NAME');"> Unknown
+				    <span>&nbsp;</span>
+				    <input type="text" id="INSTITUTION_CITY_NAME" size="60" style="border-bottom-color:#000000;">
+			    </td>
+			</tr>
+			<tr>
+		        <th class='l rowHeader'>63 State</th>
+			    <td class='data' colspan=3>
+    				<select id="INSTITUTION_STATE_CODE" name="INSTITUTION_STATE_CODE" style="width:150px">
+    				</select>
+			    </td>
+			</tr>
+			<tr>
+		        <th class='l rowHeader'>*64 ZIP/Postal Code</th>
+			    <td class='data' colspan=3>
+                    <input type="checkbox" id="INSTITUTION_ZIP_CODE_UNKNOWN" name="INSTITUTION_ZIP_CODE_UNKNOWN" value="UNKNOWN" onClick="fnCheck('INSTITUTION_ZIP_CODE');"> Unknown
+				    <span>&nbsp;</span>
+				    <input type="text" id="INSTITUTION_ZIP_CODE" size="60" style="border-bottom-color:#000000;">
+			    </td>
+			</tr>
+			<tr>
+				<th class='l rowHeader'>*65 Country</th>
+				<td class='data' colspan=3>
+					<input type="checkbox" id="INSTITUTION_COUNTRY_NAME_UNKNOWN" name="INSTITUTION_COUNTRY_NAME_UNKNOWN" value="UNKNOWN" onClick="fnCheck('INSTITUTION_COUNTRY_NAME');"> Unknown
+					<span>&nbsp;</span>
+					<select id="INSTITUTION_COUNTRY_NAME" name="INSTITUTION_COUNTRY_NAME" style="width:360px">
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th class='l rowHeader'>66 Internal conrol/file number</th>
+				<td class='data' colspan=3>
+					<input type="text" id="INSTITUTION_CONTROL_NUMBER" size="60" style="border-bottom-color:#000000;">
+				</td>
+			</tr>
+			<tr>
+				<th class='l rowHeader'>67 Loss to financial insitition</th>
+				<td class='data' colspan=3>
+					$<input type="text" id="INSTITUTION_LOSS_FINANCIAL" size="60" style="border-bottom-color:#000000;">.00
+				</td>
+			</tr>
+		</table>
+		<br>
+		<!--
+		<div align=left style="background-color:#000040;color:white;font-size: 9pt;padding : 7px 7px 7px 7px;">Matching Result</div>
+		<div id=matGridWrap style="display:block;height:150px;width:1500;">
+			<div id=matGrid style="display:none;height:150px"></div>
+		</div>
+		<br>
+		-->
+		</div>
+	</div>
+	<div id="dvActionBar" align=right>
+		<input type=button id="btnClose" class="condBtn" value="Close" onclick="$('#dvModalWin').hide();$('#dvBG').hide();">
+		<input type=button id="btnReset" class="condBtn" value="Reset" onclick="fomUpload.reset();">
+		<input type=button id="btnSave" class="condBtn" value="Save" onclick="fnSave();">
+	</div>
+</div>
+</form>

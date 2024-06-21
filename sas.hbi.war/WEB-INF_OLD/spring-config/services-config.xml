@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:sas-svcs="http://www.sas.com/xml/schema/svcs"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.sas.com/xml/schema/svcs
+        http://www.sas.com/xml/schema/svcs/sas-svcs.xsd">
+
+    <import resource="classpath*:/META-INF/wip-services-client-config.xml" />
+
+</beans>

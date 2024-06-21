@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE containers SYSTEM "http://www.sas.com/midtier/components.dtd">
+
+<containers locale="en" version="1.0">
+	<container>
+		<component key="com.sas.apps.packageviewer.container.PackageViewerContextInterface" 
+			class="com.sas.apps.packageviewer.container.PackageViewerContext" >
+		</component>	
+
+	</container>
+</containers>

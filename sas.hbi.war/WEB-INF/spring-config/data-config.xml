@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:sas-env="http://www.sas.com/xml/schema/env"
+   xsi:schemaLocation="
+      http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+      http://www.sas.com/xml/schema/env
+      http://www.sas.com/xml/schema/env/sas-env.xsd">
+
+   <!--  data-config.xml file for sas.svc.storedprocess.webapp application -->
+
+   <sas-env:serviceURLDAO id="serviceURLDAO" />
+
+</beans>

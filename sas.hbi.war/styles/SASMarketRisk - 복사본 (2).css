@@ -1,0 +1,22 @@
+#banner{
+	height:43px;
+	font-family: 'Malgun Gothic',Tahoma, Gulim, Helvetica, Helv;
+	vertical-align:middle;
+	padding:10px 0px 0 18px;
+}
+#topMenu{
+	position: absolute;
+	top : 13px;
+	right:32px;
+}
+#topMenu span {padding-left:15px; font-weight:bold; font-size:11px; background:url('../images/icon_person.png') no-repeat 0 0;}
+#topMenu a {color:#ffffff; font-size:11px; display:inline-block; height:20px; line-height:20px; font-family:Tahoma; padding:0 10px; border-radius:3px;background:#a5a6a1; }
+.condBtn {height:27px; line-height:27px; background:#b39e70; color:#ffffff; font-size:12px; min-width:60px; margin-left:10;}
+.popup1 {padding:20px; border:5px solid #545045; min-width:600px; background:#ffffff; box-shadow: 3px 3px 10px #9a9a9a;-moz-box-shadow: 3px 3px 10px #9a9a9a; -webkit-box-shadow: 3px 3px 10px #9a9a9a;}
+.popup1 .condBtn {height:27px; line-height:27px; background:#b39e70; color:#ffffff; font-size:12px; min-width:60px; margin-left:0;}
+.popup_tbWrite {border-top: 2px solid #807967; }
+.popup_tbWrite th {background:#d8d8d8; border-bottom:1px solid #bababa; padding:0 20px 0 10px; height:32px; min-width:70px; font-weight:bold; text-align:left;}
+.popup_tbWrite td {border-bottom:1px solid #bababa;  padding:3px 10px 3px 3px;}
+.popup_tbWrite textarea {border:1px solid #cecece; width:98%;}
+.popup_tbWrite td select, .popup_tbWrite td input[type='text']{ width:98%; min-width:170px;} 
+.popup_tbWrite tr:last-child th, .popup_tbWrite tr:last-child td {border-bottom:1px solid #807967}

@@ -1,0 +1,53 @@
+<div id="dvTitle" style="display:none;"></div>
+<div id="dvTools" style="display:block;" align=right>
+	<input type=button value=Select id=btnSearch1 class=condBtn onClick='fnSearch1();' />
+</div>
+
+<div style="display:block;height:250px">
+	<div id=sasGrid style="display:none;height:250px"></div>
+</div>
+<div id="dvTools2" style="display:block;margin-top:20px;" align=right>
+	<input type=button value=Open id=btnOpen class=condBtn onClick='fnOpenGR2();' />
+	<input type=button value=Save id=btnSave class=condBtn onClick='fnSaveGR2();' />
+	<input type=button value='Save As' id=btnSaveAs class=condBtn onClick='fnSaveAsGR2();' />
+	<input type=button value=Delete id=btnDelete class=condBtn onClick='fnDeleteGR2();' />
+</div>
+
+<div id=sasGrid2 style="display:none;height:300px"></div>
+
+<div id=msgLine style="display:none;"></div>
+
+
+<div id=dvModalWin class=popup1 style="display:none;;padding: 15px;position:absolute;z-index:100001;" align=center>
+	<div align=left style="margin:3px;pardding:3px;">
+		<table border="0" class="popup_tbWrite" style="width:400px;">
+			<tr>
+				<th style="width:100px;">보고서명</th>
+				<td colspan="3">
+					<input id="txtPortfolioName" type="text" width="200" value="" >
+				</td>
+			</tr>
+			<tr>
+				<th>설명</th>
+				<td colspan="3">
+					<textarea id="txtPortfolioDesc" type="text" width="200" value="" style="height:40px;"></textarea>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div align=center>
+		<input type=button id="btnRun" class="condBtn" value="Cancel" onclick="$('#dvModalWin').hide();$('#dvBG').hide();">
+		<input type=button id="btnRun" class="condBtn" value="Save" onclick="fnSaveGR2Confirm();">
+	</div>
+</div>
+<div id=dvModalOpen class=popup1 style="display:none;width:700px;padding: 15px;position:absolute;z-index:100001;" align=center>
+	<div align=left style="margin:3px;pardding:3px;">
+		<div id=sasGrid5 style="display:block;height:300px"></div>
+	</div>
+	<div align=center>
+		<input type=button id="btnRun" class="condBtn" value="Cancel" onclick="$('#dvModalOpen').hide();$('#dvBG').hide();">
+		<input type=button id="btnRun" class="condBtn" value="Delete" onclick="fnDeletePortfolio();">
+		<input type=button id="btnRun" class="condBtn" value="Save" onclick="fnSavePortfolio();">
+		<input type=button id="btnRun" class="condBtn" value="Open" onclick="fnOpenPortfolio();">
+	</div>
+</div>

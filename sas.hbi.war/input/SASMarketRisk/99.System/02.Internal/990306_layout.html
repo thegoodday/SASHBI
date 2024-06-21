@@ -1,0 +1,55 @@
+
+<div id="dvTitle" style="display:none;"></div>
+<div id="dvToolBar" style="display:none;"></div>
+<div style="display:block;height:250px">
+	<div id=sasGrid style="display:none;height:250px"></div>
+</div>
+<div id="dvFooter" style="display:none;"></div>
+<style>
+.colorYELLOWP{background-color:#FFFF80;}	
+</style>
+
+<div id=dvModalOpen class=popup1 style="display:none;width:1100px;padding: 15px;position:absolute;z-index:100001;" align=center>
+	<div align=left style="margin:3px;pardding:3px;">
+		<div id=sasGrid2 style="display:block;height:300px"></div>
+	</div>
+	<div align=center>
+		<input type=button id="btnRun" class="condBtn" value="Cancel" onclick="$('#dvModalOpen').hide();$('#dvBG').hide();">
+		<input type=button id="btnRun" class="condBtn" value="Add" onclick="fnConfirm();">
+	</div>
+</div>
+<div id=dvModalRun class=popup1 style="display:none;width:1100px;padding: 15px;position:absolute;z-index:100001;" align=center>
+	<div align=left style="margin:3px;pardding:3px;">
+	<div align=left style="margin:3px;pardding:3px;">
+		<table border="0" class="popup_tbWrite" style="width:100%;">
+			<tr>
+				<th style="width:100px;">기준일자</th>
+				<td colspan="3">
+					<input id="txtDftDate" type="text" width="140" value="" style='min-width: 90px;width:42px;text-align:left;padding-left:15px;'>
+					<img src='./images/Calendar.gif' border=0 onClick='txtDftDate.focus();' style='cursor:pointer'>
+				</td>
+			</tr>
+			<tr>
+				<th>설명</th>
+				<td colspan="3">
+					<textarea id="txtScenarioDesc" type="text" width="200" value="" style="height:40px;"></textarea>
+				</td>
+			</tr>
+		</table>
+	</div>
+	</div>
+	<div align=center>
+		<input type=button id="btnRun" class="condBtn" value="Cancel" onclick="$('#dvModalRun').hide();$('#dvBG').hide();">
+		<input type=button id="btnRun" class="condBtn" value="Run" onclick="fnRun();">
+	</div>
+</div>
+<style>
+.hasDatepicker + img {
+    position: absolute;
+    margin-top: 10px;
+/*
+    margin-left: -25px;
+    top: 50%;
+*/
+}	
+</style>

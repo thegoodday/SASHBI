@@ -1,0 +1,62 @@
+
+<div id="sasGrid" ></div>
+
+<script>
+var dataView;
+var grid;
+var data = [];
+var percentCompleteThreshold = 0;
+var searchString = "";
+
+function requiredFieldValidator(value) {
+  if (value == null || value == undefined || !value.length) {
+    return {valid: false, msg: "This is a required field"};
+  } else {
+    return {valid: true, msg: null};
+  }
+}
+
+var TaskNameFormatter = function (row, cell, value, columnDef, dataContext) {
+  value = value.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  var spacer = "<span style='display:inline-block;height:1px;width:" + (15 * dataContext["indent"]) + "px'></span>";
+  var idx = dataView.getIdxById(dataContext.id);
+
+  if (data[idx + 1] && data[idx + 1].indent > data[idx].indent) {
+    if (dataContext._collapsed) {
+      return spacer + " <span class='toggle expand'></span>&nbsp;" + value;
+    } else {
+      return spacer + " <span class='toggle collapse'></span>&nbsp;" + value;
+    }
+  } else {
+    return spacer + " <span class='toggle'></span>&nbsp;" + value;
+  }
+};
+
+$("#sasGrid").height(eval($(window).height()-$("#dvCondi").height()-50));
+$("#sasGrid").width(eval($(window).width()-11));
+	
+</script>  
+<style>
+.cell-title {
+  font-weight: bold;
+}
+
+.cell-effort-driven {
+  text-align: center;
+}
+
+.toggle {
+  height: 9px;
+  width: 9px;
+  display: inline-block;
+}
+
+.toggle.expand {
+  background: url(/SASBITreeViewer/SlickGrid/images/expand.gif) no-repeat center center;
+}
+
+.toggle.collapse {
+  background: url(/SASBITreeViewer/SlickGrid/images/collapse.gif) no-repeat center center;
+}
+</style>
+

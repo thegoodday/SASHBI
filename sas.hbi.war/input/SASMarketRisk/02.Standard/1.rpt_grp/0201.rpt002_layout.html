@@ -1,0 +1,197 @@
+<div style="border:0px solid #0a68b4;position: relative;height:400px;margin-right:5px;" id="grid-parent">
+    <div data-ax5grid="first-grid" style="height: 100%;"></div>
+</div>
+<style>
+.grid-cell-red{
+	background: #f8d2cb;
+}
+.grid-cell-green{
+	background: #00ff00;
+}
+.grid-cell-blue{
+	background: #dcf0f8;
+}	
+.abc{
+	background: f1f8fd; /* EDF2F9 */
+	font-size:12px;
+	font-family: 'Nanum Gothic Bold';
+	font-weight: bold;
+}	
+[data-ax5grid] [data-ax5grid-container="root"] [data-ax5grid-container="header"]{
+	user-select:none;margin:0;padding:0;position:relative;overflow:hidden;
+	background-color:#EDF2F9; /* EDF2F9 */
+	/* #FFF #F0F0F0*/
+	background-image:-webkit-linear-gradient(top, #D9D9D9,#D9D9D9);	
+	background-image:linear-gradient(to bottom,#D9D9D9,#D9D9D9);
+/* 	
+	border:0px none;
+	border-bottom:1px solid #ccc;
+	background: url('images/header-columns-bg.gif') repeat-x center bottom; 
+*/
+	color:#222
+}
+[data-ax5grid] [data-ax5grid-container="root"] [data-ax5grid-container="header"] [data-ax5grid-panel] table{table-layout:fixed;border-collapse:separate;border-spacing:0;border:0 none;width:100%;height:100%;border-top: 2px solid #807967;border-bottom: 1px solid #807967;}
+[data-ax5grid] [data-ax5grid-container="root"] [data-ax5grid-container="header"] [data-ax5grid-panel] table tr td [data-ax5grid-cellHolder]{display:block;box-sizing:border-box;padding:3px 5px;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+[data-ax5grid] [data-ax5grid-container="root"] [data-ax5grid-container="header"] [data-ax5grid-panel] table tr td{box-sizing:border-box;overflow:hidden;position:relative;padding:0;font-size:12px;font-family: 'Nanum Gothic Bold';font-weight: bold;border:0 none;cursor:pointer;box-shadow:inset 0px 0px 0px 0px #fff}
+[data-ax5grid] [data-ax5grid-container="root"] [data-ax5grid-container="header"] [data-ax5grid-panel] table tr td.hasBorder{border-right:1px solid #aaa;border-bottom:1px solid #aaa;}
+[data-ax5grid] [data-ax5grid-container="root"] [data-ax5grid-container="body"] [data-ax5grid-panel] table{table-layout:fixed;border-collapse:separate;border-spacing:0;border:0 none;width:100%;border-top:1px solid #aaa;}
+
+</style>
+<script>
+$(document.body).ready(function () {
+	$("#grid-parent").height(eval($(window).height()-$("#dvCondi").height()-31));
+	console.log("Height : " + eval($(window).height()-$("#dvCondi").height()-25))
+
+});
+$(window).resize(function () {															
+	$("#grid-parent").height(eval($(window).height()-$("#dvCondi").height()-31));
+});
+
+function setAX5Grid(data){
+	var sasJsonRes=data[0];
+	var SASRes = [];
+	SASRes = sasJsonRes["SASResult"];
+	
+	console.log(SASRes);
+
+
+  var firstGrid = new ax5.ui.grid();
+
+  ax5.ui.grid.formatter["myType"] = function () {
+      return "myType" + (this.value || "");
+  };
+
+  var gridView = {
+      initView: function () {
+          firstGrid.setConfig({
+              target: $('[data-ax5grid="first-grid"]'),
+              frozenColumnIndex: 1,
+              frozenRowIndex: 0,
+              showLineNumber: false,
+              showRowSelector: false,
+              multipleSelect: false	,
+              lineNumberColumnWidth: 40,
+              rowSelectorColumnWidth: 28,
+              sortable: false, // 모든 컬럼에 정렬 아이콘 표시
+              multiSort: false, // 다중 정렬 여부
+              remoteSort: false, // remoteSort에 함수를 sortable 컬럼이 클릭되었을때 실행 setColumnSort를 직접 구현. (remoteSort를 사용하면 헤더에 정렬 상태만 표시 하고 데이터 정렬은 처리 안함)
+              virtualScrollAccelerated: true,
+              header: {
+                  align: "center",
+                  columnHeight: 28
+              },
+              body: {
+						//mergeCells: ["YEAR","QUARTER","MONTH"],
+                  align: "center",
+                  columnHeight: 28,
+                  onDBLClick: function () {
+							console.log(this);
+							this.self.select(this.dindex);
+                  },
+                  trStyleClass: function(){
+                      return (this.item.saleType === "A") ? "RED" : "";
+                  }
+              },
+              page: {
+                  navigationItemCount: 9,
+                  height: 30,
+                  display: false,
+                  statusDisplay: true,
+                  firstIcon: '<i class="fa fa-step-backward" aria-hidden="true"></i>',
+                  prevIcon: '<i class="fa fa-caret-left" aria-hidden="true"></i>',
+                  nextIcon: '<i class="fa fa-caret-right" aria-hidden="true"></i>',
+                  lastIcon: '<i class="fa fa-step-forward" aria-hidden="true"></i>',
+                  onChange: function () {
+                      gridView.setData(this.page.selectPage);
+                  }
+              },
+              columns: [
+                  {key: "bsdt", 		label: "일자", 			align: "center", width: 80,
+	                  styleClass: function () {
+											return "abc";
+							},
+						},
+                  {key: undefined, label: "Delta 리스크", columns: [
+							{key: "s_risk_delta_1", 	label: "리스크금액(1.25)", 	align: "right", formatter: "money", width: 120},
+							{key: "s_risk_delta_2", 	label: "리스크금액(1)", 		align: "right", formatter: "money", width: 120},
+							{key: "s_risk_delta_3", 	label: "리스크금액(0.75)", 	align: "right", formatter: "money", width: 120}
+                    ]
+                  },
+                  {key: undefined, label: "Vega 리스크", columns: [
+							{key: "s_risk_vega_1", 	label: "리스크금액(1.25)", 	align: "right", formatter: "money", width: 120},
+							{key: "s_risk_vega_2", 	label: "리스크금액(1)", 		align: "right", formatter: "money", width: 120},
+							{key: "s_risk_vega_3", 	label: "리스크금액(0.75)", 	align: "right", formatter: "money", width: 120}
+                    ]
+                  },
+                  {key: undefined,	 label: "Curvature 리스크", columns: [
+							{key: "s_risk_crvt_1", 	label: "리스크금액(1.25)", 	align: "right", formatter: "money", width: 120},
+							{key: "s_risk_crvt_2", 	label: "리스크금액(1)", 		align: "right", formatter: "money", width: 120},
+							{key: "s_risk_crvt_3", 	label: "리스크금액(0.75)", 	align: "right", formatter: "money", width: 120}
+                    ]
+                  },
+                  {key: undefined,	 label: "민감도기준자본량", columns: [
+							{key: "s_risk_1", 	label: "리스크금액(1.25)", 	align: "right", formatter: "money", width: 120},
+							{key: "s_risk_2", 	label: "리스크금액(1)", 		align: "right", formatter: "money", width: 120},
+							{key: "s_risk_3", 	label: "리스크금액(0.75)", 	align: "right", formatter: "money", width: 120}
+                    ]
+                  },
+                  {key: undefined,	 label: "부도리스크자본량", columns: [
+							{key: "drc_nsec", 	label: "리스크금액(1.25)", 	align: "right", formatter: "money", width: 120},
+							{key: "drc_sec_nctp", 	label: "리스크금액(1)", 		align: "right", formatter: "money", width: 120},
+							{key: "drc_sec_nctp", 	label: "리스크금액(0.75)", 	align: "right", formatter: "money", width: 120}
+                    ]
+                  },
+                  {key: "rrao", 			label: "잔여리스크자본량",	align: "center", formatter: "money", width: 120},
+                  {key: "risk_capital",label: "최종소요자기자본량",	align: "center", formatter: "money", width: 120}
+              ]
+              /*
+              ,
+              footSum: [
+                  [
+                      {label: "전체 합계", colspan: 3, align: "center"},
+                      {key: "price", collector: "avg", formatter: "money", align: "right"},
+                      {key: "amount", collector: "sum", formatter: "money", align: "right"},
+                      {key: "cost", collector: "sum", formatter: "money", align: "right"}
+                  ]]
+              */    
+          });
+          return this;
+      },
+      setData: function (	) {
+          firstGrid.setData({
+              list: SASRes
+              ,
+              page: {
+                  currentPage: 0,
+                  pageSize: 0,
+                  totalElements: 0,
+                  totalPages: 0
+              }
+/*              
+*/              
+          });
+
+          //firstGrid.setData(list);
+
+          return this;
+      }
+  };
+
+  gridView
+          .initView()
+          .setData();
+
+  $('[data-set-height]').click(function () {
+      var height = this.getAttribute("data-set-height");
+      if (height == "100%") {
+          $("#grid-parent").css({height: 500});
+      } else {
+          $("#grid-parent").css({height: "auto"});
+      }
+      firstGrid.setHeight(height);
+  });
+  
+	
+}	
+    
+</script>

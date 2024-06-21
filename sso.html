@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/SASLogon/js/jquery.js"></script>
+    <title>Document</title>
+    <script>	
+    $(document).ready(function () {
+        $("#progressIndicatorWIP").css("left",eval(eval($(window).width()-$("#progressIndicatorWIP").width()-300)/2));
+        $("#progressIndicatorWIP").css("top",eval(eval($(window).height()-$("#progressIndicatorWIP").height()-100)/2));
+    });
+        var oReq = new XMLHttpRequest();
+        oReq.onload = function (e) {
+            var logonPage = oReq.responseXML;
+            logonform = logonPage.forms[0];
+            console.log("logonform", logonform);
+            if (logonform == undefined) {
+                setTimeout("redirectHBI()", 100);
+                return;
+            }
+            token = logonform.elements["execution"].value;
+            console.log("token execution", token);
+            // redirect = logonform.elements["form_redirect_uri"].value;
+            // action_url = logonform.action;
+            // console.log("action_url", action_url);
+            // console.log(token);
+            // console.log(redirect);
+            var formData = new FormData(logonform);
+            // formData.append("execution", token);
+            formData.delete("username");
+            formData.delete("password");
+
+            formData.append("username", "sasdemo");
+            formData.append("password", "sask@123");
+            // formData.append("_eventId", "submit");
+            // formData.append("form_redirect_uri", redirect);
+
+            console.log("formData", formData);
+            var oPost = new XMLHttpRequest();
+            oPost.onload = function (e) {
+                console.log("oPost.response", oPost.response);
+            }
+            oPost.open("POST", "http://pt05.apac.sas.com:7990/SASLogon/login?service=http%3A%2F%2Fpt05.apac.sas.com%3A7990%2FSASHBI%2Flogin%2Fcas");
+            // oPost.withCredentials = true;
+            oPost.send(formData);
+            console.log("formData", formData);
+            setTimeout("redirectHBI()", 500);
+        }
+        // oReq.open("GET", "http://pt05.apac.sas.com:7990/SASLogon/login?service=http%3A%2F%2Fpt05.apac.sas.com%3A7990%2FSASHBI%2Flogin%2Fcas");
+        oReq.open("GET", "http://pt05.apac.sas.com:7990/SASHBI/main.jsp?board=Products/SAS HBI");
+        // oReq.open("GET", "http://pt05.apac.sas.com:7990/SASLogon/login");
+        oReq.withCredentials = true;
+        oReq.responseType = 'document';
+        oReq.send();
+        function redirectHBI() {
+            // window.location.href = "/SASHBI/main.jsp?board=Products/SAS HBI";
+            window.location.href = "/SASStoredProcess/";
+        }
+    </script>
+</head>
+
+<body>
+
+    <div id="progressIndicatorWIP"
+        style="display:block; position:absolute;top:300px;left:0px;  padding:50px 100px 50px 100px;  z-index:100005; border: 0px solid #dfdfdf; background-color: #FFFFFF">
+        <table border="0" cellspacing="0" cellpadding="0" style="height:100%;width:100%;" summary="">
+            <tr>
+                <td style="text-align:center;vertical-align:top;">
+                    <table border="0" cellspacing="0" cellpadding="0" style="width:100%;" summary="">
+
+                        <tr>
+                            <td style="text-align:center;vertical-align:bottom;">
+                                <img id="progressIndicatorImage" src='/SASLogon/themes/default/images/progress.gif'
+                                    style="width:120px; height:120px" alt="잠시 기다리십시오." />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="lineSpacer">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:center;vertical-align:top;" class="progress">
+                                <span id="pleaseWaitMessage">
+                                    잠시 기다리십시오.
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:center;vertical-align:top;" class="progress">
+                                <span id="progressMessage">
+                                    시스템이 정보를 탐색 중입니다...
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>

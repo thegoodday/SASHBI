@@ -1,0 +1,5 @@
+  <jboss-web>
+      <context-root>SASHBI</context-root>
+      <security-domain>java:/jaas/PFS</security-domain>
+  </jboss-web>
+

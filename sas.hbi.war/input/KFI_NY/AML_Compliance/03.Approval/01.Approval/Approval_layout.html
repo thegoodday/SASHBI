@@ -1,0 +1,178 @@
+<div id="dvTitle" style="display:none;"></div>
+<div id="dvToolBar" style="display:none;"></div>
+<div style="display:block;height:250px">
+	<div id=sasGrid style="display:none;height:250px"></div>
+</div>
+<div id="dvFooter" style="display:none;"></div>
+<style>
+/*	
+.colorVH{background-color:#FF0000;}	
+.colorH{background-color:#FF8080;}	
+.colorM{background-color:#FF8040;}	
+.colorL{background-color:#FFFF00;}	
+*/
+
+.grid_cell_hidden{
+	display:none !important
+}
+
+.table
+{
+  border-top-width: 2px;
+  border-top-color:#6fa6ff;
+  /*
+  border-bottom-width: 0px;
+  border-top-width: 1px;
+  border-color: #C1C1C1;
+  */
+  border-collapse: separate;
+  border-left-width: 1px;
+  border-right-width: 0px;
+  border-spacing: 0px;
+  border-style: solid;
+}
+.rowHeader{
+	background-color:#B6B6B6;
+	width:200px;
+	font-size:9pt;
+	background-color: #EDF2F9;
+	border-bottom-width: 1px;
+	border-color: #B0B7BB;
+	border-left-width: 0px;
+	border-right-width: 1px;
+	border-style: solid;
+	border-top-width: 0px;
+	color: #112277;
+	/*
+	font-family: dotum, 'Malgun Gothic',Arial, 'Albany AMT', Helvetica, Helv;
+	*/
+	font-family: 'Malgun Gothic','돋움', Dotum, AppleGothic, sans-serif;
+	font-size: 9pt; /* x-small; */
+	font-style: normal;
+	font-weight: bold; /*bold;*/
+	padding : 7px 7px 7px 7px;	
+ }
+.data{
+	background-color:white;
+	width:200px;
+	background-color: #FFFFFF;
+	border-bottom-width: 1px;
+	border-color: #C1C1C1;
+	border-left-width: 0px;
+	border-right-width: 1px;
+	border-style: solid;
+	border-top-width: 0px;
+	/*
+	font-family: dotum, 'Malgun Gothic',Arial, 'Albany AMT', Helvetica, Helv;
+	*/
+	font-family:'Malgun Gothic', '돋움', Dotum, AppleGothic, sans-serif;
+	font-size: 9pt /*9pt*/;
+	font-style: normal;
+	font-weight: normal;
+	padding : 7px 7px 7px 7px;	
+}
+</style>
+<form method='post' id='fomUpload' action='/SASStoredProcess/do' method='post' enctype='multipart/form-data'>
+	<input type='hidden' name='_program' value='SBIP://METASERVER/KFI_NY/AML Compliance/00.Environments/StoredProcess/0301_save(StoredProcess)' />	
+<div id=dvModalWin class=popup1 style="display:none;;padding: 15px;border:3px solid #B0B7BB;background-color:white;position:absolute;z-index:100001;" align=center>
+	<div align=left style="margin:3px;pardding:3px;">
+		<div align=left style="background-color:#000040;color:white;font-size: 9pt;padding : 7px 7px 7px 7px;">Customer Information</div>
+		<table id=tbInfo border="0" class="popup_tbWrite table" cellspacing=1 cellpadding=1 width="100%;">
+			<tr>
+				<th class='c rowHeader'>Customer Name<br/>(고객명)</th>
+				<td class='data'><span id=customerName></span></td>
+				<th class='c rowHeader'>Date of Account opening<br/>(계좌개설일)</th>
+				<td class='data'><span id=accountDate></span></td>
+				<th class='c rowHeader'>FCA or True Customer<br/>(환거래고객or일반고객)</th>
+				<td class='data'><span id=FCA></span></td>
+			</tr>
+			<tr>
+				<th class='c rowHeader'>Customer ID No.<br/>(고객ID번호)<sup>*</sup></th>
+				<td class='data'><span id=customerID></span></td>
+				<th class='c rowHeader'>Principal Name<br/>(관련자)</th>
+				<td class='data'><span id=principalName></span></td>
+				<th class='c rowHeader'>Country HQ<br/>(본점소재국가)</th>
+				<td class='data'><span id=country></span></td>
+			</tr>
+			<tr>
+				<th class='c rowHeader'>Authorized Signor Name(s)<br/>(서명권자)<sup>*</sup></th>
+				<td class='data'><span id=authSignor></span></td>
+				<th class='c rowHeader'>Country Operations<br/>(영업국가)</th>
+				<td class='data'><span id=countryOP></span></td>
+				<th class='c rowHeader'></th>
+				<td class='data'></td>
+			</tr>
+		</table>
+		<br>
+		<div align=left style="background-color:#000040;color:white;font-size: 9pt;padding : 7px 7px 7px 7px;">Matching Result</div>
+		<div id=matGridWrap style="display:block;height:150px;width:1500;">
+			<div id=matGrid style="display:none;height:150px"></div>
+		</div>
+		<br>
+
+		<div id=dvCompliance style="display:none;">
+			<div align=left style="background-color:#000040;color:white;font-size: 9pt;padding : 7px 7px 7px 7px;">Compliance</div>
+			<table border="0" class="popup_tbWrite table" cellspacing=1 cellpadding=1 width="100%">
+				<tr id="lev2Tr" style="display:none;">
+					<th class='c rowHeader'>Lev2 Result Detail</th>
+					<td class='data'><input type=text id=txtLvl2Detail size=30 style='border-bottom-color:#000000;'></td>
+					<th class='c rowHeader'>Evidence</th>
+					<td class='data'><input id='evidencse_file' name='evidencse_file' type='file' /></td>
+					<th class='c rowHeader'></th>
+					<td class='data'><span id='downFileSpan'></span></td>
+				</tr>
+				<tr id="lev3Tr" style="display:none;">
+					<th class='c rowHeader'>Transaction</th>
+					<td class='data'>
+						<select id=sltLvl3Trst style='width:190px'>
+							<option value="">Select</option>
+							<option value="Y">Accepted</option>
+							<option value="N">Not Accepted</option>
+						</select>
+					</td>
+					<th class='c rowHeader'>Lev3 Transaction Detail</th>
+					<td class='data'><input type=text id=txtLvl3Detail size=30 style='border-bottom-color:#000000;'></td>
+					
+					<th class='c rowHeader'><!--Lev3 Result--></th>
+					<td class='data'>
+						<!--
+						<select id=sltLvl3Result style='width:190px'>
+							<option value="">Select</option>
+							<option value="Y">Y</option>
+							<option value="N">N</option>
+						</select>
+						-->
+					</td>
+				</tr>
+				<tr id="lev4Tr" style="display:none;">
+					<th class='c rowHeader'>Transaction</th>
+					<td class='data'>
+						<select id=sltLvl4Trst style='width:190px'>
+							<option value="">Select</option>
+							<option value="Y">Accepted</option>
+							<option value="N">Not Accepted</option>
+						</select>
+					</td>
+					<th class='c rowHeader'>Lev4 Transaction Detail</th>
+					<td class='data'><input type=text id=txtLvl4Detail size=30 style='border-bottom-color:#000000;'></td>
+					<th class='c rowHeader'><!--Lev4 Result--> </th>
+					<td class='data'>
+						<!--
+						<select id=sltLvl4Result style='width:190px'>
+							<option value="">Select</option>
+							<option value="Y">Y</option>
+							<option value="N">N</option>
+						</select>
+						-->
+					</td>
+
+				</tr>
+			</table>		
+		</div>
+	</div>
+	<div id="dvActionBar" align=right>
+		<input type=button id="btnClose" class="condBtn" value="Close" onclick="$('#dvModalWin').hide();$('#dvBG').hide();">
+		<input type=button id="btnSave" class="condBtn" value="Save" onclick="fnSave();">
+	</div>
+</div>
+</form>

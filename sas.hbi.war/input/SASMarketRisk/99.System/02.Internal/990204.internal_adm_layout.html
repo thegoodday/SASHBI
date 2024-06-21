@@ -1,0 +1,67 @@
+<div id="dvTitle" style="display:none;"></div>
+<div id="dvTools2" style="display:block;margin-top:20px;" align=right>
+	<input type=button value=Open id=btnOpen class=condBtn onClick='fnOpenGR2();' />
+	<input type=button value=Delete id=btnDelete class=condBtn onClick='fnDeleteGR2();' />
+	<input type=button value=Save id=btnSave class=condBtn onClick='fnSaveGR2();' />
+	<input type=button value='Save As' id=btnSaveAs class=condBtn onClick='fnSaveAsGR2();' />
+</div>
+
+<div style="display:block;height:250px">
+	<div id=sasGrid style="display:none;height:250px"></div>
+</div>
+
+
+<div id=msgLine style="display:none;"></div>
+
+
+<div id=dvModalWin class=popup1 style="display:none;width:400px;padding: 15px;position:absolute;z-index:100001;" align=center>
+	<div align=left style="margin:3px;pardding:3px;">
+		<table border="0" class="popup_tbWrite" style="width:100%;">
+			<tr>
+				<th style="width:150px;">시나리오명</th>
+				<td colspan="3">
+					<input id="txtScenarioName" type="text" width="200" value="" >
+				</td>
+			</tr>
+<!--
+			<tr>
+				<th>RF 상관관계 적용여부</th>
+				<td colspan="3">
+					<input type=radio name=txtRF id="txtRF" type="text" width="200" value="Y" checked>Y</input>
+					<input type=radio name=txtRF id="txtRF" type="text" width="200" value="N" >N</input>
+				</td>
+			</tr>
+			<tr>
+				<th>Interpolation 조정 방법</th>
+				<td colspan="3">
+					<input type=radio name= txtInterpol id="txtInterpol" type="text" width="200" value="Step" checked>Step</input>
+					<input type=radio name= txtInterpol id="txtInterpol" type="text" width="200" value="Linear" >Linear</input>
+					<input type=radio name= txtInterpol id="txtInterpol" type="text" width="200" value="Cubic" >Cubic</input>
+				</td>
+			</tr>
+-->			
+			<tr>
+				<th>Scenario Description</th>
+				<td colspan="3">
+					<textarea id="txtScenarioDesc" type="text" width="200" value="" style="height:40px;"></textarea>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div align=center>
+		<input type=button id="btnRun" class="condBtn" value="Cancel" onclick="$('#dvModalWin').hide();$('#dvBG').hide();">
+		<input type=button id="btnRun" class="condBtn" value="Save" onclick="$('#dvModalWin').hide();$('#dvBG').hide();fnSaveGR2Confirm();">
+	</div>
+</div>
+<div id=dvModalOpen class=popup1 style="display:none;width:700px;padding: 15px;position:absolute;z-index:100001;" align=center>
+	<div align=left>불러오고자 하는 시나리오명을 더블 클릭하세요.</div>
+	<div align=left style="margin:3px;pardding:3px;">
+		<div id=gridScenarioList style="display:block;height:300px"></div>
+	</div>
+	<div align=center>
+		<input type=button id="btnRun" class="condBtn" value="Cancel" onclick="$('#dvModalOpen').hide();$('#dvBG').hide();">
+		<input type=button id="btnRun" class="condBtn" value="Delete" onclick="fnDeleteScenario();">
+		<input type=button id="btnRun" class="condBtn" value="Save" onclick="fnSaveScenario();">
+		<input type=button id="btnRun" class="condBtn" value="Open" onclick="fnOpenScenario();">
+	</div>
+</div>

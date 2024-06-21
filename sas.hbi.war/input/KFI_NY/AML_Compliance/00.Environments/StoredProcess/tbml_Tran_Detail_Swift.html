@@ -1,0 +1,106 @@
+<div id="dvTitle" style="display:none;"></div>
+<div id="dvToolBar" style="display:none;"></div>
+<div style="display:block;height:250px">
+	<div id=sasGrid style="display:none;height:250px"></div>
+</div>
+<div id="dvFooter" style="display:none;"></div>
+<style>
+/*	
+.colorVH{background-color:#FF0000;}	
+.colorH{background-color:#FF8080;}	
+.colorM{background-color:#FF8040;}	
+.colorL{background-color:#FFFF00;}	
+*/
+
+.grid_cell_hidden{
+	display:none !important
+}
+
+.table
+{
+  border-top-width: 2px;
+  border-top-color:#6fa6ff;
+  /*
+  border-bottom-width: 0px;
+  border-top-width: 1px;
+  border-color: #C1C1C1;
+  */
+  border-collapse: separate;
+  border-left-width: 1px;
+  border-right-width: 0px;
+  border-spacing: 0px;
+  border-style: solid;
+}
+.rowHeader{
+	background-color:#B6B6B6;
+	width:200px;
+	font-size:9pt;
+	background-color: #EDF2F9;
+	border-bottom-width: 1px;
+	border-color: #B0B7BB;
+	border-left-width: 0px;
+	border-right-width: 1px;
+	border-style: solid;
+	border-top-width: 0px;
+	color: #112277;
+	/*
+	font-family: dotum, 'Malgun Gothic',Arial, 'Albany AMT', Helvetica, Helv;
+	*/
+	font-family: 'Malgun Gothic','돋움', Dotum, AppleGothic, sans-serif;
+	font-size: 9pt; /* x-small; */
+	font-style: normal;
+	font-weight: bold; /*bold;*/
+	padding : 7px 7px 7px 7px;	
+ }
+.data{
+	background-color:white;
+	width:200px;
+	background-color: #FFFFFF;
+	border-bottom-width: 1px;
+	border-color: #C1C1C1;
+	border-left-width: 0px;
+	border-right-width: 1px;
+	border-style: solid;
+	border-top-width: 0px;
+	/*
+	font-family: dotum, 'Malgun Gothic',Arial, 'Albany AMT', Helvetica, Helv;
+	*/
+	font-family:'Malgun Gothic', '돋움', Dotum, AppleGothic, sans-serif;
+	font-size: 9pt /*9pt*/;
+	font-style: normal;
+	font-weight: normal;
+	padding : 7px 7px 7px 7px;	
+}
+</style>
+<form method='post' id='fomUpload' action='/SASStoredProcess/do' method='post' enctype='multipart/form-data'>
+	<input type='hidden' name='_program' value='SBIP://METASERVER/KFI_NY/AML Compliance/00.Environments/StoredProcess/0301_save(StoredProcess)' />	
+<div id=dvModalWin class=popup1 style="display:none;;padding: 15px;border:3px solid #B0B7BB;background-color:white;position:absolute;z-index:100001;" align=center>
+	<div align=left style="margin:3px;pardding:3px;">
+		<div align=left style="background-color:#000040;color:white;font-size: 9pt;padding : 7px 7px 7px 7px;">Inquiry Condition</div>
+		<table id=tbInfo border="0" class="popup_tbWrite table" cellspacing=1 cellpadding=1>
+			<tr>
+				<th class='c rowHeader'>Message No</th>
+				<td class='data'><span id=SWIFTMSGNO></span></td>
+				<th class='c rowHeader'>Message Type</th>
+				<td class='data'><span id=MTNO></span></td>
+				<th class='c rowHeader'>BIC</th>
+				<td class='data'><span id=DPMSGBNKBIC></span></td>
+				<th class='c rowHeader'>Ref No</th>
+				<td class='data'><span id=DPMSGBNKMGTNO></span></td>
+			</tr>
+		</table>
+		
+		<br>
+		<div align=left style="background-color:#000040;color:white;font-size: 9pt;padding : 7px 7px 7px 7px;">Message Detail</div>
+		<table id=tbInfo border="0" class="popup_tbWrite table" cellspacing=1 cellpadding=1 width=100%>
+			<tr>
+				<td class='data'><span id=SWIFTMSGCTNT></span></td>
+			</tr>
+		</table>
+
+	</div>
+	<div id="dvActionBar" align=right>
+		<input type=button id="btnClose" class="condBtn" value="Close" onclick="$('#dvModalWin').hide();$('#dvBG').hide();">
+	</div>
+</div>
+</form>

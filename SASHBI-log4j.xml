@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="SAS_CONSOLE" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d [%t] %-5p [%u] %c - %m%n"/>
+        </Console>
+
+        <File name="SAS_FILE" fileName="${sys:config.lev.web.appserver.logs.dir}/SASHBI.log" append="true">
+            <PatternLayout pattern="%d [%t] %-5p [%u] %c - %m%n"/>
+        </File>
+
+        <!-- A time/date based rolling appender
+        <RollingFile name="SAS_FILE" fileName="${sys:config.lev.web.appserver.logs.dir}/SASStoredProcess9.4.log" filePattern="${sys:config.lev.web.appserver.logs.dir}/SASStoredProcess9.4.log.%d{yyyy-MM-dd}" append="true">
+                <PatternLayout pattern="%d [%t] %-5p [%u] %c - %m%n"/>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+        </RollingFile>
+        -->
+    </Appenders>
+
+    <Loggers>
+        <Logger additivity="false" name="com.sas" level="WARN">
+            <AppenderRef ref="SAS_CONSOLE"/>
+            <AppenderRef ref="SAS_FILE"/>
+        </Logger>
+
+        <Logger additivity="false" name="com.sas.hbi.tools" level="DEBUG">
+            <AppenderRef ref="SAS_CONSOLE"/>
+            <AppenderRef ref="SAS_FILE"/>
+        </Logger>
+        <Logger additivity="false" name="com.sas.hbi.viewer" level="DEBUG">
+            <AppenderRef ref="SAS_CONSOLE"/>
+            <AppenderRef ref="SAS_FILE"/>
+        </Logger>
+
+        <Logger additivity="false" name="com.sas.services" level="ERROR">
+            <AppenderRef ref="SAS_CONSOLE"/>
+            <AppenderRef ref="SAS_FILE"/>
+        </Logger>
+
+        <Logger additivity="false" name="com.sas.services.deployment" level="WARN">
+            <AppenderRef ref="SAS_CONSOLE"/>
+            <AppenderRef ref="SAS_FILE"/>
+        </Logger>
+
+        <Logger additivity="false" name="com.sas.services.discovery" level="WARN">
+            <AppenderRef ref="SAS_CONSOLE"/>
+            <AppenderRef ref="SAS_FILE"/>
+        </Logger>
+
+        <Logger additivity="false" name="com.sas.services.util" level="WARN">
+            <AppenderRef ref="SAS_CONSOLE"/>
+            <AppenderRef ref="SAS_FILE"/>
+        </Logger>
+
+
+        <Root level="ERROR">
+            <AppenderRef ref="SAS_CONSOLE"/>
+            <AppenderRef ref="SAS_FILE"/>
+        </Root>
+    </Loggers>
+</Configuration>
+
+

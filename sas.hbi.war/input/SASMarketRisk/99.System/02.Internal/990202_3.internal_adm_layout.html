@@ -1,0 +1,187 @@
+<div id="dvTitle" style="display:none;"></div>
+<div id="dvTools" style="display:block;" align=right>
+	<!--
+	<input type=button value=Select id=btnSearch1 class=condBtn onClick='fnSearch1();' />
+	-->
+</div>
+<style>
+.category {
+     list-style-type:none;
+     margin:0px 0px 0px 5px;
+     padding:0;
+}
+
+.category li {
+	float:left;
+/*
+	width:100px;
+	height:40px;
+*/	
+	border:1px solid #000;
+/*	
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+*/	
+	position:relative;
+	height:25px; 
+	width:75px;
+	text-align:center; 
+	vertical-align:middle;
+	font-size:11px; 
+	font-family:'Malgun Gothic',gulim, AppleGothic, sans-serif; 
+	padding:2px 10px 0px 20px; 
+	margin:5px 2px 5px 2px; 
+	cursor:pointer; 
+	font-weight:bold;
+	background-color: #fff ; /* #96E0E2 */
+}
+
+.category label, .category input {
+    display:block;
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+}
+
+.category input[type="radio"] {
+    opacity:0.01;
+    z-index:100;
+}
+
+.category input[type="radio"]:checked + label,
+.Checked + label {
+	border:0px solid #000;
+/*	
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+*/	
+	height:22px; 
+	width:105px;
+	text-align:center; 
+	vertical-align:middle;
+	font-size:11px; 
+	font-family:'Malgun Gothic',gulim, AppleGothic, sans-serif; 
+	color:#fff;	    
+	padding:5px 0px 0px 0px; 
+	margin:0px 0px 0px 0px; 
+	cursor:pointer; 
+	font-weight:bold;
+/*	
+	background-color:#3d95c0;	    
+*/	
+	background:#05639f;
+}
+.category label {
+	padding:5px;
+	border:0px solid #96E0E2; 
+	cursor:pointer;
+	z-index:90;
+}
+.category label:hover {
+	background:#DDD;
+}
+</style>
+<table style="width:100%" border=0>
+	<tr>
+		<td style="width:460px;">
+			<span style="font-size:14pt;font-family:'avenir-light',Arial,Helvetica,sans-serif;">시나리오 포트폴리오 목록
+		</td>	
+		<td>
+		</td>	
+		<td style="width:">
+			<div id="dvTools2" style="display:block;" align=right>
+				<!--
+				<input type=button value=Open id=btnOpen class=condBtn onClick='fnOpenGR2();' />
+				-->
+				<input type=button value=Save id=btnSave class=condBtn onClick='fnSaveGR2();' />
+			</div>
+		</td>	
+	</tr>
+	
+	<tr>
+		<td>
+			<div id=sasGrid style="display:none;height:560px;width:460px;margin-top:40px;"></div>
+		</td>	
+		<td align=center  style="width:50px;">
+				<input type="button" value=">" id="btnDelete" class="condBtn btn_delete_r" onClick="fnSearch1();" />
+				<input type="button" value="<" id="btnDelete" class="condBtn btn_delete_l" onClick="fnDeleteGR2();" />
+		</td>	
+		<td>
+				<ul class="category">
+					<li>
+					    <input type="radio" id="cat_rf" name="category" />
+					    <label for="cat_rf">Risk Factor</label>
+					</li>
+					<li>
+					    <input type="radio" id="cat_pst" name="category" />
+					    <label for="cat_pst">Position</label>
+					</li>
+					<li>
+					    <input type="radio" id="cat_hrch" name="category" />
+					    <label for="cat_hrch">Hierarchy</label>
+					</li>
+					<li>
+					    <input type="radio" id="cat_prc" name="category" />
+					    <label for="cat_prc">Pricing Info</label>
+					</li>
+				</ul>
+			<div id=sasGrid2 style="display:block;height:560px;width:760px;"></div>
+		</td>	
+	</tr>
+</table>
+
+
+
+<div id=msgLine style="display:none;"></div>
+
+
+<div id=dvModalWin class=popup1 style="display:none;;padding: 15px;position:absolute;z-index:100001;" align=center>
+	<div align=left style="margin:3px;pardding:3px;">
+		<table border="0" class="popup_tbWrite" style="width:100%;">
+			<tr>
+				<th style="width:100px;">시나리오명</th>
+				<td colspan="3">
+					<input id="txtScenarioName" type="text" width="200" value="" >
+				</td>
+			</tr>
+			<tr>
+				<th>설명</th>
+				<td colspan="3">
+					<textarea id="txtScenarioDesc" type="text" width="200" value="" style="height:40px;"></textarea>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div align=center>
+		<input type=button id="btnRun" class="condBtn" value="Cancel" onclick="$('#dvModalWin').hide();$('#dvBG').hide();">
+		<input type=button id="btnRun" class="condBtn" value="Save" onclick="fnSaveGR2Confirm();">
+	</div>
+</div>
+<div id=dvModalOpen class=popup1 style="display:none;width:700px;padding: 15px;position:absolute;z-index:100001;" align=center>
+	<div align=left style="margin:3px;pardding:3px;">
+		<div id=sasGrid5 style="display:block;height:300px"></div>
+	</div>
+	<div align=center>
+		<input type=button id="btnRun" class="condBtn" value="Cancel" onclick="$('#dvModalOpen').hide();$('#dvBG').hide();">
+		<input type=button id="btnRun" class="condBtn" value="Delete" onclick="fnDeletePortfolio();">
+		<input type=button id="btnRun" class="condBtn" value="Save" onclick="fnSavePortfolio();">
+		<input type=button id="btnRun" class="condBtn" value="Open" onclick="fnOpenPortfolio();">
+	</div>
+</div>
+<script src="/SASHBI/scripts/jquery/format.js"></script>
+<style>
+.hasDatepicker + img {
+    position: absolute;
+    margin-top: 10px;
+/*
+    margin-left: -25px;
+    top: 50%;
+*/
+}	
+</style>

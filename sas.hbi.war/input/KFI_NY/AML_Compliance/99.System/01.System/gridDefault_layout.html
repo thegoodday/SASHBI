@@ -1,0 +1,56 @@
+<div id="dvTitle" style="display:none;"></div>
+<div id="dvToolBar" style="display:none;"></div>
+<div style="display:block;height:250px">
+	<div id=sasGrid style="display:none;height:250px"></div>
+</div>
+<div id="dvFooter" style="display:none;"></div>
+<style>
+pre {
+	margin: 2px 0px 0px 0px ;
+}
+.ui-slider-horizontal {
+	height: 5px;
+}
+.ui-slider .ui-slider-handle {
+    position: absolute;
+    z-index: 2;
+    width: 9px;
+    height: 9px;  /*	1.2em; */
+    cursor: default;
+}
+/*	
+.colorVH{background-color:#FF0000;}	
+.colorH{background-color:#FF8080;}	
+.colorM{background-color:#FF8040;}	
+.colorL{background-color:#FFFF00;}	
+*/
+</style>
+
+<div style="display:none;">
+	<form name=fomSASLog id=fomSASLog action='/SASStoredProcess/do' method=post target='winSASLogs'>
+	<input type=hidden name=_program value="">
+	<input type=hidden name=_debug value="0">
+	<input type=hidden name=path value="">
+	<input type=hidden name=logfile value="">
+	</form>
+</div>
+
+<div id=dvModalWinDetail class=popup1 style="display:none;;padding: 15px;border:3px solid #B0B7BB;background-color:white;position:absolute;z-index:100002;" align=center>
+	<div id=sasGridDetailW align=left style="margin:3px;pardding:3px;border:solid 1px #808080">
+		<div style="display:block;padding:3px 3px 13px 3px ;">
+			<table width='100%'>
+				<tr>
+					<td style="width:170px;">Time Range : <span id="start_time"></span> ~ <span id="end_time"></span></td>
+					<td ><div id="time-range"></div></td>
+					<td style="width:70px;"><input type=button class="condBtn" id="btnShowDetailLog" value="Submit!" onclick='fnShowLogWTime();' style=""></td>
+				</tr>
+			</table>
+			<div style="padding:3px 3px 5px 3px ;"></div>
+			
+		</div>
+		<div id=sasGridDetail style="display:block;height:450px"></div>
+	</div>
+	<div id="dvActionBar3" align=right>
+		<input type=button id="btnClose" class="condBtn" value="Close" onclick="$('#dvModalWinDetail').hide();$('#dvBG').hide();">
+	</div>
+</div>

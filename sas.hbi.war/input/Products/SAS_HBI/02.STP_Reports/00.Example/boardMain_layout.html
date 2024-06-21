@@ -1,0 +1,113 @@
+<div id="dvTitle" style="display:none;"></div>
+<div style="display:block;height:250px">
+    <div id=sasGrid style="display:none;height:250px;"></div>
+</div>
+<link rel="stylesheet" href="/SASHBI/scripts/codemirror-5.59.2/lib/codemirror.css">
+<!-- <script src="/SASHBI/input/Products/SAS_HBI/02.STP_Reports/00.Example/board.js" ></script> -->
+<!-- <script src="/SASHBI/scripts/SlickGrid/lib/require.js" data-main="/SASHBI/input/Products/SAS_HBI/02.STP_Reports/00.Example/reqmain.js" ></script> -->
+<script src="/SASHBI/scripts/codemirror-5.59.2/lib/codemirror.js"></script>
+<script src="/SASHBI/scripts/codemirror-5.59.2/mode/css/css.js"></script>
+<script src="/SASHBI/scripts/codemirror-5.59.2/mode/xml/xml.js"></script>
+<script src="/SASHBI/scripts/codemirror-5.59.2/mode/sas/sas.js"></script>
+<style>
+.ui-dialog{
+    z-index:100001 !important;
+}
+#dvArticle {
+    display: none;
+    border: 0px solid #ccc;
+    width: 695px;
+}
+.spValue{
+    float:left;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    margin-top: 1px;
+    margin-right: 1px;
+    margin-bottom: 1px;
+    margin-left: 1px;
+}
+._thi {
+    border: 1px solid #ccc;
+}
+._tdi {
+    border: 1px solid #ccc;
+}
+.CodeMirror {
+    width: 837px;
+}
+.CodeMirror-line {
+    text-align: start;
+}
+#txaContent {
+    border: 0px solid #ccc;
+    width: 500px;
+    height: 300px;
+    text-align:left;
+    float: none;
+}
+#adAttachW {
+    float:left;
+}
+.slick-header input[type="checkbox"] {
+    border: 0px solid white;
+    color: #fff;
+    background-color:transparent;
+    border-collapse: separate;
+}
+#sasGridAttachFiles .slick-header input[type="checkbox"]::after {
+    left: 2px;
+}
+.slick-column-name{
+    background-color:transparent;
+}
+input[type="checkbox"] {
+    border: 1px solid blue;
+    color: #fff;
+    background-color:transparent;
+}
+</style>
+
+<div id=dvArticle align=center>
+    <form method='post' id='fomUpload' action='/SASStoredProcess/do' method='post' enctype='multipart/form-data' accept-charset='UTF-8'>
+    <!-- <form method='post' id='fomUpload' action='/SASStoredProcess/do' method='post' enctype='multipart/form-data' accept-charset='EUC-KR'> -->
+
+    <table class="_table2" >
+        <tr>
+            <th class="_thi" style="width:140px;padding:3px 3px;">Title</th>
+            <td class="_tdi alignL" style="padding:3px 7px;font-weight:bold;" id=tdTitle>
+                <!--input type=text id=iptTitle size=20 style="width:500px;" -->
+            </td>    
+        </tr>
+        <tr>
+            <th class="_thi" style="width:140px;padding:3px 3px;">Registrant</th>
+            <td class="_tdi alignL" style="padding:3px 7px;" id=tdRegistrant></td>
+        </tr>
+        <tr>
+        <!--
+            <th class="_thi" style="width:140px;">Content</th>
+        -->
+            <td class="_tdi alignL" style="padding:0px 0px;" colspan=2>
+                <textarea id=txaContent></textarea>
+            </td>
+        </tr>
+        <tr>
+            <th class="_thi" style="width:140px;">Attachment</th>
+            <td class="_tdi alignL" style="padding:0px 0px;">
+                <div id=dvAttachW class=spValue style="width:677px">
+                    <div style="text-align:right;">
+                        <input type=button value='Add' id=btnDelete class=condBtn onclick='fnAddAttach();'>
+                        <input type=button value='Delete' id=btnDelete class=condBtn onclick='fnDeleteAttach();'>
+                    </div>
+                    <div id=sasGridAttachFiles style="display:none;height:120px;"></div>
+                    <div id=dvAttach class=spValue style="width:480px;border:0px solid #ccc;display:none;">  
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    </form> 
+</div>

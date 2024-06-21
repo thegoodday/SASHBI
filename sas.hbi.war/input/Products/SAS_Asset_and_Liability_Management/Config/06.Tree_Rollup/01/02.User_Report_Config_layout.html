@@ -1,0 +1,115 @@
+<div id="dvMain" style="border:0px solid green;height:440px;overflow-y:hidden;overflow-x:hidden;float:clear;display:none;">															
+	<div id="dvCol1" style="border:1px solid #ddd;float:left;";>														
+    <div id="dvTitle1" class="ui-widget-header" align=center style="text-align:center">Columns</div>															
+		<div id="dvColDFT" style="border:0px solid #ddd;margin-bottom:10px;">	</div>    												
+		<div id="dvColUser" style="border-top:1px solid #ddd;margin-bottom:10px;">	</div>    												
+		<div id="dvMeasure" style="border-top:1px solid #ddd;margin-bottom:10px;">	</div>    												
+		<div id="dvStats">													
+			<div class='srcStat ui-widget-header ui-corner-all' name='Sum'>N</div>												
+			<div class='srcStat ui-widget-header ui-corner-all' name='Sum'>Sum</div>												
+			<div class='srcStat ui-widget-header ui-corner-all' name='Mean'>Mean</div>												
+			<!--
+			<div class='srcStat ui-widget-header ui-corner-all' name='StdDev'>StdDev</div>												
+			<div class='srcStat ui-widget-header ui-corner-all' name='Min'>Min</div>												
+			<div class='srcStat ui-widget-header ui-corner-all' name='Max'>Max</div>												
+			<div class='srcStat ui-widget-header ui-corner-all' name='SumWgt'>SumWgt</div>		
+			-->										
+		</div>    													
+	</div>														
+	<div id="dvCol2" style="border:0px solid #ddd;background-color:white;float:left;padding-left:0px;margin-left:5px;">														
+    <div id="dvTreeName" class="ui-widget-header" align=center style="text-align:left">&nbsp;</div>															
+    <div id="treeLayout" class="jstree jstree-default" style="border-top:1px solid #ddd;"></div>															
+    <div id="treeMStats" class="jstree jstree-default" style="border-top:0px solid #ddd;"></div>															
+	</div>														
+	<div id="dvCol3" style="border:0px solid #ddd;background-color:white;float:left;padding-left:0px;margin-left:5px;">														
+    <div id="dvFilterHeader" class="ui-widget-header" align=center>Filter</div>															
+    <div id="treeFilter" class="jstree jstree-default"></div>															
+	</div>														
+</div>															
+															
+															
+	<div id="dvBtn" style="display:none;">		
+		<p>												
+		<input type="button" class="btn_basic" value="Open" onclick="openLayout();" >													
+		<input type="button" class="btn_basic" value="New" onclick="newLayout();" >													
+		<input type="button" class="btn_basic" value="Save" onclick="saveLayout();" >													
+		<input type="button" class="btn_basic" value="Save As" onclick="saveAsLayout();" >													
+	</div>														
+	<div id="dvSave" style="position: absolute;width:490px;display:none;z-index: 90001;" class="popup1"><!-- KBALM  style 속성을 class로 추가 (class="popup1")-->															
+		<div id="dvSaveEdit" style="font-size:11pt;padding:15px 0px 15px 0px;">													
+			<table class="popup_tbWrite" style="width:600px;"><!-- KBALM  class="popup_tbWrite"  추가 -->									
+				<tbody>
+					<tr>												
+						<th style="width:100px">보고서그룹</th><!-- KBALM  th 로 변경, style 수정 -->											
+						<td> 											
+							<select id="sltRPT_GRP_LST" width="200" value="" style="width:90%"><!-- KBALM  style 수정 -->
+							</select>										
+							<input type="button" id="" class="btn_icon" value="+" onclick="addRptGroup();"><!-- KBALM  class 변경, style 삭제 -->										
+						</td>											
+					</tr>												
+					<tr>												
+						<th style="font-size:9pt;font-weight:bold;">보고서명</th><!-- KBALM  th 로 변경, style 삭제 -->											
+						<td> <input id="txtTreeName" type="text" width="200" value="" /></td>				<!-- KBALM  style 수정 -->							
+					</tr>												
+					<tr>												
+						<th style="font-size:9pt;font-weight:bold;">설명</th><!-- KBALM  th 로 변경, style 삭제 -->											
+						<td> <textarea id="txtTreeDesc" type="text" width="200" value="" style="height:40px;"></textarea></td>				<!-- KBALM  style 수정 -->							
+					</tr>												
+				</tbody>
+			</table>												
+		</div>													
+		<div align="center">													
+			<input type="button" id="" class="condBtn" value="Save" onclick="saveTreeLayout();">												
+			<input type="button" id="" class="condBtn" value="Cancel" onclick="closeSaveWindow();">												
+		</div>													
+	</div>														
+	<div id="dvEditRptGrp" style="position: absolute;width:490px;display:none; z-index: 90002;" class="popup1"><!-- KBALM  style 속성을 class로 추가 (class="popup1")-->														
+		<div id="dvRptGrpList" style="font-size:11pt;padding:15px 0px 15px 0px;height:100px;">												
+		</div>													
+		<div align="center">													
+			<input type="button" id="" class="condBtn" value="Save" onclick="updateRptGrp();">												
+			<input type="button" id="" class="condBtn" value="Add" onclick="addRptGrp();">												
+			<input type="button" id="" class="condBtn" value="Delete" onclick="deleteRptGrp();">												
+			<input type="button" id="" class="condBtn" value="Close" onclick="closeEditRptGrpWindow();">												
+		</div>													
+	</div>														
+	<div id="dvOpen" style="position: absolute;width:642px;display:none; z-index: 90001;" class="popup1">	<!-- KBALM  style 속성을 class로 추가 (class="popup1")-->													
+		<table class="popup_tbWrite"  ><!-- KBALM  class="popup_tbWrite"  추가 -->													
+			<tbody><tr>												
+				<th style="width:100px">보고서그룹</th><!-- KBALM  th 로 변경, style 수정 -->												
+				<td> 											
+					<select id="sltRPT_GRP" value="" onchange="getReportList();"></select>										
+				</td>											
+			</tr>												
+		</tbody></table>													
+		<div id="dvRptList" style="font-size:11pt;padding:15px 0px 15px 0px;height:200px;">													
+		</div>													
+		<div align="center">													
+			<input type="button" id="" class="condBtn" value="Open" onclick="openTreeLayout();">												
+			<input type="button" id="" class="condBtn" value="Update" onclick="updateTreeLayout();">												
+			<input type="button" id="" class="condBtn" value="Delete" onclick="deleteTreeLayout();">												
+			<input type="button" id="" class="condBtn" value="Cancel" onclick="closeOpenWindow();">												
+		</div>													
+	</div>														
+	<div id="dvFormat" style="position: absolute;width:300px;display:none; z-index: 100001;" class="popup1"><!-- KBALM  style 속성을 class로 추가 (class="popup1")-->													
+		<div id="dvFormatEdit" style="font-size:11pt;padding:15px 0px 15px 0px;">													
+			<table class="popup_tbWrite"><!-- KBALM  class="popup_tbWrite"  추가 -->											
+			<tbody>
+				<tr>
+					<th style="width:100px">Column Name 	</th><!-- KBALM  th 로 변경, style 수정 -->
+					<td>: <span id="columnName" style="font-weight:normal;font-size:9pt;"></span></td></tr>											
+				<tr>
+					<th>Column Label 	</th><!-- KBALM  th 로 변경, style 수정 -->
+					<td>: <span id="columnLabel" style="font-weight:normal;font-size:9pt;"></span></td></tr>											
+				<tr>
+					<th>Format 				</th><!-- KBALM  th 로 변경, style 수정 -->
+					<td>: <input id="columnFormat" type="text" width="40" value="" style="width:180px"> <!-- style 수정 --></td>
+				</tr>								
+			</tbody></table>												
+		</div>													
+		<div align="center">													
+			<input type="button" id="" class="condBtn" value="Save" onclick="saveFormat();">												
+			<input type="button" id="" class="condBtn" value="Cancel" onclick="closeFormatWindow();">												
+		</div>													
+	</div>														
+															

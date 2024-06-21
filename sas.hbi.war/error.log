@@ -1,0 +1,372 @@
+INFO  - 생성된 로그 파일: C:\Users\koryhh\AppData\Roaming\SAS\Logs\Import_240513163245.log
+INFO  - 현재 시간: 2024년 5월 13일 오후 4시 32분 45초 KST
+INFO  - 사용자 이름: sasadm@saspw
+INFO  - 타겟 Metadata Server: pt05.apac.sas.com(포트: 8562)
+INFO  - 패키지 "D:\Koryhh\SASHBI\SASHBI_Install\_SASHBI_20240513.spk"에서 개체 가져오는 중
+INFO  - "/Products"(으)로 개체 가져오는 중
+INFO  - 패키지 파일 버전: 9300
+INFO  - 치환 속성 로드 중
+INFO  - 패키지에서 치환 속성 파일을 로드했습니다.
+INFO  - 초기 치환 값 적용 중
+INFO  - ******** 종속 관계 분석 ********
+INFO  - 라이브러리 개체 분석
+INFO  - 프롬프트  개체 분석
+INFO  - 스토어드 프로세스 개체 분석
+INFO  - 스토어드 프로세스 리포트 개체 분석
+INFO  - 테이블 개체 분석
+WARN  - 다음 리소스는 타겟 서버나 패키지 파일에도 없습니다.
+WARN  - 리소스 없음: 스토어드 프로세스 "/Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/01.Basic Reports/10.Button_save"에 대한 소스 코드("/sas/sasv94/config/Lev1/Applications/SASHBI/STPs/2024.10.Button_save.sas")
+WARN  - 리소스 없음: 스토어드 프로세스 "/Products/SAS HBI/01.Home/Home"에 대한 소스 코드("/sas/sasv94/config/Lev1/Applications/SASHBI/STPs/01.ProcPrint.sas")
+WARN  - 리소스 없음: 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/01.Basic Reports/05.GraphTable"에 대한 소스 코드("/sas/sasv94/config/Lev1/Applications/SASHBI/STPs/2024.05.1GraphTable.sas")
+WARN  - 리소스 없음: 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/01.Basic Reports/06.2GraphTable"에 대한 소스 코드("/sas/sasv94/config/Lev1/Applications/SASHBI/STPs/2024.06.2GraphTable.sas")
+WARN  - 디렉터리 "/sas/sasv94m8/config/Lev1/Applications/SASHBI/Data"이(가) 서버 "SASApp"에 없습니다.
+INFO  - ******** 가져오기 프로세스 시작 ********
+INFO  - 연결점 지정 중
+INFO  - 다음 개체 가져오기: 
+17개 폴더 개체 생성:
+   /Products/SAS HBI/00.Environments
+   /Products/SAS HBI/00.Environments/Library
+   /Products/SAS HBI/00.Environments/Prompts
+   /Products/SAS HBI/00.Environments/StoredProcess
+   /Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports
+   /Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/00.Board
+   /Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/01.Basic Reports
+   /Products/SAS HBI/00.Environments/Tables
+   /Products/SAS HBI/01.Home
+   /Products/SAS HBI/02.STP Reports
+   /Products/SAS HBI/02.STP Reports/01.Basic Reports
+   /Products/SAS HBI/02.STP Reports/02.Advanced Reports
+   /Products/SAS HBI/02.STP Reports/03.Graph
+   /Products/SAS HBI/02.STP Reports/99.Example
+   /Products/SAS HBI/03.Custom Reports
+   /Products/SAS HBI/03.Custom Reports/01.Custom Reports
+   /Products/SAS HBI/03.Custom Reports/02.Unit STPs
+2개 라이브러리 개체 생성:
+   /Products/SAS HBI/00.Environments/Library/HBIDemo
+   /Products/SAS HBI/00.Environments/Library/pg
+28개 프롬프트 개체 생성:
+   /Products/SAS HBI/00.Environments/Prompts/_debug
+   /Products/SAS HBI/00.Environments/Prompts/_STPREPORT_BTN_ADD_ROW
+   /Products/SAS HBI/00.Environments/Prompts/_STPREPORT_BTN_ADD_ROW_CUST
+   /Products/SAS HBI/00.Environments/Prompts/_STPREPORT_BTN_DELETE
+   /Products/SAS HBI/00.Environments/Prompts/_STPREPORT_BTN_SAVE
+   /Products/SAS HBI/00.Environments/Prompts/_STPREPORT_BTN_UPLOAD
+   /Products/SAS HBI/00.Environments/Prompts/_STPREPORT_CSS
+   /Products/SAS HBI/00.Environments/Prompts/_STPREPORT_CUST_OUTPUT
+   /Products/SAS HBI/00.Environments/Prompts/_STPREPORT_DOWNLOAD_TYPE
+   /Products/SAS HBI/00.Environments/Prompts/_STPREPORT_DUMMY
+   /Products/SAS HBI/00.Environments/Prompts/_STPREPORT_END_JS
+   /Products/SAS HBI/00.Environments/Prompts/_STPREPORT_EXCEL_PGM
+   /Products/SAS HBI/00.Environments/Prompts/_STPREPORT_HEADER_JS
+   /Products/SAS HBI/00.Environments/Prompts/_STPREPORT_INIT_PGM
+   /Products/SAS HBI/00.Environments/Prompts/_STPREPORT_ITEM_WIDTH
+   /Products/SAS HBI/00.Environments/Prompts/_STPREPORT_LABEL_HEIGHT
+   /Products/SAS HBI/00.Environments/Prompts/_STPREPORT_LABEL_WIDTH
+   /Products/SAS HBI/00.Environments/Prompts/_STPREPORT_NOEXCEL_BTN
+   /Products/SAS HBI/00.Environments/Prompts/_STPREPORT_NOSUBMIT_BTN
+   /Products/SAS HBI/00.Environments/Prompts/_STPREPORT_ON_LOAD_COLLAPSE
+   /Products/SAS HBI/00.Environments/Prompts/_STPREPORT_ON_LOAD_SUBMIT
+   /Products/SAS HBI/00.Environments/Prompts/_STPREPORT_OUT_LAYOUT
+   /Products/SAS HBI/00.Environments/Prompts/_STPREPORT_PAGE
+   /Products/SAS HBI/00.Environments/Prompts/_STPREPORT_RETRIEVE_TERM
+   /Products/SAS HBI/00.Environments/Prompts/_STPREPORT_SAVE_PGM
+   /Products/SAS HBI/00.Environments/Prompts/_STPREPORT_SERVLET
+   /Products/SAS HBI/00.Environments/Prompts/_STPREPORT_TYPE
+   /Products/SAS HBI/00.Environments/Prompts/_STPREPORT_UPLOAD_PGM
+82개 스토어드 프로세스 개체 생성:
+   /Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/00.Board/01.deleteArticle
+   /Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/00.Board/01.downloadFile
+   /Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/00.Board/01.getAttachFiles
+   /Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/00.Board/01.registArticle
+   /Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/00.Board/01.updateArticle
+   /Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/00.Board/01.updateViewCnt
+   /Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/00.Board/encodeTest
+   /Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/00.Board/getTableDetail
+   /Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/00.Board/getTableList
+   /Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/00.Board/tableData
+   /Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/00.Board/tables
+   /Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/00.Board/uploadFile
+   /Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/01.Basic Reports/02.PrintWide_Excel
+   /Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/01.Basic Reports/10.Button_save
+   /Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/01.Basic Reports/10.Button_uploadFile
+   /Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/01.Basic Reports/22.tabGrid_save
+   /Products/SAS HBI/00.Environments/StoredProcess/createSession
+   /Products/SAS HBI/00.Environments/StoredProcess/getParamValues
+   /Products/SAS HBI/00.Environments/StoredProcess/Home2Graph
+   /Products/SAS HBI/01.Home/Home
+   /Products/SAS HBI/02.STP Reports/01.Basic Reports/01.Proc Print
+   /Products/SAS HBI/02.STP Reports/01.Basic Reports/02.Proc Print(20)
+   /Products/SAS HBI/02.STP Reports/01.Basic Reports/03.Proc Tabulate
+   /Products/SAS HBI/02.STP Reports/01.Basic Reports/04.Proc Tabulate
+   /Products/SAS HBI/02.STP Reports/01.Basic Reports/05.GraphTable
+   /Products/SAS HBI/02.STP Reports/01.Basic Reports/06.2GraphTable
+   /Products/SAS HBI/02.STP Reports/01.Basic Reports/07.SimpleGrid
+   /Products/SAS HBI/02.STP Reports/01.Basic Reports/08.WideGrid
+   /Products/SAS HBI/02.STP Reports/01.Basic Reports/09.frozenColumn
+   /Products/SAS HBI/02.STP Reports/01.Basic Reports/10.Button
+   /Products/SAS HBI/02.STP Reports/01.Basic Reports/20.tabGrid
+   /Products/SAS HBI/02.STP Reports/01.Basic Reports/21.tabHTML
+   /Products/SAS HBI/02.STP Reports/01.Basic Reports/22.tabGrid
+   /Products/SAS HBI/02.STP Reports/01.Basic Reports/23.tabHTML
+   /Products/SAS HBI/02.STP Reports/02.Advanced Reports/11.Proc Print(Paging)
+   /Products/SAS HBI/02.STP Reports/02.Advanced Reports/12.Proc Print(UserDefinedHeader)
+   /Products/SAS HBI/02.STP Reports/02.Advanced Reports/13.Proc Tabulate(UserDefinedHeader)
+   /Products/SAS HBI/02.STP Reports/02.Advanced Reports/14.SlickGridTable
+   /Products/SAS HBI/02.STP Reports/02.Advanced Reports/15.SlickGridTable(small)
+   /Products/SAS HBI/02.STP Reports/02.Advanced Reports/16.SlickGridTree
+   /Products/SAS HBI/02.STP Reports/02.Advanced Reports/17.pvtTabular
+   /Products/SAS HBI/02.STP Reports/02.Advanced Reports/18.pvtPivotTable
+   /Products/SAS HBI/02.STP Reports/02.Advanced Reports/19.pvtPivotTable(AppliedDynamicPivot)
+   /Products/SAS HBI/02.STP Reports/03.Graph/11.BarChart1
+   /Products/SAS HBI/02.STP Reports/03.Graph/12.BarChart2
+   /Products/SAS HBI/02.STP Reports/03.Graph/13.BarChart3
+   /Products/SAS HBI/02.STP Reports/03.Graph/21.LineChart1
+   /Products/SAS HBI/02.STP Reports/03.Graph/22.LineChart2
+   /Products/SAS HBI/02.STP Reports/03.Graph/31.PieChart1
+   /Products/SAS HBI/02.STP Reports/03.Graph/41.Scatt Plot
+   /Products/SAS HBI/02.STP Reports/03.Graph/42.Scatt Plot 2
+   /Products/SAS HBI/02.STP Reports/03.Graph/99.SAS Classic Graph
+   /Products/SAS HBI/02.STP Reports/99.Example/01.searchTable
+   /Products/SAS HBI/02.STP Reports/99.Example/02.boardMain
+   /Products/SAS HBI/02.STP Reports/99.Example/03.fileUpload
+   /Products/SAS HBI/02.STP Reports/99.Example/04.barChart
+   /Products/SAS HBI/02.STP Reports/99.Example/05.lineChart
+   /Products/SAS HBI/02.STP Reports/99.Example/06.pieChart
+   /Products/SAS HBI/02.STP Reports/99.Example/07.scatterChart
+   /Products/SAS HBI/02.STP Reports/99.Example/08.encodeTest
+   /Products/SAS HBI/02.STP Reports/99.Example/09.bulletChart
+   /Products/SAS HBI/03.Custom Reports/01.Custom Reports/01.Custom Report 1
+   /Products/SAS HBI/03.Custom Reports/01.Custom Reports/02.Custom Report 2
+   /Products/SAS HBI/03.Custom Reports/01.Custom Reports/03.Custom Report 3
+   /Products/SAS HBI/03.Custom Reports/01.Custom Reports/04.Custom Report 4
+   /Products/SAS HBI/03.Custom Reports/01.Custom Reports/05.Custom Report 5
+   /Products/SAS HBI/03.Custom Reports/01.Custom Reports/06.Custom Report 6
+   /Products/SAS HBI/03.Custom Reports/01.Custom Reports/11.Interaction Report 1
+   /Products/SAS HBI/03.Custom Reports/01.Custom Reports/12.Interaction Report 2
+   /Products/SAS HBI/03.Custom Reports/01.Custom Reports/13.Interaction Report 3
+   /Products/SAS HBI/03.Custom Reports/01.Custom Reports/14.Interaction Report 4
+   /Products/SAS HBI/03.Custom Reports/01.Custom Reports/barChart_class
+   /Products/SAS HBI/03.Custom Reports/01.Custom Reports/simpleInput
+   /Products/SAS HBI/03.Custom Reports/01.Custom Reports/Test
+   /Products/SAS HBI/03.Custom Reports/02.Unit STPs/bar_product
+   /Products/SAS HBI/03.Custom Reports/02.Unit STPs/bar_product_refresh
+   /Products/SAS HBI/03.Custom Reports/02.Unit STPs/line_currency_rate
+   /Products/SAS HBI/03.Custom Reports/02.Unit STPs/pie_country
+   /Products/SAS HBI/03.Custom Reports/02.Unit STPs/pie_country_refresh
+   /Products/SAS HBI/03.Custom Reports/02.Unit STPs/sg_currency_rate
+   /Products/SAS HBI/03.Custom Reports/02.Unit STPs/sg_iris
+   /Products/SAS HBI/03.Custom Reports/02.Unit STPs/sg_prdsale
+1개 스토어드 프로세스 리포트 개체 생성:
+   /Products/SAS HBI/00.Environments/StoredProcess/Home2Graph
+2개 테이블 개체 생성:
+   /Products/SAS HBI/00.Environments/Tables/CURRENCY_RATE
+   /Products/SAS HBI/00.Environments/Tables/PRDSALE
+
+INFO  - 다음 연결 매핑을 지정했습니다.
+2개 SAS Application Server 매핑:
+   - SASApp --> SASApp
+   - SASAppU --> SASApp
+
+1개 서버 매핑:
+   - Web Infrastructure Platform Data Server 9.4 --> Web Infrastructure Platform Data Server 9.4
+
+1개 프롬프트  매핑:
+   - _debug --> <없음>
+
+3개 소스 코드 레파지토리 매핑:
+   - SASApp./sas/sasv94/config/Lev1/Applications/SASHBI/STPs --> SASApp./sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs
+   - SASApp./sas/sasv94/config/Lev1/Applications/SASHBI/Macro --> SASApp./sas/sasv94m8/config/Lev2/Applications/SASHBI/Macro
+   - SASAppU./sas/sasv94/config/Lev1/Applications/SASHBI/STPs --> SASApp./sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs
+
+1개 디렉터리 경로 매핑:
+   - /sas/sasv94/config/Lev1/Applications/SASHBI/Data --> /sas/sasv94m8/config/Lev1/Applications/SASHBI/Data
+
+INFO  - ******** 메타데이터 가져오기 ********
+INFO  - 가져오는 동안 액세스 컨트롤을 포함시키는 중
+INFO  - 메타데이터 가져오기에 성공했습니다.
+INFO  - ******** 속성 가져오기 ********
+INFO  - 1 개체의 치환 속성을 가져왔습니다.
+INFO  - ******** 메타데이터 조정 ********
+INFO  - 라이브러리 개체 업데이트
+INFO  - 프롬프트  개체 업데이트
+INFO  - 스토어드 프로세스 개체 업데이트
+INFO  - 스토어드 프로세스 리포트 개체 업데이트
+INFO  - 테이블 개체 업데이트
+INFO  - 테이블 "CURRENCY_RATE"의 속성 업데이트 중
+INFO  - 테이블 "PRDSALE"의 속성 업데이트 중
+INFO  - 테이블 "CURRENCY_RATE"의 라이브러리 업데이트 중
+INFO  - 테이블 "PRDSALE"의 라이브러리 업데이트 중
+INFO  - 테이블 "CURRENCY_RATE"의 키 업데이트 중
+INFO  - 테이블 "PRDSALE"의 키 업데이트 중
+INFO  - 테이블 "CURRENCY_RATE"의 파라미터 업데이트 중
+INFO  - 테이블 "PRDSALE"의 파라미터 업데이트 중
+INFO  - ******** 콘텐츠 가져오기 ********
+INFO  - 라이브러리 개체 콘텐츠 가져오기
+INFO  - 프롬프트  개체 콘텐츠 가져오기
+INFO  - 스토어드 프로세스 개체 콘텐츠 가져오기
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/00.Board/01.deleteArticle"(A5HKC6DU.BC00007F)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "bd_deleteArticle.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/00.Board/01.downloadFile"(A5HKC6DU.BC00007G)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "bd_downloadFile.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/00.Board/01.getAttachFiles"(A5HKC6DU.BC00007H)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "bd_getAttachFiles.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/00.Board/01.registArticle"(A5HKC6DU.BC00007I)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "bd_registArticle.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/00.Board/01.updateArticle"(A5HKC6DU.BC00007J)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "bd_updateArticle.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/00.Board/01.updateViewCnt"(A5HKC6DU.BC00007K)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "bd_updateViewCnt.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/00.Board/encodeTest"(A5HKC6DU.BC00007L)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "encodeTest.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/00.Board/getTableDetail"(A5HKC6DU.BC00007M)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "getTableDetail.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/00.Board/getTableList"(A5HKC6DU.BC00007N)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "getTableList.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/00.Board/tableData"(A5HKC6DU.BC00007O)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "tableData.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/00.Board/tables"(A5HKC6DU.BC00007P)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "tables.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/00.Board/uploadFile"(A5HKC6DU.BC00007Q)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "uploadFile.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/01.Basic Reports/02.PrintWide_Excel"(A5HKC6DU.BC00007R)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "02.PrintWide_Excel.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/01.Basic Reports/10.Button_uploadFile"(A5HKC6DU.BC00007U)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "2024.10.Button_uploadFile.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/00.Environments/StoredProcess/02.STP Reports/01.Basic Reports/22.tabGrid_save"(A5HKC6DU.BC00007W)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "2024.20.tabGrid_save.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/00.Environments/StoredProcess/getParamValues"(A5HKC6DU.BC00007Y)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/Macro"의 "getParamValues.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/00.Environments/StoredProcess/Home2Graph"(A5HKC6DU.BC00007E)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "Home2Graph.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/01.Basic Reports/01.Proc Print"(A5HKC6DU.BC000080)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "2024.01.ProcPrint.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/01.Basic Reports/02.Proc Print(20)"(A5HKC6DU.BC000082)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "2024.02.ProcPrint(20).sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/01.Basic Reports/03.Proc Tabulate"(A5HKC6DU.BC000084)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "2024.03.ProcTabulate1.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/01.Basic Reports/04.Proc Tabulate"(A5HKC6DU.BC000086)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "2024.04.ProcTabulate2.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/01.Basic Reports/07.SimpleGrid"(A5HKC6DU.BC00008B)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "2024.07.SimpleGrid.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/01.Basic Reports/08.WideGrid"(A5HKC6DU.BC00008C)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "2024.08.WideGrid.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/01.Basic Reports/09.frozenColumn"(A5HKC6DU.BC00008E)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "2024.09.frozenColumn.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/01.Basic Reports/10.Button"(A5HKC6DU.BC00008G)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "2024.10.Button.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/01.Basic Reports/20.tabGrid"(A5HKC6DU.BC00008I)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "2024.20.tabGrid.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/01.Basic Reports/21.tabHTML"(A5HKC6DU.BC00008J)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "2024.21.tabHTML.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/01.Basic Reports/22.tabGrid"(A5HKC6DU.BC00008L)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "2024.20.tabGrid.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/01.Basic Reports/23.tabHTML"(A5HKC6DU.BC00008M)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "2024.21.tabHTML.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/02.Advanced Reports/11.Proc Print(Paging)"(A5HKC6DU.BC00008O)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "11.ProcPrint(Paging).sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/02.Advanced Reports/12.Proc Print(UserDefinedHeader)"(A5HKC6DU.BC00008Q)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "12.ProcPrint(UserDefinedHeader).sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/02.Advanced Reports/13.Proc Tabulate(UserDefinedHeader)"(A5HKC6DU.BC00008S)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "13.ProcTabulate(UserDefinedHeader).sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/02.Advanced Reports/14.SlickGridTable"(A5HKC6DU.BC00008U)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "14.SlickGridTable.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/02.Advanced Reports/15.SlickGridTable(small)"(A5HKC6DU.BC00008W)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "15.SlickGridTable(small).sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/02.Advanced Reports/16.SlickGridTree"(A5HKC6DU.BC00008Y)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "16.SlickGridTree.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/02.Advanced Reports/17.pvtTabular"(A5HKC6DU.BC000090)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "17.pvtTabular.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/02.Advanced Reports/18.pvtPivotTable"(A5HKC6DU.BC000092)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "18.pvtPivotTable.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/02.Advanced Reports/19.pvtPivotTable(AppliedDynamicPivot)"(A5HKC6DU.BC000094)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "19.pvtPivotTable(AppliedDynamicPivot).sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/03.Graph/11.BarChart1"(A5HKC6DU.BC000096)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "21.BarChart1.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/03.Graph/12.BarChart2"(A5HKC6DU.BC000098)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "22.BarChart2.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/03.Graph/13.BarChart3"(A5HKC6DU.BC00009A)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "28.BarChart3.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/03.Graph/21.LineChart1"(A5HKC6DU.BC00009C)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "22.LineChart1.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/03.Graph/22.LineChart2"(A5HKC6DU.BC00009E)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "23.LineChart2.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/03.Graph/31.PieChart1"(A5HKC6DU.BC00009F)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "24.PieChart1.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/03.Graph/41.Scatt Plot"(A5HKC6DU.BC00009G)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "41.scatter_plot.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/03.Graph/42.Scatt Plot 2"(A5HKC6DU.BC00009H)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "42.scatter_plot2.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/03.Graph/99.SAS Classic Graph"(A5HKC6DU.BC00009I)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "27.Chart01.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/99.Example/01.searchTable"(A5HKC6DU.BC00009J)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "searchTable.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/99.Example/02.boardMain"(A5HKC6DU.BC00009K)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "boardMain.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/99.Example/03.fileUpload"(A5HKC6DU.BC00009L)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "fileUpload.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/99.Example/04.barChart"(A5HKC6DU.BC00009M)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "barChart.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/99.Example/05.lineChart"(A5HKC6DU.BC00009N)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "lineChart.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/99.Example/06.pieChart"(A5HKC6DU.BC00009O)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "pieChart.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/99.Example/07.scatterChart"(A5HKC6DU.BC00009P)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "scatterChart.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/99.Example/08.encodeTest"(A5HKC6DU.BC00009Q)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "encodeTest.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/02.STP Reports/99.Example/09.bulletChart"(A5HKC6DU.BC00009R)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "bulletChart.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/03.Custom Reports/01.Custom Reports/01.Custom Report 1"(A5HKC6DU.BC00009S)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "dummy.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/03.Custom Reports/01.Custom Reports/02.Custom Report 2"(A5HKC6DU.BC00009T)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "24.PieChart1.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/03.Custom Reports/01.Custom Reports/03.Custom Report 3"(A5HKC6DU.BC00009U)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "15.SlickGridTable(small).sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/03.Custom Reports/01.Custom Reports/04.Custom Report 4"(A5HKC6DU.BC00009W)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "15.SlickGridTable(small).sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/03.Custom Reports/01.Custom Reports/05.Custom Report 5"(A5HKC6DU.BC00009Y)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "15.SlickGridTable(small).sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/03.Custom Reports/01.Custom Reports/06.Custom Report 6"(A5HKC6DU.BC0000A0)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "15.SlickGridTable(small).sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/03.Custom Reports/01.Custom Reports/11.Interaction Report 1"(A5HKC6DU.BC0000A2)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "dummy.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/03.Custom Reports/01.Custom Reports/12.Interaction Report 2"(A5HKC6DU.BC0000A3)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "dummy.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/03.Custom Reports/01.Custom Reports/13.Interaction Report 3"(A5HKC6DU.BC0000A4)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "dummy.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/03.Custom Reports/01.Custom Reports/14.Interaction Report 4"(A5HKC6DU.BC0000A6)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "dummy.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/03.Custom Reports/01.Custom Reports/barChart_class"(A5HKC6DU.BC0000A7)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "barChart_class.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/03.Custom Reports/01.Custom Reports/simpleInput"(A5HKC6DU.BC0000A9)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "simpleInput.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/03.Custom Reports/01.Custom Reports/Test"(A5HKC6DU.BC0000AA)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "14.SlickGridTable.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/03.Custom Reports/02.Unit STPs/bar_product"(A5HKC6DU.BC0000AC)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "bar_product.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/03.Custom Reports/02.Unit STPs/bar_product_refresh"(A5HKC6DU.BC0000AE)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "bar_product_refresh.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/03.Custom Reports/02.Unit STPs/line_currency_rate"(A5HKC6DU.BC0000AF)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "line_currency_rate.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/03.Custom Reports/02.Unit STPs/pie_country"(A5HKC6DU.BC0000AH)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "pie_country.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/03.Custom Reports/02.Unit STPs/pie_country_refresh"(A5HKC6DU.BC0000AI)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "pie_country_refresh.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/03.Custom Reports/02.Unit STPs/sg_currency_rate"(A5HKC6DU.BC0000AJ)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "sg_currency_rate.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/03.Custom Reports/02.Unit STPs/sg_iris"(A5HKC6DU.BC0000AK)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "sg_iris.sas"
+INFO  - 스토어드 프로세스 "/Products/SAS HBI/03.Custom Reports/02.Unit STPs/sg_prdsale"(A5HKC6DU.BC0000AL)
+INFO  - 가져온 "/sas/sasv94m8/config/Lev2/Applications/SASHBI/STPs"의 "sg_prdsale.sas"
+INFO  - 스토어드 프로세스 리포트 개체 콘텐츠 가져오기
+INFO  - 테이블 개체 콘텐츠 가져오기
+INFO  - 테이블 "CURRENCY_RATE" 가져오기 처리 중
+INFO  - 테이블 "PRDSALE" 가져오기 처리 중
+INFO  - 이 패키지를 다시 가져오려면 일괄 가져오기 도구에서 다음 명령을 실행하면 됩니다.
+Note: 이 명령은 가져오기 마법사의 개체 선택 변경 사항을 고려하지 않습니다.
+또한 가져오기 마법사 실행에 사용되는 응용 프로그램에서 지원하는 유형이 "-types" 옵션에 포함되지 않습니다.
+
+ImportPackage -profile "sasadm@pt05_lev2" -package "D:\Koryhh\SASHBI\SASHBI_Install\_SASHBI_20240513.spk" -target "/Products(Folder)" -subprop -includeACL 
+
+INFO  - 가져오기 프로세스 총 실행 시간: 5.39초
+INFO  - 가져오기 프로세스를 완료했지만 경고가 있습니다.

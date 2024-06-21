@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<app-configuration>
+
+    <map name="omr-connection"> 
+        <param name="omr-user" value="sastrust@saspw" /> 
+    </map>
+
+    
+
+</app-configuration>

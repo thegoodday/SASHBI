@@ -1,0 +1,103 @@
+<div id="dvMain" style="border:0px solid green;height:440px;overflow-y:hidden;overflow-x:hidden;display:none;">
+	<div id="dvCol1" style="border:0px solid #ddd;float:left;";>
+		<div id="dvDftFmtList" style="border:1px solid #ddd;margin-bottom:10px;">	</div>    												
+		<div id="dvUserFmtList" style="border:1px solid #ddd;margin-bottom:0px;">	</div>    												
+		<div id="dvBTN" style="border:0px solid #dddddd;height:30px;background-color:white;padding-top:5px;">
+			<input type=button id="btnRun" class="btn_basic" value="Delete" onclick="deleteUserFmt();" style="float:right">
+		</div>
+	</div>
+	<div id="dvCol2" style="border:0px solid #ddd;background-color:white;float:left;padding-left:0px;margin-left:5px;">
+			<div id="dvButton" style="border:0px solid #dddddd;height:30px;background-color:white;padding-top:0px;">
+				<input type=button id="btnRun" class="btn_basic" value="New" onclick="newNumericFMT();" style="float:right">
+				<input type=button id="btnRun" class="btn_basic" value="+" onclick="addRow();" style="float:right">
+			</div>
+			<div id="dvFormatGR" style="border:1px solid #dddddd;height:643px;background-color:white;clear:both;">
+			</div>
+			<div id="dvButton" style="border:0px solid #dddddd;background-color:white;padding-top:5px;">
+				<input type=button id="btnSaveAs" class="btn_basic" value="Save As" onclick="getFmt_desc();" style="float:right">
+				<input type=button id="btnSave" class="btn_basic" value="Save" onclick="saveFmt();" style="float:right">
+
+			</div>
+	</div>
+</div>
+
+<div id=dvFmtDesc style="position: absolute;width:400px;display:none;padding: 15px;z-index: 100001;
+	padding:20px; border:5px solid #545045; background:#ffffff; box-shadow: 3px 3px 10px #9a9a9a;-moz-box-shadow: 3px 3px 10px #9a9a9a; -webkit-box-shadow: 3px 3px 10px #9a9a9a;">
+	<div id="dvFmtDesc2" style="font-size:11pt;padding:15px 0px 15px 0px;">													
+		<table class="popup_tbWrite" style="width:400px;">							
+			<tbody>
+				<tr id=trColumnName style="display:none;">												
+					<th style="width:100px">Column Name</th>										
+					<td> 											
+						<select id="sltCOL_NAME2" width="200" value="" style="width:90%"><!-- KBALM  style 수정 -->
+						</select>										
+					</td>											
+				</tr>												
+				<tr>												
+					<th style="font-size:9pt;font-weight:bold;">Format Label</th><!-- KBALM  th 로 변경, style 삭제 -->											
+					<td> 
+						<input id=iptFmtDesc type=text width=40 value="" style="width:90%" />
+					</td>				<!-- KBALM  style 수정 -->							
+				</tr>												
+			</tbody>
+		</table>												
+	</div>													
+	<div align=center >
+		<input type=button id="" class="condBtn" value="Save" onclick="saveAsFmt($('#iptFmtDesc').val());">
+		<input type=button id="" class="condBtn" value="Cancel" onclick="closeFmtDescWindow();">
+	</div>
+</div>
+<style>
+/*
+  .slick-cell.copied {
+    background: blue;
+    background: rgba(0, 0, 255, 0.2);
+    -webkit-transition: 0.5s background;
+  }
+  .wkclEdCont {
+      width:210px;
+      height:23px;
+      overflow:hidden;
+      margin-top:-1px;
+      border:1px solid #DDD;
+  }
+  .wkclEdContNotEditing{
+      width:210px;
+      height:23px;
+      overflow:hidden;
+      margin-top:-1px;
+      border-right:1px solid #DDD;
+  }
+
+  .wkclEdHalfDay{
+      width:14px;
+      height:100%;
+      cursor:pointer;
+      float:left;
+  }
+  .wkclEdDay{
+      width:29px;
+      height:100%;
+      border-left:1px solid #DDD;
+      float:left;
+  }
+
+  .wkclEdHeadCont{
+      width:210px;
+      height:23px;
+      overflow:hidden;
+      border:1px solid #FFF;
+      border-bottom:none;
+      margin-top:5px;
+  }
+
+  .wkclEdHeadDay{
+      width:29px;
+      height:100%;
+      border-left:1px solid #DDD;
+      float:left;
+      text-align:center;
+      margin-top:5px;
+  }
+*/    
+</style>

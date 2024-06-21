@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<Context docBase="../sas_webapps/sas.storedprocess.war" path="/SASStoredProcess">
+    <ResourceLink global="sas/jdbc/SharedServices" name="jdbc/SASAPP" type="javax.sql.DataSource"/>
+</Context>
+
+

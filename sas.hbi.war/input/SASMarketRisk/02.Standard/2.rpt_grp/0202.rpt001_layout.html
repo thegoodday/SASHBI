@@ -1,0 +1,131 @@
+<div style="border:0px solid #0a68b4;position: relative;height:400px;margin-right:5px;" id="grid-parent">
+    <div data-ax5grid="first-grid" style="height: 100%;"></div>
+</div>
+<style>
+.grid-cell-red{
+	background: #f8d2cb;
+}
+.grid-cell-green{
+	background: #00ff00;
+}
+.grid-cell-blue{
+	background: #dcf0f8;
+}	
+.abc{
+	background: #f1f8fd; /* EDF2F9 */
+	font-size:12px;
+	font-family: 'Nanum Gothic Bold';
+	font-weight: bold;
+}	
+</style>
+<script>
+$(document.body).ready(function () {
+	$("#grid-parent").height(eval($(window).height()-$("#dvCondi").height()-31));
+	console.log("Height : " + eval($(window).height()-$("#dvCondi").height()-25))
+
+});
+$(window).resize(function () {															
+	$("#grid-parent").height(eval($(window).height()-$("#dvCondi").height()-31));
+});
+
+function setAX5Grid(data){
+	var sasJsonRes=data[0];
+	var SASRes = [];
+	SASRes = sasJsonRes["SASResult"];
+	
+	console.log(SASRes);
+
+
+  var firstGrid = new ax5.ui.grid();
+
+  ax5.ui.grid.formatter["myType"] = function () {
+      return "myType" + (this.value || "");
+  };
+
+  var gridView = {
+      initView: function () {
+          firstGrid.setConfig({
+              target: $('[data-ax5grid="first-grid"]'),
+              frozenColumnIndex: 1,
+              frozenRowIndex: 0,
+              showRowSelector: false,
+              multipleSelect: false	,
+              header: {
+                  align: "center",
+                  columnHeight: 38
+              },
+              body: {
+                  align: "center",
+                  columnHeight: 38,
+                  onDBLClick: function () {
+							console.log(this);
+							this.self.select(this.dindex);
+                  },
+                  trStyleClass: function(){
+                      return (this.item.saleType === "A") ? "RED" : "";
+                  }
+              },
+              columns: [
+						{key: "rsk_cls", 		label: "리스크 Class", 			align: "left", width: 150,
+							styleClass: function () {
+								return "abc";
+							},
+						},
+						{key: undefined, label: "상관계수 승수 (1.25)", columns: [
+							{key: "risksq_1", 	label: "상관계수적용합계",		align: "right", formatter: "money", width: 200},
+							{key: "adj_risksq_1",label: "(-) 경우 수정적용합계",	align: "right", formatter: "money", width: 200},
+							{key: "s_risk_1", 	label: "자본량",					align: "right", formatter: "money", width: 200}
+							]
+						},
+						{key: undefined, label: "상관계수 승수 (1.00)", columns: [
+							{key: "risksq_2", 	label: "상관계수적용합계",		align: "right", formatter: "money", width: 200},
+							{key: "adj_risksq_2",label: "(-) 경우 수정적용합계",	align: "right", formatter: "money", width: 200},
+							{key: "s_risk_2", 	label: "자본량",					align: "right", formatter: "money", width: 200}
+							]
+						},
+						{key: undefined, label: "상관계수 승수 (0.75)", columns: [
+							{key: "risksq_3", 	label: "상관계수적용합계",		align: "right", formatter: "money", width: 200},
+							{key: "adj_risksq_3",label: "(-) 경우 수정적용합계",	align: "right", formatter: "money", width: 200},
+							{key: "s_risk_3", 	label: "자본량",					align: "right", formatter: "money", width: 200}
+							]
+						}
+              ]
+          });
+          return this;
+      },
+      setData: function (	) {
+          firstGrid.setData({
+              list: SASRes
+              ,
+              page: {
+                  currentPage: 0,
+                  pageSize: 0,
+                  totalElements: 0,
+                  totalPages: 0
+              }
+          });
+
+          //firstGrid.setData(list);
+
+          return this;
+      }
+  };
+
+  gridView
+          .initView()
+          .setData();
+
+  $('[data-set-height]').click(function () {
+      var height = this.getAttribute("data-set-height");
+      if (height == "100%") {
+          $("#grid-parent").css({height: 500});
+      } else {
+          $("#grid-parent").css({height: "auto"});
+      }
+      firstGrid.setHeight(height);
+  });
+  
+	
+}	
+    
+</script>

@@ -1,0 +1,732 @@
+<style> 
+.colGroup {
+    background: #f9fafc;
+    Color: #093687;
+    font-family: AvenirNext, 'Helvetica Neue',Helvetica,Arial,sans-serif!important; 
+    font-size: 12px; 
+    font-weight: 700;
+}
+</style>
+<div Ld="dvTitle" style="display:none;"></div> 
+<div style="display:block;"> 
+    <div id=sasGrid style="display:none;height:250px"></div> 
+</div>
+
+<div id=dvModalWin style="display:none;">
+    <form method='post' id='fomUpload' action='/SASStoredProcess/do' method='post' enctypes='multipart/form-data'>
+        <table class="_table" style="width:850px;">
+            <tr>
+                <th Class="_th" style="width:140px;">TITLE</th>
+                <td class="_td" id=dvTITLE>&nbsp;</td> 
+                <th class="_th" style="width:140px;">PERIOD</th>
+                <td class="_td" style="width:140px;" id=dvPERIOD>&nbsp;</td>
+            <tr>
+        </table>
+
+        <!-- 1. RISK ASSESSMENT RATING -->
+        <div style="margin-top: 20px;">1. RISK ASSESSMENT RATING</div>
+        <table class="_table" style="width:70%;">
+            <tr> 
+                <th class="_th">Category</th>
+                <th class="_th">Risk Score</th> 
+                <th class="_th">Risk Rating</th>
+            </tr>
+            <tr styles="height: 30px;">
+                <td class="_td">
+                    <span>Inherent Risk</span>
+                <td>
+                <td class="_td">
+                    <inout id="RA_RISK_SCORE" name="ra_risk_score" style="width:98%;text-align:right;" readOnly>
+                </td>
+                <td class="_td">
+                    <input id="RA_RISK RAT" name="ra_risk_rat" style="width:98%;text-align:center;" readOnly>
+                </td>
+            </tr>
+        </table>
+
+        <!-- 2. RISK ASSESSMENT RESULT -->
+        <!-- 2. RISK ASSESSMENT RESULT - 1) Customer Risk -->
+        <div style="margin-top: 20px;">2. RISK ASSESSMENT RESULT </div> 
+        <div style="margin-top: 20px;">1) Customer Risk </div>
+        <table class="_table" style="width:100%;">
+            <tr>
+                <th class="_th">Business Unit</th>
+                <th class="_th">CRR</th>
+                <th class="_th">New Customer</th>
+                <th class="_th">Channel</th>
+                <th class="_th">Other_Risk</th>
+                <th class="_th">Risk Score</th>
+                <th class="_th">Risk Rating</th>
+            </tr>
+            <tr style="height: 30px;">
+                <td class="_td">
+                    <span>Deposits</span>
+                </td>
+                <td class="_td">
+                    <input id="CUST_DEP_CRR" name="cust_dep_crr" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="CUST_DEP_NEW_CUST" name="cust_dep_new_cust" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="CUST_DEP_CHANNEL" name="cust_dep_channel" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="CUST_DEP_OTHER_RISK" name="cust_dep_other_risk" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="CUST_DEP_RISK_RT" name="cust_dep_risk_rt" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="CUST_DEP_RISK_RT_CALC" name="cust_dep_risk_rt_calc" style="width:98%;text-align:right;" readonly>
+                </td>
+            </tr>
+
+            <tr style="height: 30px;">
+                <td class="_td">
+                    <span>Treasury</span>
+                </td>
+                <td class="_td">
+                    <input id="CUST_TREASURY_CRR" name="cust_treasury_crr" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="CUST_TREASURY_NEW_CUST" name="cust_treasury_new_cust" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="CUST_TREASURY_CHANNEL" name="cust_treasury_channel" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="CUST_TREASURY_OTHER_RISK" name="cust_treasury_other_risk" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="CUST_TREASURY_RISK_RT" name="cust_treasury_risk_rt" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="CUST_TREASURY_RISK_RT_CALC" name="cust_treasury_risk_rt_calc" style="width:98%;text-align:right;" readonly>
+                </td>
+            </tr>
+
+            <tr style="height: 30px;">
+                <td class="_td">
+                    <span>Lending</span>
+                </td>
+                <td class="_td">
+                    <input id="CUST_Lend_CRR" name="cust_lend_crr" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="CUST_Lend_NEW_CUST" name="cust_lend_new_cust" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="CUST_Lend_CHANNEL" name="cust_lend_channel" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="CUST_Lend_OTHER_RISK" name="cust_lend_other_risk" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="CUST_TREASURY_RISK_RT" name="cust_lend_risk_rt" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="CUST_TREASURY_RISK_RT_CALC" name="cust_lend_risk_rt_calc" style="width:98%;text-align:right;" readonly>
+                </td>
+            </tr>
+            <tr style="height: 30px;">
+                <td class="_td">
+                    <span>Trade Finance</span>
+                </td>
+                <td class="_td">
+                    <input id="CUST_TD_FIN_CRR" name="cust_td_fin_crr" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="CUST_TD_FIN_NEW_CUST" name="cust_td_fin_new_cust" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="CUST_TD_FIN_CHANNEL" name="cust_td_fin_channel" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="CUST_TD_FIN_OTHER_RISK" name="cust_td_fin_other_risk" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="CUST_TD_FIN_RISK_RT" name="cust_td_fin_risk_rt" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="CUST_TD_FIN_RISK_RT_CALC" name="cust_td_fin_risk_rt_calc" style="width:98%;text-align:right;" readonly>
+                </td>
+
+            </tr>
+            <tr style="height: 30px;">
+                <td class="_td">
+                    <span>Corres Banking</span>
+                </td>
+                <td class="_td">
+                    <input id="CUST_COR_BK_CRR" name="cust_cor_bk_crr" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="CUST_COR_BK_NEW_CUST" name="cust_cor_bk_new_cust" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="CUST_COR_BK_CHANNEL" name="cust_cor_bk_channel" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="CUST_COR_BK_OTHER_RISK" name="cust_cor_bk_other_risk" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="CUST_COR_BK_RISK_RT" name="cust_cor_bk_risk_rt" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="CUST_COR_BK_RISK_RT_CALC" name="cust_cor_bk_risk_rt_calc" style="width:98%;text-align:right;" readonly>
+                </td>
+            </tr>
+            <tr style="height: 30px;">
+                <td class="_td">
+                    <span>Branch Level</span>
+                </td>
+                <td class="_td">
+                    <input id="CUST_ALL_CRR" name="cust_all_crr" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="CUST_ALL_NEW_CUST" name="cust_all_new_cust" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="CUST_ALL_CHANNEL" name="cust_all_channel" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="CUST_ALL_OTHER_RISK" name="cust_all_other_risk" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="CUST_ALL_RISK_RT" name="cust_all_risk_rt" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="CUST_ALL_RISK_RT_CALC" name="cust_all_risk_rt_calc" style="width:98%;text-align:right;" readonly>
+                </td>
+            </tr>
+        </table>
+        <!-- 2. RISK ASSESSMENT RESULT - 2) Geographic Risk  -->
+        <div style="margin-top: 20px;">2) Geographic Risk - <span id=spnDetails style="cursor:pointer;" onclick="showDetails();">Details</span></div>
+        <table class="_table" style="width:100%;">
+            <tr>
+                <th class="_th">Business Unit</th>
+                <th class="_th">Customer Geographic<br>Risk Score</th>
+                <th class="_th">Transactions Geographic<br>Risk Score</th>
+                <th class="_th">Risk Score</th>
+                <th class="_th">Risk Rating</th>
+            </tr>
+            <tr style="height: 30px;">
+                <td class="_td">
+                    <span>Deposits</span>
+                </td>
+                <td class="_td">
+                    <input id="GEO_DEP_CUST_GEO_RISK_SC" name="geo_dep_cust_geo_risk_sc" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="GEO_DEP_TRANS_GEO_RISK_SC" name="geo_dep_trans_geo_risk_sc" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="GEO_DEP_RISK_RT" name="geo_dep_risk_rt" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="GEO_DEP_RISK_RT_CALC" name="geo_dep_risk_rt_calc" style="width:98%;text-align:right;" readonly>
+                </td>
+            </tr>
+            <tr style="height: 30px;">
+                <td class="_td">
+                    <span>Treasury</span>
+                </td>
+                <td class="_td">
+                    <input id="GEO_TREASURY_CUST_GEO_RISK_SC" name="geo_treasury_cust_geo_risk_sc" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="GEO_TREASURY_TRANS_GEO_RISK_SC" name="geo_treasury_trans_geo_risk_sc" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="GEO_TREASURY_RISK_RT" name="geo_treasury_risk_rt" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="GEO_TREASURY_RISK_RT_CALC" name="geo_treasury_risk_rt_calc" style="width:98%;text-align:right;" readonly>
+                </td>
+            </tr>
+            <tr style="height: 30px;">
+                <td class="_td">
+                    <span>Lending</span>
+                </td>
+                <td class="_td">
+                    <input id="GEO_LEND_CUST_GEO_RISK_SC" name="geo_rend_cust_geo_risk_sc" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="GEO_LEND_TRANS_GEO_RISK_SC" name="geo_rend_trans_geo_risk_sc" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="GEO_LEND_RISK_RT" name="geo_rend_risk_rt" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="GEO_LEND_RISK_RT_CALC" name="geo_rend_risk_rt_calc" style="width:98%;text-align:right;" readonly>
+                </td>
+            </tr>
+            <tr style="height: 30px;">
+                <td class="_td">
+                    <span>Trade Finance</span>
+                </td>
+                <td class="_td">
+                    <input id="GEO_TD_FIN_CUST_GEO_RISK_SC" name="geo_td_fin_cust_geo_risk_sc" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="GEO_TD_FIN_TRANS_GEO_RISK_SC" name="geo_td_fin_trans_geo_risk_sc" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="GEO_TD_FIN_RISK_RT" name="geo_td_fin_risk_rt" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="GEO_TD_FIN_RISK_RT_CALC" name="geo_td_fin_risk_rt_calc" style="width:98%;text-align:right;" readonly>
+                </td>
+            
+            </tr>
+            <tr style="height: 30px;">
+                <td class="_td">
+                    <span>Corres Banking</span>
+                </td>
+                <td class="_td">
+                    <input id="GEO_COR_BK_CUST_GEO_RISK_SC" name="geo_cor_bk_cust_geo_risk_sc" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="GEO_COR_BK_TRANS_GEO_RISK_SC" name="geo_cor_bk_trans_geo_risk_sc" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="GEO_COR_BK_RISK_RT" name="geo_cor_bk_risk_rt" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="GEO_COR_BK_RISK_RT_CALC" name="geo_cor_bk_risk_rt_calc" style="width:98%;text-align:right;" readonly>
+                </td>
+            </tr>
+            <tr style="height: 30px;">
+                <td class="_td">
+                    <span>Branch Level</span>
+                </td>
+                <td class="_td">
+                    <input id="GEO_ALL_CUST_GEO_RISK_SC" name="geo_all_cust_geo_risk_sc" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="GEO_ALL_TRANS_GEO_RISK_SC" name="geo_all_trans_geo_risk_sc" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="GEO_ALL_RISK_RT" name="geo_all_risk_rt" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="GEO_ALL_RISK_RT_CALC" name="geo_all_risk_rt_calc" style="width:98%;text-align:right;" readonly>
+                </td>
+            </tr>
+        </table>
+        <div id=dvDetails style="display: none;">
+            <div style="margin-top: 20px;">2-1) Details </div>
+            <table class="_table" style="width:100%;">
+                <tr>
+                    <th class="_th" style="width:139px;border-left:0px solid #e2e7e9;" rowspan="2">&nbsp;</th>
+                    <th class="_th" style="border-left:1px solid #e2e7e9;" colspan="4">Customer Geographic Risk Rating</th>
+                    <th class="_th" style="border-left:1px solid #e2e7e9;" colspan="4">Transactions Geographic Risk Rating</th>
+                    <th class="_th" style="width:95px;border-left:1px solid #e2e7e9;" colspan="2">Overall</th>
+                </tr>
+                <!-- 
+                <tr>
+                    <th class="th" >Low</th>
+                    <th class="th" >Medium</th>
+                    <th class="th" >High</th>
+                    <th class="th" >Customer Geographic Risk Score</th>
+
+                    <th class="th" >Low</th>
+                    <th class="th" >Medium</th>
+                    <th class="th" >High</th>
+                    <th class="th" >Transactions Geographic Risk Score</th>
+
+                    <th class="th" >Risk Score</th>
+                    <th class="th" >Risk Rating</th>
+                </tr>
+                -->
+            </table>
+            <div id=sgDetails style="height: 230px;"></div>
+        </div>
+        <!-- 2. RISK ASSESSMENT RESULT - 3) Product Risk  -->
+        <div style="margin-top: 20px;">3) Product Risk </div>
+        <table class="_table" style="width:100%;">
+            <tr>
+                <th class="_th">Business Unit</th>
+                <th class="_th">Score</th>
+                <th class="_th">Transactions</th>
+                <th class="_th">Risk Score</th>
+                <th class="_th">Risk Rating</th>
+            </tr>
+            <tr style="height: 30px;">
+                <td class="_td" style="font-weight: bold;">
+                    <span>Deposits</span>
+                </td>
+                <td class="_td">
+                </td>
+                <td class="_td">
+                    <input id="PROD_DEPOSITS_SUM" name="prod_deposits_sum" step="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="PROD_DEPOSITS_SC" name="prod_deposits_sc" step="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="PROD_DEPOSITS_RT" name="prod_deposits_rt" step="width:98%;text-align:right;" readonly>
+                </td>
+            </tr>
+            <tr style="height: 30px;">
+                <td class="_td" style="font-weight: bold;">
+                    <span>Demand Deposits</span>
+                </td>
+                <td class="_td">
+                    <input id="PROD_DEMAND_DEP_SC" name="prod_demand_dep_sc" style="width:98%;text-align:right;background-color:cornsilk;" onblur="javascript:calcScorel();">
+                </td>
+                <td class="_td">
+                    <input id="PROD_DEMAND_DEP_SUM" name="prod_demand_dep_sum" step="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="PROD_DEMAND_DEP_RISSK_RT" name="prod_demand_risk_rt" step="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                </td>
+            </tr>
+            <tr style="height: 30px;">
+                <td class="_td" style="padding-left: 20px;">
+                    <span>Time Deposits</span>
+                </td>
+                <td class="_td">
+                    <input id="PROD_TIME_DEP_SC" name="prod_time_dep_sc" style="width:98%;text-align:right;background-color:cornsilk;" onblur="javascript:calcScorel();">
+                </td>
+                <td class="_td">
+                    <input id="PROD_TIME_TRANS_VAL" name="prod_time_dep_trans_val" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="PROD_TIME_RISK_RT" name="prod_time_dep_risk_rt" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                </td>
+            </tr>
+            <tr style="height: 30px;">
+                <td class="_td" style="padding-left: 20px;">
+                    <span>Installment Deposits</span>
+                </td>
+                <td class="_td">
+                    <input id="PROD_INSTALL_DEP_SC" name="prod_install_dep_sc" style="width:98%;text-align:right;background-color:cornsilk;" onblur="javascript:calcScorel();">
+                </td>
+                <td class="_td">
+                    <input id="PROD_INSTALL_DEP_TRANS_VAL" name="prod_install_dep_val" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="PROD_INSTALL_DEP_RISK_RT" name="prod_install_dep_risk_rt" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                </td>
+            </tr>
+            <tr style="height: 30px;">
+                <td class="_td" style="padding-left: 20px;">
+                    <span>Domestic Fund Transfer</span>
+                </td>
+                <td class="_td">
+                    <input id="PROD_DOME_FUND_TRSF_SC" name="prod_dome_fund_trsf_sc" style="width:98%;text-align:right;background-color:cornsilk;" onblur="javascript:calcScore1();">
+                </td>
+                <td class="_td">
+                    <input id="PROD_DOME_FUND_TRSF_TRANS_VAL" name="prod_dome_fund_trsf_val" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="PROD_DOME_FUND_TRSF_RISK_RT" name="prod_dome_fund_trsf_risk_rt" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                </td>
+            </tr>
+            <table style="height: 30px;">
+                <td class="_td" style="padding-left: 20px;">
+                    <span>Exchange Currency</span>
+                </td>
+                <td class="_td">
+                    <input id="PROD_EXC_CURR_SC" name="prod_exc_curr_sc" style="width:98%;text-align:right;background-color:cornsilk;" onblur="javascript:calcScore1();">
+                </td>
+                <td class="_td">
+                    <input id="PROD_EXC_CURR_VAL" name="prod_exc_curr_val" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="PROD_EXC_CURR_RT" name="prod_exc_curr_rt" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                </td>
+            </tr>
+            <tr style="height: 30px;">
+                <td class="_td" style="font-weight: bold;">
+                    <span>Treasury</span>
+                </td>
+                <td class="_td">
+                </td>
+                <td class="_td">
+                    <input id="PROD_TREASURY_SUM" name="prod_treasury_sum" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="PROD_TREASURY_SC" name="prod_treasury_sc" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="PROD_TREASURY_RT" name="prod_treasury_rt" style="width:98%;text-align:right;" readonly>
+                </td>
+            </tr>
+            <tr style="height: 30px;">
+                <td class="_td" style="padding-left: 20px;">
+                    <span>Money Market Lending</span>
+                </td>
+                <td class="_td">
+                    <input id="PROD_MONEY_MK_LEND_SC" name="prod_money_mk_lend_sc" style="width:98%;text-align:right;background-color:cornsilk;" onblur="javascript:calcScore2();">
+                </td>
+                <td class="_td">
+                    <input id="PROD_MONEY_MK_LEND_TRANS_VAL" name="prod_money_mk_lend_trans_val" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="PROD_MONEY_MK_LEND_RISK_RT" name="prod_money_mk_lend_risk_rt" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                </td>
+            </tr>
+            <tr style="height: 30px;">
+                <td class="_td" style="padding-left: 20px;">
+                    <span>Money Market Borrowing</span>
+                </td>
+                <td class="_td">
+                    <input id="PROD_MONEY_MK_BR_SC" name="prod_money_mk_br_sc" style="width:98%;text-align:right;background-color:cornsilk;" onblur="javascript:calcScore2();">
+                </td>
+                <td class="_td">
+                    <input id="PROD_MONEY_MK_BR_TRANS_VAL" name="prod_money_mk_br_trans_val" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="PROD_MONEY_MK_BR_RISK_RT" name="prod_money_mk_br_risk_rt" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                </td>
+            </tr>
+            <tr style="height: 30px;">
+                <td class="_td" style="font-weight: bold;">
+                    <span>Lending</span>
+                </td>
+                <td class="_td">
+                </td>
+                <td class="_td">
+                    <input id="PROD_LENDING_SUM" name="prod_lending_sum" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="PROD_LENDING_SC" name="prod_lending_sc" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="PROD_LENDING_RT" name="prod_lending_rt" style="width:98%;text-align:right;" readonly>
+                </td> 
+            </tr>
+            <tr style="height: 30px;">
+                <td class="_td" style="padding-left: 20px;">
+                    <span>Personal Loan</span>
+                </td>
+                <td class="_td">
+                    <input id="PROD_PSN_LOAN_SC" name="prod_psn_loan_sc" style="width:98%;text-align:right;background-color:cornsilk;" onblur="javascript:calcScore3();">
+                </td>
+                <td class="_td">
+                    <input id="PROD_PSN_LOAN_TRANS_VAL" name="prod_psn_loan_trans_val" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="PROD_PSN_LOAN_RISK_RT" name="prod_psn_loan_risk_rt" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                </td>
+            </tr>
+            <tr style="height: 30px;">
+                <td class="_td" style="padding-left: 20px;">
+                    <span>Commercial Loan</span>
+                </td>
+                <td class="_td">
+                    <input id="PROD_CMCL_LOAN_SC" name="prod_cmcl_loan_sc" style="width:98%;text-align:right;background-color:cornsilk;" onblur="javascript:calcScore3();">
+                </td>
+                <td class="_td">
+                    <input id="PROD_CMCL_LOAN_TRANS_VAL" name="prod_cmcl_loan_trans_val" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="PROD_CMCL_LOAN_RISK_RT" name="prod_cmcl_loan_risk_rt" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                </td>
+            </tr>
+            <tr style="height: 30px;">
+                <td class="_td" style="padding-left: 20px;">
+                    <span>Guarantee</span>
+                </td>
+                <td class="_td">
+                    <input id="PROD_GUARANTEE_SC" name="prod_guarantee_sc" style="width:98%;text-align:right;background-color:cornsilk;" onblur="javascript:calcScore3();">
+                </td>
+                <td class="_td">
+                    <input id="PROD_GUARANTEE_TRANS_VAL" name="prod_guarantee_trans_val" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="PROD_GUARANTEE_RISK_RT" name="prod_guarantee_risk_rt" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                </td>
+            </tr>
+            <tr style="height: 30px;">
+                <td class="_td" style="padding-left: 20px;">
+                    <span>Other Loan</span>
+                </td>
+                <td class="_td">
+                    <input id="PROD_OTHER_LOAN_SC" name="prod_other_loan_sc" style="width:98%;text-align:right;background-color:cornsilk;" onblur="javascript:calcScore3();">
+                </td>
+                <td class="_td">
+                    <input id="PROD_OTHER_LOAN_TRANS_VAL" name="prod_other_loan_trans_val" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="PROD_OTHER_LOAN_RISK_RT" name="prod_other_loan_risk_rt" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                </td>
+            </tr>
+
+            <tr style="height: 30px;">
+                <td class="_td" style="font-weight: bold;">
+                    <span>Trade Finance</span>
+                </td>
+                <td class="_td">
+                </td>
+                <td class="_td">
+                    <input id="PROD_FINANCE_SUM" name="prod_finance_sum" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="PROD_FINANCE_SC" name="prod_finance_sc" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="PROD_FINANCE_RT" name="prod_finance_rt" style="width:98%;text-align:right;" readonly>
+                </td> 
+            </tr>
+            <tr style="height: 30px;">
+                <td class="_td" style="padding-left: 20px;">
+                    <span>Issuance Of L/C</span>
+                </td>
+                <td class="_td">
+                    <input id="PROD_ISSUANCE_LC_SC" name="prod_issuance_lc_sc" style="width:98%;text-align:right;background-color:cornsilk;" onblur="javascript:calcScore4();">
+                </td>
+                <td class="_td">
+                    <input id="PROD_ISSUANCE_LC_TRANS_VAL" name="prod_issuance_lc_trans_val" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="PROD_ISSUANCE_LC_RISK_RT" name="prod_issuance_lc_risk_rt" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                </td>
+            </tr>
+            <tr style="height: 30px;">
+                <td class="_td" style="padding-left: 20px;">
+                    <span>Standby L/C</span>
+                </td>
+                <td class="_td">
+                    <input id="PROD_STANDBY_LC_SC" name="prod_standby_lc_sc" style="width:98%;text-align:right;background-color:cornsilk;" onblur="javascript:calcScore4();">
+                </td>
+                <td class="_td">
+                    <input id="PROD_STANDBY_LC_TRANS_VAL" name="prod_standby_lc_trans_val" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="PROD_STANDBY_LC_RISK_RT" name="prod_standby_lc_risk_rt" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                </td>
+            </tr>
+            <tr style="height: 30px;">
+                <td class="_td" style="padding-left: 20px;">
+                    <span>Negotiation of L/C, D/P, D/A</span>
+                </td>
+                <td class="_td">
+                    <input id="PROD_NEGO_LC_DP_DA_SC" name="prod_nego_lc_dp_da_sc" style="width:98%;text-align:right;background-color:cornsilk;" onblur="javascript:calcScore4();">
+                </td>
+                <td class="_td">
+                    <input id="PROD_NEGO_LC_DP_DA_TRANS_VAL" name="prod_nego_lc_dp_da_trans_val" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="PROD_NEGO_LC_DP_DA_RISK_RT" name="prod_nego_lc_dp_da_risk_rt" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                </td>
+            </tr>
+            <tr style="height: 30px;">
+                <td class="_td" style="padding-left: 20px;">
+                    <span>Advice of L/C</span>
+                </td>
+                <td class="_td">
+                    <input id="PROD_ADVICE_LC_SC" name="prod_advice_lc_sc" style="width:98%;text-align:right;background-color:cornsilk;" onblur="javascript:calcScore4();">
+                </td>
+                <td class="_td">
+                    <input id="PROD_ADVICE_LC_TRANS_VAL" name="prod_advice_lc_trans_val" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="PROD_ADVICE_LC_RISK_RT" name="prod_advice_lc_risk_rt" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                </td>
+            </tr>
+
+            <tr style="height: 30px;">
+                <td class="_td" style="font-weight: bold;">
+                    <span>Corres Banking</span>
+                </td>
+                <td class="_td">
+                </td>
+                <td class="_td">
+                    <input id="PROD_BANKING_SUM" name="prod_banking_sum" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="PROD_BANKING_SC" name="prod_banking_sc" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="PROD_BANKING_RT" name="prod_banking_rt" style="width:98%;text-align:right;" readonly>
+                </td> 
+            </tr>
+            <tr style="height: 30px;">
+                <td class="_td" style="padding-left: 20px;">
+                    <span>USD clearing bank</span>
+                </td>
+                <td class="_td">
+                    <input id="PROD_USD_VND_BK_SC" name="prod_usd_vnd_bk_sc" style="width:98%;text-align:right;background-color:cornsilk;" onblur="javascript:calcScore5();">
+                </td>
+                <td class="_td">
+                    <input id="PROD_USD_VND_BK_TRANS_VAL" name="prod_usd_vnd_bk_trans_val" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="PROD_USD_VND_BK_RISK_RT" name="prod_usd_vnd_bk_risk_rt" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                </td>
+            </tr>
+            <tr style="height: 30px;">
+                <td class="_td" style="padding-left: 20px;">
+                    <span>Inward/Outward Remittance</span>
+                </td>
+                <td class="_td">
+                    <input id="PROD_INOUT_REMIT_SC" name="prod_inout_remit_sc" style="width:98%;text-align:right;background-color:cornsilk;" onblur="javascript:calcScore5();">
+                </td>
+                <td class="_td">
+                    <input id="PROD_INOUT_REMIT_TRANS_VAL" name="prod_inout_remit_trans_val" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="PROD_INOUT_REMIT_RISK_RT" name="prod_inout_remit_risk_rt" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                </td>
+            </tr>
+            <tr style="height: 30px;">
+                <td class="_td" style="font-weight: bold;">
+                    <span>Branch Level</span>
+                </td>
+                <td class="_td">
+                    <input id="PROD_RISK_SCORE_AVG" name="prod_risk_score_avg" style="width:98%;text-align:right;" readonly>
+                </td>
+                <td class="_td">
+                    <input id="PROD_RISK_SCORE_AVG_RT" name="prod_risk_score_avg_rt" style="width:98%;text-align:right;" readonly>
+                </td>
+            </tr>
+        
+        </table>
+
+
+        <div style="margin-top: 20px;">3. OPTIONS FROM BRANCHES</div>
+        <textarea id="txaOPTIONS" name="options" style="height: 80px; width:850px;"></textarea>
+    </form>
+</div>
+
+<from action="/SASHBI/input/NHAML/04.MIReports/01.Monthly/jsp/mi_fileDownload.jsp" method="post" id="frmDown" name="frmDown">
+    <!--input type="hidden" id="filePath" name="filePath" value=""-->
+    <input type="hidden" id="fileName" name="fileName" value="">
+</from>

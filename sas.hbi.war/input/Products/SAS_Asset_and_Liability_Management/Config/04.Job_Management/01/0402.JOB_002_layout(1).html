@@ -1,0 +1,87 @@
+<style>
+.modalWin {
+    z-index: 10000;
+    display: inline-block;
+    border: 1px solid black;
+    padding: 10px;
+    background: #efefef;
+    -moz-box-shadow: 0px 0px 15px black;
+    -webkit-box-shadow: 0px 0px 15px black;
+    box-shadow: 0px 0px 15px black;
+    position: absolute;
+    top: 100px;
+    width: 370px;
+}    
+</style>
+<div id="dvMain" style="border:0px solid #dddddd;height:500px;overflow-y:auto;overflow-x:hidden;">
+	<table style="width:100%">
+		<tr>
+			<td style="width:50%" class='title'>
+				General Configuration
+			</td>
+			<td style="width:50%" class='title'>
+				Constomer Behavior Scenario
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div id="dvGR2" style="border:1px solid #dddddd;height:175px;overflow-y:auto;overflow-x:hidden;"></div>
+			</td>
+			<td>
+				<div id="dvGR3" style="border:1px solid #dddddd;height:175px;overflow-y:auto;overflow-x:hidden;"></div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan=2 class='title'>
+				Interest Scenario
+			</td>
+		</tr>
+		<tr>
+			<td colspan=2>
+				<div id="dvGR4" style="border:1px solid #dddddd;height:175px;overflow-y:auto;overflow-x:hidden;"></div>
+			</td>
+		</tr>
+		<tr>
+			<td class='title'>
+				Currency Scenario
+			</td>
+			<td class='title'>
+				New Business Scenario
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div id="dvGR5" style="border:1px solid #dddddd;height:175px;overflow-y:auto;overflow-x:hidden;"></div>
+			</td>
+			<td>
+				<div id="dvGR6" style="border:1px solid #dddddd;height:175px;overflow-y:auto;overflow-x:hidden;"></div>
+			</td>
+		</tr>
+	</table>
+  <div align=right style="">
+		<input type=button id="btnRun" class="condBtn" value="Save" onclick="saveJob();">
+	</div>
+</div>
+<div id=dvModalSetList style="position: absolute;width:730px;display:inline-block;padding: 15px;z-index: 11;
+	background: #efefef;box-shadow: 0px 0px 15px black;-moz-box-shadow: 0px 0px 15px black;-webkit-box-shadow: 0px 0px 15px black;">
+	<div id="dvSetList" style="border:1px solid #dddddd;height:175px;overflow-y:auto;overflow-x:hidden;"></div>
+  <div align=right style="width:100%;">
+		<input type=button id="btnDelete" class="condBtn" value="Delete ID" onclick="deleteSetList();">
+		<input type=button id="btnDelete" class="condBtn" value="Copy ID" onclick="">
+		<input type=button id="btnClose" class="condBtn" value="Close" onclick="$('#dvModalSetList').hide();">
+	</div>
+</div>
+<ul id="contextGRP_SET_ID" 	class="contextMenu" style="display:none;position:absolute"></ul>
+<ul id="contextBKT_ID" 			class="contextMenu" style="display:none;position:absolute"></ul>
+<ul id="contextPYMT_ID" 	class="contextMenu" style="display:none;position:absolute"></ul>
+<ul id="contextDLQC_ID" class="contextMenu" style="display:none;position:absolute"></ul>
+<ul id="contextRCVY_ID" 		class="contextMenu" style="display:none;position:absolute"></ul>
+<ul id="contextRLVR_ID" 		class="contextMenu" style="display:none;position:absolute"></ul>
+<ul id="contextFLTCrv" 			class="contextMenu" style="display:none;position:absolute"></ul>
+<ul id="contextDSCCrv" 			class="contextMenu" style="display:none;position:absolute"></ul>
+<ul id="contextFTPCrv" 			class="contextMenu" style="display:none;position:absolute"></ul>
+<ul id="contextTRM_STRT_MDL_ID" 		class="contextMenu" style="display:none;position:absolute"></ul>
+<ul id="contextCRRC_SET_ID" 		class="contextMenu" style="display:none;position:absolute"></ul>
+<ul id="contextNBIZ_ID" 				class="contextMenu" style="display:none;position:absolute"></ul>
+<script>
+</script>

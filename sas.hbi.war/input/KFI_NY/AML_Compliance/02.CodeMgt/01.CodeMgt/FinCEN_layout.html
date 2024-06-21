@@ -1,0 +1,125 @@
+<div id="dvTitle" style="display:none;"></div>
+<div id="dvToolBar" style="display:none;"></div>
+<div style="display:block;height:250px">
+	<div id=sasGrid style="display:none;height:250px"></div>
+</div>
+<div id="dvFooter" style="display:none;"></div>
+<style>
+.mm{
+	padding:10px 10px 10px 10px;
+	font-size:10pt;	
+}
+#contextMenu {
+	background: #C0C0C0;
+	border: 1px solid gray;
+	padding: 4px 4px 4px 4px ;
+	display: inline-block;
+	min-width: 100px;
+	-moz-box-shadow: 2px 2px 2px silver;
+	-webkit-box-shadow: 2px 2px 2px silver;
+	z-index: 100003;
+}
+
+#contextMenu span {
+	padding: 4px 4px 4px 14px;
+	list-style: none;
+	cursor: pointer;
+	font-size : 10pt;
+	/* background: url("../images/arrow_right_peppermint.png") no-repeat center left; */
+}
+
+#contextMenu li:hover {
+	background-color: white;
+}
+</style>
+
+<div id=dvModalWin class=popup1 style="display:none;;padding: 15px;border:3px solid #B0B7BB;background-color:white;position:absolute;z-index:100002;" align=center>
+	<form method='post' id='fomUpload' action='/SASStoredProcess/do' method='post' enctype='multipart/form-data'>
+		<!--input type='hidden' name='_program' value='SBIP://METASERVER/KFI_NY/AML Compliance/02.CodeMgt/01.CodeMgt/07.FinCEN314(a)(StoredProcess)' /-->
+		<input type='hidden' name='_program' value='SBIP://METASERVER/KFI_NY/AML Compliance/00.Environments/StoredProcess/0207_saveUploadFile(StoredProcess)' />
+		<input type='hidden' name='task' value='upload_file' />
+		
+	<div align=left style="margin:3px;pardding:3px;width:800px">
+		<div id=sasGridFileList style="display:none;height:250px"></div>
+	</div>
+	<div align=left style="margin:3px;pardding:3px;width:800px;text-align:right;">
+		<input name='upfile' type='file' style="width:200px;" />
+	</div>
+	<div id="dvActionBar" align=right>
+		<input type=button value="Upload File" id=btnUpload2 class=condBtn onclick='fnUploadFile();' />
+		<input type=button id="btnClose" class="condBtn" value="Confirm" onclick="fnSelectFinCEN();">
+		<input type=button id="btnClose" class="condBtn" value="Cancel" onclick="$('#dvModalWin').hide();$('#dvBG').hide();">
+	</div>
+	</form>
+</div>
+
+<div id=dvModalWinScreen class=popup1 style="display:none;;padding: 15px;border:3px solid #B0B7BB;background-color:white;position:absolute;z-index:100001;" align=center>
+	<div align=left style="margin:3px;pardding:3px;font-size:12pt">
+		Select Scan Settings
+	</div>
+	<div align=left style="margin:3px;pardding:3px;width:500px;">
+		<table>
+			<tr>
+				<td class="header r mm">FinCEN File</td>
+				<td><span id=finCENFile></span><input type=button id="btnSearchFile" class="condBtn" value="FinCEN File" onclick="showPopupFinCEN();"></td>
+			</tr>
+			<!--tr>
+				<td class="header r mm">File Reference ID</td>
+				<td><input type=text id="finCENRefID" value=""></td>
+			</tr-->
+			<tr>
+				<td class="header r mm">Start Date</td>
+				<td>
+					<input id=txtFinStartDate name=txtFinStartDate alt='null' size=8 style='width:72px;text-align:center;' />
+					<img src='./images/Calendar.gif' border=0 onClick='txtFinStartDate.focus();' style='cursor:pointer'>
+				</td>
+			</tr>
+			<tr>
+				<td class="header r mm">End Date</td>
+				<td>
+					<input id=txtFinEndDate name=txtFinEndDate alt='null' size=8 style='width:72px;text-align:center;' />
+					<img src='./images/Calendar.gif' border=0 onClick='txtFinEndDate.focus();' style='cursor:pointer'>
+				</td>
+			</tr>
+			<tr>
+				<td class="header r mm">Sensitivity Threshold</td>
+				<td>
+					<select tabindex='0' id=sltThreshold class='editor-yesno'>
+						<option value='85'>85</option>
+						<option value='90'>90</option>
+						<option value='95'>95</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div id="dvActionBar2" align=right>
+		<input type=button id="btnSave" class="condBtn" value="Queue Scan" onclick="fnScan();">
+		<input type=button id="btnClose" class="condBtn" value="Close" onclick="$('#dvModalWinScreen').hide();$('#dvBG').hide();">
+	</div>
+</div>
+
+<div id=dvModalWinDetail class=popup1 style="display:none;;padding: 15px;border:3px solid #B0B7BB;background-color:white;position:absolute;z-index:100002;" align=center>
+	<div id=sasGridDetailW align=left style="margin:3px;pardding:3px;width:1200px">
+		<div id=sasGridDetail style="display:none;"></div>
+	</div>
+	<div id="dvActionBar3" align=right>
+		<input type=button id="btnClose" class="condBtn" value="Excel" onclick="fnExcelDetail();">
+		<input type=button id="btnClose" class="condBtn" value="Save" onclick="fnSaveDetail();">
+		<input type=button id="btnClose" class="condBtn" value="Close" onclick="$('#dvModalWinDetail').hide();$('#dvBG').hide();">
+	</div>
+</div>
+
+<ul id="contextMenu" style="display:none;position:absolute;z-index:100003;">
+  <span onClick="fnCopytoAllRows();">Copy to all Rows</span>
+</ul>
+<div style="display:none;">
+	<form name=fomExcel2 method=post>
+	<input type=hidden name=sas_forwardLocation value=EXCEL>
+	<input type=hidden name=sasExcel value=EXCEL>
+	<input type=hidden name=_program value="">
+	<input type=hidden name=_debug value="0">
+	<input type=hidden name=_savepath value="">
+	<input type=hidden name=_name value="FinCEN+314%28a%29Detail">
+	</form>
+</div>

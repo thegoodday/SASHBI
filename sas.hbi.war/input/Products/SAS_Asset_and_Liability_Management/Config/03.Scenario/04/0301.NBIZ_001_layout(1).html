@@ -1,0 +1,110 @@
+<div id="dvMain" style="border:0px solid #dddddd;height:500px;overflow-y:auto;overflow-x:hidden;">
+	<table style="width:100%;table-layout:fixed;border:0px solid #ffdddd;" border=0>
+		<tr>
+			<td style="width:60%">
+	    	<div>
+  				<img src="/SASHBI/images/tragl01.gif" border=0 height=12px>
+  				<span style='padding-left:3px;font-size:15px;font-weight:bold;'>
+  					Segment Set
+  				</span>
+  				<div>
+  					: Click the Right Mouse Button to Choose New Biz Type
+  				</div>
+				</div>
+  			<div id="dvGR2" style="border:1px solid #dddddd;height:250px;"></div>
+			</td>
+			<td>
+	    	<div>
+  				<img src="/SASHBI/images/tragl02.gif" border=0 height=12px>
+  				<span style='padding-left:3px;font-size:13px;font-weight:bold;'>
+  					Monthly New Business
+  				</span>
+  				<div>
+  					: Add Row to Below Table to Add a Term and a New Business Value
+  				</div>
+				</div>
+  			<div id="dvGR3" style="border:1px solid #dddddd;height:250px;"></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div align=right style="width:100%;">
+					<input type=button id="" class="condBtn" value="Save New Biz Type" onclick="saveGR2Row();">
+				</div>
+			</td>
+			<td>
+			  <div align=right style="width:100%;">
+					<input type=button id="" class="condBtn" value="Save Sequence" onclick="saveGR3Row();">
+					<input type=button id="" class="condBtn" value="Delete Sequence" onclick="deleteGR3ID();">
+				</div>
+			</td>
+		<tr>
+			<td colspan=2 >
+	    	<div>
+  				<img src="/SASHBI/images/tragl02.gif" border=0 height=12px>
+  				<span style='padding-left:3px;font-size:13px;font-weight:bold;'>
+  					New Business Instrument
+  				</span>
+  				<div>
+  					: Add Row to Below Table to Add New Business Instruments
+  				</div>
+				</div>
+  			<div id="dvGR4" style="border:1px solid #dddddd;height:320px;"></div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan=2 >
+			  <div align=right style="width:100%;">
+					<input type=button id="" class="condBtn" value="Save" onclick="saveGR4Row();">
+					<input type=button id="" class="condBtn" value="Delete" onclick="deleteGR4ID();">
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+<div id=dvModalWin class=modalWin style="display:none;;padding: 15px;" align=center>
+		<div align=left style="margin:3px;pardding:3px;">
+			<b>Based Curve : <span id="spBaseCurveInfo" style="font-weight:bold;"></span></b>
+		</div>
+		<div id="dvNewCurve" style="border:1px solid #dddddd;width:360px;height:50px;overflow-y:hidden;overflow-x:hidden;"></div>
+    <div align=center>
+			<input type=button id="btnRun" class="condBtn" value="Cancel" onclick="$('#dvModalWin').hide();">
+			<input type=button id="btnRun" class="condBtn" value="Copy ID" onclick="copyID();">
+		</div>
+</div>
+
+<div id=dvModalID style="position: absolute;display:none;padding: 15px;z-index: 11;
+	background: #efefef;box-shadow: 0px 0px 15px black;-moz-box-shadow: 0px 0px 15px black;-webkit-box-shadow: 0px 0px 15px black;">
+	<div id="dvGR1" style="border:1px solid #dddddd;height:220px;width:800px;"></div>
+  <div align=right style="width:100%;">
+		<input type=button id="" class="condBtn" value="Save ID" onclick="saveGR1Row();">
+		<input type=button id="" class="condBtn" value="Delete ID" onclick="deleteGR1();">
+		<input type=button id="" class="condBtn" value="Copy ID" onclick="copyID();">
+		<input type=button id="" class="condBtn" value="Close" onclick="$('#dvModalID').hide();">
+	</div>
+</div>
+<ul id="contextSegSetList" class="contextMenu" style="display:none;position:absolute;"></ul>
+<ul id="contextNBizType" class="contextMenu" style="display:none;position:absolute;">
+	<li data="Add Amt">Add Amt</li>
+	<li data="Target End Bal">Target End Bal</li>
+	<li data="Target Avg Bal">Target Avg Bal</li>
+	<li data="Growth Rate">Growth Rate</li>
+</ul>
+<ul id="contextNBizProduct" class="contextMenu" style="display:none;position:absolute;">
+	<li data="Loan">Loan</li>
+	<li data="Bond">Bond</li>
+	<li data="Saving">Saving</li>
+</ul>
+<ul id="contextPPT" class="contextMenu" style="display:none;position:absolute;">
+	<li data="만기일시">만기일시</li>
+	<li data="원금균등">원금균등</li>
+	<li data="원리금균등">원리금균등</li>
+</ul>
+<ul id="contextIPT" class="contextMenu" style="display:none;position:absolute;">
+	<li data="고정">고정</li>
+	<li data="변동">변동</li>
+</ul>
+<ul id="contextPT" class="contextMenu" style="display:none;position:absolute;">
+	<li data="선취">선취</li>
+	<li data="후취">후취</li>
+</ul>

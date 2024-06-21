@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PackageContent name="Default">
+
+       <Content interface="com.sas.services.publish.BinaryFileEntryInterface"
+          entryType="application/vnd.ms-powerpoint"
+                     icon="PowerPointDocument.gif"
+                     viewer="/documententry">
+       </Content>
+
+       <Content interface="com.sas.services.publish.BinaryFileEntryInterface"
+          entryType="application/vnd.ms-excel"
+                     icon="ExcelDocument.gif"
+                     viewer="/documententry">
+       </Content>
+
+       <Content interface="com.sas.services.publish.BinaryFileEntryInterface"
+          entryType="application/msword"
+                     icon="WordDocument.gif"
+                     viewer="/documententry">
+       </Content>
+
+       <Content interface="com.sas.services.publish.BinaryFileEntryInterface"
+          entryType="application/pdf"
+                     icon="PdfDocument.gif"
+                     viewer="/documententry">
+       </Content>
+
+       <Content interface="com.sas.services.publish.BinaryFileEntryInterface"
+                     entryType="image/gif"
+                     icon="DocTypeImage.gif"
+                     viewer="/documententry">
+       </Content>
+
+       <Content interface="com.sas.services.publish.BinaryFileEntryInterface"
+                     entryType="image/jpeg"
+                     icon="DocTypeImage.gif"
+                     viewer="/documententry">
+       </Content>
+
+       <Content interface="com.sas.services.publish.BinaryFileEntryInterface"
+                      entryType="text/html"
+           icon="HtmlDocument.gif"
+                     viewer="/HTMLentry">
+       </Content>
+
+       <Content interface="com.sas.services.publish.BinaryFileEntryInterface"
+                      entryType="application/x-sas-data"
+                      fileExtension=".sas7bdat"
+                  icon="DataSet.gif"
+                     viewer="/jsp/html/packageviewer/TableViewer.jsp">
+       </Content>
+
+       <Content interface="com.sas.services.publish.TextFileEntryInterface"
+                     entryType="text/plain"
+                     icon="TextDocument.gif"
+                     viewer="/documententry">
+       </Content>
+
+       <Content interface="com.sas.services.publish.DatasetEntryInterface"
+                     icon="DataSet.gif"
+                     viewer="/jsp/html/packageviewer/TableViewer.jsp">
+       </Content>
+
+       <Content interface="com.sas.services.publish.HTMLEntryInterface"
+                     icon="TextDocument.gif"
+                     viewer="/HTMLentry">
+       </Content>
+
+       <Content interface="com.sas.services.publish.ReferenceEntryInterface"
+                     icon="HtmlDocument.gif"
+          isViewerURL="true">
+       </Content>
+
+       <Content interface="com.sas.services.publish.ReferenceEntryInterface"
+                     icon="HtmlDocument.gif"
+          isViewerURL="true">
+       </Content>
+
+       <Content interface="com.sas.services.publish.ResultPackageInterface"
+                     entryType="Treeview"
+                     icon="Package.gif"
+                     viewer="/packagetreeview">
+       </Content>
+
+       <Content interface="com.sas.services.publish.ResultPackageInterface"
+                     entryType="Output"
+                     viewer="/jsp/html/packageviewer/Package.jsp">
+       </Content>
+
+       <Content interface="com.sas.services.publish.ResultPackageInterface"
+                     entryType="Viewer"
+                     viewer="/jsp/html/packageviewer/PackageViewer.jsp">
+       </Content>
+
+       <Content interface="com.sas.services.publish.LibraryMemberEntryInterface"
+                     viewer="/jsp/html/packageviewer/Default.jsp">
+       </Content>
+
+
+
+</PackageContent>
+

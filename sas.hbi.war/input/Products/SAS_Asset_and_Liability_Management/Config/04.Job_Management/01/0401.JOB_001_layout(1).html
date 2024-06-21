@@ -1,0 +1,103 @@
+<style>
+.modalWin {
+    z-index: 10000;
+    display: inline-block;
+    border: 1px solid black;
+    padding: 10px;
+    background: #efefef;
+    -moz-box-shadow: 0px 0px 15px black;
+    -webkit-box-shadow: 0px 0px 15px black;
+    box-shadow: 0px 0px 15px black;
+    position: absolute;
+    top: 100px;
+    width: 370px;
+}    
+.jobTitle{
+	font-size:13px;
+	font-weight:bold;
+	padding-top:15px;
+	
+}
+.jobGrid{
+	border:1px solid #dddddd;
+	height:70px;hidden:
+	auto;overflow-x:hidden;
+	margin-bottom:15px;
+}
+</style>
+<div id="dvMain" style="border:0px solid #dddddd;height:500px;overflow-y:auto;overflow-x:hidden;">
+	<div class="jobTitle">
+		<img src="/SASHBI/images/tragl02.gif" border=0 height=15px>
+		General Configuration
+	</div>
+	<div id="dvGR2" class="jobGrid" ></div>
+	
+	<div class="jobTitle">
+		<img src="/SASHBI/images/tragl02.gif" border=0 height=15px>
+		Customer Behavior Scenario
+	</div>
+	<div id="dvGR3" class="jobGrid" ></div>
+	
+	<div class="jobTitle">
+		<img src="/SASHBI/images/tragl02.gif" border=0 height=15px>
+		Interest Scenario
+	</div>
+	<div id="dvGR4" class="jobGrid"></div>
+
+	<div class="jobTitle">
+		<img src="/SASHBI/images/tragl02.gif" border=0 height=15px>
+		Currency Scenario
+	</div>
+	<div id="dvGR5" class="jobGrid"></div>
+
+	<div class="jobTitle">
+		<img src="/SASHBI/images/tragl02.gif" border=0 height=15px>
+		New Business Scenario
+	</div>
+	<div id="dvGR6" class="jobGrid"></div>
+				
+				
+  <div align=right style="">
+		<input type=button id="btnRun" class="condBtn" value="Save" onclick="saveJob();">
+	</div>
+</div>
+
+<!--
+<div id=dvModalID style="position: absolute;display:none;padding: 15px;z-index: 11;
+	background: #efefef;box-shadow: 0px 0px 15px black;-moz-box-shadow: 0px 0px 15px black;-webkit-box-shadow: 0px 0px 15px black;">
+	<div id="dvGR1" style="border:1px solid #dddddd;height:220px;width:800px;"></div>
+  <div align=right style="width:100%;">
+		<input type=button id="" class="condBtn" value="Save ID" onclick="saveGR1Row();">
+		<input type=button id="" class="condBtn" value="Delete ID" onclick="deleteGR1();">
+		<input type=button id="" class="condBtn" value="Copy ID" onclick="copyID();">
+		<input type=button id="" class="condBtn" value="Close" onclick="$('#dvModalID').hide();">
+	</div>
+</div>
+<div id=dvModalSetList style="position: absolute;top:1600;width:610px;display:none;padding: 15px;z-index: 11;
+	background: #efefef;box-shadow: 0px 0px 15px black;-moz-box-shadow: 0px 0px 15px black;-webkit-box-shadow: 0px 0px 15px black;">
+	<div id="dvSetList" style="border:1px solid #dddddd;height:150px;overflow-y:auto;overflow-x:hidden;"></div>
+-->
+<div id=dvModalSetList style="position: absolute;top:1600;width:610px;display:block;padding: 15px;z-index: 11;
+	background: #efefef;box-shadow: 0px 0px 15px black;-moz-box-shadow: 0px 0px 15px black;-webkit-box-shadow: 0px 0px 15px black;">
+	<div id="dvSetList" style="border:1px solid #dddddd;height:220px;"></div>
+  <div align=right style="width:100%;">
+		<input type=button id="" class="condBtn" value="Save ID" onclick="saveGR1Row();">
+		<input type=button id="btnDelete" class="condBtn" value="Delete ID" onclick="deleteSetList();">
+		<input type=button id="btnDelete" class="condBtn" value="Copy ID" onclick="">
+		<input type=button id="btnClose" class="condBtn" value="Close" onclick="$('#dvModalSetList').hide();">
+	</div>
+</div>
+<ul id="contextGRP_SET_ID" 	class="contextMenu" style="display:none;position:absolute"></ul>
+<ul id="contextBKT_ID" 			class="contextMenu" style="display:none;position:absolute"></ul>
+<ul id="contextCUST_BHVR_ID" 	class="contextMenu" style="display:none;position:absolute"></ul>
+<ul id="contextMTRT_ID" 		class="contextMenu" style="display:none;position:absolute"></ul>
+<ul id="contextRCVY_ID" 		class="contextMenu" style="display:none;position:absolute"></ul>
+<ul id="contextRLVR_ID" 		class="contextMenu" style="display:none;position:absolute"></ul>
+<ul id="contextFLTCrv" 			class="contextMenu" style="display:none;position:absolute"></ul>
+<ul id="contextDSCCrv" 			class="contextMenu" style="display:none;position:absolute"></ul>
+<ul id="contextFTPCrv" 			class="contextMenu" style="display:none;position:absolute"></ul>
+<ul id="contextTRM_STRT_MDL_ID" 		class="contextMenu" style="display:none;position:absolute"></ul>
+<ul id="contextCRRC_SET_ID" 		class="contextMenu" style="display:none;position:absolute"></ul>
+<ul id="contextNBIZ_ID" 				class="contextMenu" style="display:none;position:absolute"></ul>
+<script>
+</script>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:sas-sso="http://www.sas.com/xml/schema/sso"
+    xmlns:sas-web="http://www.sas.com/xml/schema/web"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.sas.com/xml/schema/sso
+        http://www.sas.com/xml/schema/sso/sso.xsd
+        http://www.sas.com/xml/schema/web
+        http://www.sas.com/xml/schema/web/sas-web.xsd">
+
+
+    <context:annotation-config />
+    
+    <sas-sso:http />
+
+    <sas-web:character-encoding-filter id="characterEncodingFilter" />
+    <sas-web:locale-filter id="localeFilter" />
+    <sas-web:theme-support-filter id="themeSupportFilter" />
+    <sas-web:local-platform-services-filter id="localPlatformServicesFilter" />
+
+    <sas-web:logoff-servlet id="logoffServlet" />
+    <sas-web:director-servlet id="directorServlet" />
+
+</beans>

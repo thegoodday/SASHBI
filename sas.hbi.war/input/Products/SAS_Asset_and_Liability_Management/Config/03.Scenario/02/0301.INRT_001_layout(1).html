@@ -1,0 +1,132 @@
+<div id="dvMain" style="border:0px solid #dddddd;height:;overflow-y:auto;overflow-x:hidden;">
+  <div >
+		<table width=100% border=0 cellspacing=0 >
+			<tr>
+				<td style="padding-left:3px;width:10px;vertical-align: middle;">
+					<img src="/SASHBI/images/tragl01.gif" border=0 height=15px>
+				</td>
+				<td style="width:180px;vertical-align: middle;">
+					<span class="grTitle">
+			 		Curve Lists & Settings
+			 		</span>
+				</td>
+				<td style="vertical-align: bottom;"><span class="grTitle" style="display:block;padding-bottom:5px;border-top:3px solid #0E579A;"></span></td>
+			</tr>
+		</table>
+  	<table style="width:100%;table-layout:fixed;border:0px solid #ffdddd;" border=0>
+  		<tr>
+  			<td style="width:100%">
+					<div id="dvINRTList" style="border:1px solid #dddddd;height:250px;"></div>
+  			</td>
+  		</tr>
+  	</table>
+  	<table style="width:100%;table-layout:fixed;border:0px solid #ffdddd;" border=0>
+  		<tr>
+  			<td style="width:55%">
+			    <div align=right>
+						<input type=button id="" class="condBtn" value="Save Curve" onclick="saveGR1Row();">	
+						<input type=button id="btnRun" class="condBtn" value="Delete Curve" onclick="deleteCurve();">
+						<input type=button id="btnRun" class="condBtn" value="Copy Curve" onclick="generateCurve();">
+					</div>  				
+  			</td>
+  		</tr>
+  	</table>  	
+  </div>	
+  <div>
+		<table width=100% border=0 cellspacing=0 style="padding-bottom:5px;">
+			<tr>
+				<td style="padding-left:3px;width:10px;vertical-align: middle;">
+					<img src="/SASHBI/images/tragl02.gif" border=0 height=15px>
+				</td>
+				<td style="width:260px;vertical-align: middle;">
+					<span class="grTitle">
+					Interest Rate By Tenor
+			 		<!--Time Bucket By Selected Bucket ID-->
+			 		</span>
+				</td>
+				<td style="vertical-align: bottom;"><span class="grTitle" style="display:block;padding-bottom:5px;border-top:3px solid #0E579A;"></span></td>
+			</tr>
+			<tr><td style="padding-left:25px;" colspan=3>
+				: Double Click 'Term' Column to Add a New Term and a New Rate. Click the Right Mouse Button to Choose Unit Measure
+				<!--: Add Bucket to Below Table to Add a New row or Click the Delete Button to delete the row After Clicking on Checkbox-->
+			</td></tr>
+		</table>
+  	<table style="width:100%;table-layout:fixed;border:0px solid #ffdddd;" border=0>
+  		<tr>
+  			<td style="width:40%">
+					<div id="dvINRTSet" style="border:1px solid #dddddd;height:318px;"></div>
+  			</td>
+  			<td style="width:60%">
+					<div id="dvINRTGraph" style="border:1px solid #dddddd;height:318px;overflow-y:hidden;overflow-x:hidden;">
+			  		<svg style="height: 338px;"></svg>
+			  	</div>
+  			</td>
+  		</tr>
+  		<tr>
+  			<td style="width:45%">
+			    <div align=right>
+			    	<!--
+						<input type=button id="" class="condBtn" value="Export" onclick="exportGR2Row();">	
+						-->
+						<input type=button id="" class="condBtn" value="Save" onclick="saveGR2Row();">	
+						<input type=button id="btnRun" class="condBtn" value="Delete" onclick="deleteRate();">
+					</div>
+  			</td>
+  		</tr>
+  	</table>
+  </div>
+</div>
+<div id=dvModalWin class=modalWin style="display:none;;padding: 15px;" align=center>
+		<div align=left style="margin:3px;pardding:3px;">
+			<b>Based Curve : <span id="spBaseCurveInfo" style="font-weight:bold;"></span></b>
+		</div>
+		<div id="dvNewCurve" style="border:1px solid #dddddd;width:360px;height:50px;overflow-y:hidden;overflow-x:hidden;"></div>
+    <div align=center>
+			<input type=button id="btnRun" class="condBtn" value="Curve Creation" onclick="generateCurve2();">
+			<input type=button id="btnRun" class="condBtn" value="Cancel" onclick="$('#dvModalWin').hide();">
+		</div>
+</div>
+<ul id="contextUnit" class="contextMenu" style="display:none;position:absolute;z-index: 11;">
+	<li data="D">D</li>
+	<li data="M">M</li>
+	<li data="Y">Y</li>
+</ul>
+<style>
+.modalWin {
+    z-index: 10000;
+    display: inline-block;
+    border: 1px solid black;
+    padding: 10px;
+    background: #efefef;
+    -moz-box-shadow: 0px 0px 15px black;
+    -webkit-box-shadow: 0px 0px 15px black;
+    box-shadow: 0px 0px 15px black;
+    position: absolute;
+    top: 100px;
+    width: 370px;
+}    
+svg {
+  display: block;
+}
+
+#chart1 svg {
+  height: 338px;
+  min-width: 200px;
+  min-height: 100px;
+/*
+  margin: 50px;
+  Minimum height and width is a good idea to prevent negative SVG dimensions...
+  For example width should be =< margin.left + margin.right + 1,
+  of course 1 pixel for the entire chart would not be very useful, BUT should not have errors
+*/
+
+}
+#chart1 {
+  margin-top: 200px;
+  margin-left: 100px;
+}
+.nvtooltip { 
+	margin-left: 50px; 
+	margin-top: 350px; 
+}
+</style>

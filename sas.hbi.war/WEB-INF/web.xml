@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+
+  <!-- Begin Spring Integration -->
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>
+      /WEB-INF/spring-config/infrastructure-config.xml
+      /WEB-INF/spring-config/data-config.xml
+    </param-value>
+  </context-param>
+  <context-param>
+    <param-name>locatorFactorySelector</param-name>
+    <param-value>classpath:beanRefContext.xml</param-value>
+  </context-param>
+  <context-param>
+    <param-name>parentContextKey</param-name>
+    <param-value>config.context</param-value>
+  </context-param>
+  <context-param>
+    <param-name>application-name</param-name>
+    <param-value>SASHBI</param-value>
+  </context-param>
+  <!-- END Spring Integration -->
+
+  <!-- Default Cross Site Scripting Filter -->
+  <filter>
+    <filter-name>SanitizingRequestFilter</filter-name>
+    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    <init-param>
+      <param-name>targetBeanName</param-name>
+      <param-value>sanitizingRequestFilter</param-value>
+    </init-param>
+    <init-param>
+      <param-name>targetFilterLifecycle</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </filter>
+
+  <!-- CharacterEncoding Filter -->
+  <filter>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <filter-class>com.sas.servlet.filters.CharacterEncodingFilter</filter-class>
+    <!-- Filter encoding parameter -->
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+
+  <!-- Stored Process Webapp Filter -->
+  <filter>
+    <filter-name>SPFilter</filter-name>
+    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    <init-param>
+      <param-name>ignored.types</param-name>
+      <param-value>.js;.css;.properties;.jar;.class</param-value>
+    </init-param>
+  </filter>
+
+  <filter>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+  </filter>
+
+  <filter>
+    <filter-name>localPlatformServicesFilter</filter-name>
+    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    <init-param>
+      <param-name>targetFilterLifecycle</param-name>
+      <param-value>true</param-value>
+    </init-param>
+    <init-param>
+      <param-name>ignored.types</param-name>
+      <param-value>.js;.css;/logoff.do;/Logoff;.properties;.jar;.class</param-value>
+    </init-param>
+  </filter>
+  <!-- End Security Filter/Logon Manager -->
+
+  <!-- WIP ThemeSupportFilter enables themes for CDD Components -->
+  <filter>
+    <filter-name>ThemeSupportFilter</filter-name>
+    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    <init-param>
+      <param-name>targetBeanName</param-name>
+      <param-value>themeSupportFilter</param-value>
+    </init-param>
+    <init-param>
+      <param-name>targetFilterLifecycle</param-name>
+      <param-value>true</param-value>
+    </init-param>
+    <init-param>
+      <param-name>ignored.types</param-name>
+      <param-value>.js;.css;/logoff.do;/Logoff;.properties;.jar;.class</param-value>
+    </init-param>
+  </filter>
+
+  <!-- LocaleFilter honors user's locale preference -->
+  <filter>
+    <filter-name>LocaleFilter</filter-name>
+    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    <init-param>
+      <param-name>targetBeanName</param-name>
+      <param-value>localeFilter</param-value>
+    </init-param>
+    <init-param>
+      <param-name>targetFilterLifecycle</param-name>
+      <param-value>true</param-value>
+    </init-param>
+    <init-param>
+      <param-name>ignored.types</param-name>
+      <param-value>.js;.css;/logoff.do;/Logoff;.properties;.jar;.class</param-value>
+    </init-param>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>SanitizingRequestFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>SPFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>springSecurityFilterChain</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>localPlatformServicesFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>ThemeSupportFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>LocaleFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping> 
+
+  <!-- Logging context separation listener -->
+  <!--
+  -->
+    <listener>
+        <listener-class>org.apache.logging.log4j.web.Log4jServletContextListener</listener-class>
+    </listener>
+
+    <context-param>
+       <param-name>log4jConfiguration</param-name>
+       <param-value>file:////sas/sasv94m8/config/Lev2/Web/Common/LogConfig/SASHBI-log4j.xml</param-value>
+    </context-param>
+
+  <!-- Spring Bootstrap -->
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+
+  <listener>
+    <listener-class>com.sas.common.components.SpringComponentFacade</listener-class>
+  </listener>
+
+  <!-- WIP Directives Integration -->
+  <servlet>
+    <servlet-name>director</servlet-name>
+    <servlet-class>
+      com.sas.svcs.webapp.servlet.DelegatingServletProxy
+    </servlet-class>
+    <init-param>
+      <param-name>targetBeanName</param-name>
+      <param-value>directorServlet</param-value>
+    </init-param>
+  </servlet>
+
+  <!-- WIP Support for Logoff via the SAS Logon Manager -->
+  <servlet>
+    <servlet-name>logoff</servlet-name>
+    <servlet-class>com.sas.svcs.webapp.servlet.DelegatingServletProxy</servlet-class>
+    <init-param>
+      <param-name>targetBeanName</param-name>
+      <param-value>logoffServlet</param-value>
+    </init-param>
+  </servlet>
+  <!-- End Spring Integration -->
+<!--
+  <servlet>
+    <servlet-name>pico-init</servlet-name>
+    <servlet-class>com.sas.midtier.components.lifecycle.impl.PicoInitializerServlet</servlet-class>
+    <load-on-startup>0</load-on-startup>
+  </servlet>
+
+  <servlet>
+    <servlet-name>logging</servlet-name>
+    <servlet-class>com.sas.svcs.webapp.servlet.http.LoggingAdminServlet</servlet-class>
+  </servlet>
+
+-->
+
+  <!-- Stored Process Web App initialization parameters -->
+<!--
+  <servlet>
+    <servlet-name>
+      storedprocessservlet
+    </servlet-name>
+    <servlet-class>
+      com.sas.svcs.webapp.servlet.DelegatingServletProxy
+    </servlet-class>
+    <init-param>
+      <param-name>targetServletLifecycle</param-name>
+      <param-value>true</param-value>
+      </init-param>
+  </servlet>
+
+  <servlet>
+    <servlet-name>packageviewer</servlet-name>
+    <servlet-class>com.sas.apps.packageviewer.PackageViewerServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>packagecontent</servlet-name>
+        <servlet-class>com.sas.apps.packageviewer.PackageContentServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>documententry</servlet-name>
+        <servlet-class>com.sas.apps.packageviewer.DocumentEntryServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>HTMLentry</servlet-name>
+    <servlet-class>com.sas.apps.packageviewer.HTMLEntryServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>packagetreeview</servlet-name>
+    <servlet-class>com.sas.apps.packageviewer.PackageTreeviewServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>MethodInvocationServlet</servlet-name>
+    <servlet-class>com.sas.servlet.util.MethodInvocationServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>SelectorServlet</servlet-name>
+    <servlet-class>com.sas.servlet.tbeans.dataselectors.SelectorServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>StreamContentServlet</servlet-name>
+    <servlet-class>com.sas.servlet.util.StreamContentServlet</servlet-class>
+  </servlet>
+-->  
+
+	<servlet>
+		<servlet-name>jsp</servlet-name>
+		<servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>
+		<init-param>
+		  <param-name>mappedfile</param-name>
+		  <param-value>false</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>STPHBIServlet</display-name>
+		<servlet-name>STPHBIServlet</servlet-name>
+		<servlet-class>com.sas.hbi.servlets.STPHBIServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>STPRVServlet</servlet-name>
+		<servlet-class>com.sas.svcs.webapp.servlet.DelegatingServletProxy</servlet-class>
+		<init-param>
+			<param-name>targetBeanName</param-name>
+			<param-value>STPRVServlet</param-value>
+		</init-param>
+		<init-param>
+			<param-name>targetServletLifecycle</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<servlet-name>HBIServlet</servlet-name>
+		<servlet-class>com.sas.hbi.servlets.HBIServlet</servlet-class>
+	</servlet>
+
+  <!-- WIP Directives Integration -->
+  <servlet-mapping>
+    <servlet-name>director</servlet-name>
+    <url-pattern>/Director</url-pattern>
+  </servlet-mapping>
+
+  <!-- WIP Support for Logoff via the SAS Logon Manager -->
+  <servlet-mapping>
+    <servlet-name>logoff</servlet-name>
+    <url-pattern>/Logoff</url-pattern>
+  </servlet-mapping>
+
+
+	<servlet-mapping>
+		<servlet-name>jsp</servlet-name>              
+		<url-pattern>*.jsp</url-pattern>
+	</servlet-mapping>	 
+	<servlet-mapping>
+		<servlet-name>STPRVServlet</servlet-name>
+		<url-pattern>/STPRVServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>HBIServlet</servlet-name>
+		<url-pattern>/HBIServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>STPHBIServlet</servlet-name>
+		<url-pattern>/STPHBIServlet</url-pattern>
+	</servlet-mapping>
+
+
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+
+  <resource-ref id="ResourceRef_SASAPP_DataSource">
+    <res-ref-name>jdbc/SASAPP</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+  </resource-ref>
+
+</web-app>

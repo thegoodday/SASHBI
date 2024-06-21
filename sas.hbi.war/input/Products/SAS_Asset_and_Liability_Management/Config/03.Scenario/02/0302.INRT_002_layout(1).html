@@ -1,0 +1,54 @@
+<div id="dvMain" style="border:0px solid #dddddd;height:500px;overflow-y:auto;overflow-x:hidden;">
+	<table width=100% border=0 cellspacing=0 >
+		<tr>
+			<td style="padding-left:3px;width:10px;vertical-align: middle;">
+				<img src="/SASHBI/images/tragl01.gif" border=0 height=15px>
+			</td>
+			<td style="width:200px;vertical-align: middle;">
+				<span class="grTitle">
+		 		Interest Curve by Group ID 
+		 		</span>
+			</td>
+			<td style="vertical-align: bottom;"><span class="grTitle" style="display:block;padding-bottom:5px;border-top:3px solid #0E579A;"></span></td>
+		</tr>
+	</table>
+	<div style="padding-left:15px;">
+		: Click the Right Mouse Button on 'Interest Curve Name' Column to Map Interest Curve to Group ID
+	</div>
+	<div id="dvList" style="border:1px solid #dddddd;height:325px;overflow-y:auto;overflow-x:hidden;"></div>
+  <div align=right style="width:100%;">
+		<input type=button id="" class="condBtn" value="Save Curve Mapping" onclick="saveGR2Row();">
+	</div>
+</div>
+<div id=dvModalSetList style="position: absolute;width:800px;display:inline-block;padding: 15px;z-index: 11;
+	background: #efefef;box-shadow: 0px 0px 15px black;-moz-box-shadow: 0px 0px 15px black;-webkit-box-shadow: 0px 0px 15px black;">
+	<div id="dvSetList" style="border:1px solid #dddddd;height:325px;overflow-y:auto;overflow-x:hidden;"></div>
+  <div align=right style="width:100%;">
+		<input type=button id="" class="condBtn" value="Save ID" onclick="saveGR1Row();">
+		<input type=button id="" class="condBtn" value="Delete ID" onclick="deleteGR1Row();">
+		<input type=button id="" class="condBtn" value="Copy ID" onclick="copyID();">
+		<input type=button id="" class="condBtn" value="Close" onclick="$('#dvModalSetList').hide();">
+	</div>
+</div>
+<ul id="contextMenu" class="contextMenu" style="display:none;position:absolute"></ul>
+<ul id="contextINRTType" class="contextMenu" style="display:none;position:absolute;z-index: 11;">
+	<li data="Interest Rate">Interest Rate</li>
+	<li data="Discount Rate">Discount Rate</li>
+	<li data="FTP Rate">FTP Rate</li>
+</ul>
+<ul id="contextINRTCurveName" class="contextMenu" style="display:none;position:absolute;z-index: 11;"></ul>
+<style>
+.modalWin {
+    z-index: 11;
+    display: inline-block;
+    border: 1px solid black;
+    padding: 10px;
+    background: #efefef;
+    -moz-box-shadow: 0px 0px 15px black;
+    -webkit-box-shadow: 0px 0px 15px black;
+    box-shadow: 0px 0px 15px black;
+    position: absolute;
+    top: 1100px;
+    width: 800px;
+}    
+</style>

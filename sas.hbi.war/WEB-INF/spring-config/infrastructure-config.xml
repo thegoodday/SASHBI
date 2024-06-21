@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Specifies or imports bean definitions related to platform infrastructure such as JMS, data sources, SAS Foundation Services, etc. -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:sec="http://www.springframework.org/schema/security"
+    xmlns:sas-container="http://www.sas.com/xml/schema/container"
+    xmlns:sas-sso="http://www.sas.com/xml/schema/sso"
+    xmlns:sas-web="http://www.sas.com/xml/schema/web"
+    xsi:schemaLocation="
+      http://www.sas.com/xml/schema/container
+      http://www.sas.com/xml/schema/container/sas-container.xsd
+        http://www.sas.com/xml/schema/sso
+        http://www.sas.com/xml/schema/sso/sso.xsd
+      http://www.sas.com/xml/schema/web
+        http://www.sas.com/xml/schema/web/sas-web.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <sas-container:datasource id="datasource" jndi-name="jdbc/SASAPP" />
+
+<!-- BEGIN IMPORT
+'public' ids provided as a part of these files are: 
+sas.framework.commons.jar: configurationService, urlGenerator 
+sas.framework.themes.jar: themeService 
+sas.svcs.mail.client.jar: mailService 
+sas.svcs.directives.client.jar: directivesService 
+sas.svcs.security.client.jar: authenticationService, userValidationService 
+sas.svcs.userinfo.client.jar: userInfoService 
+sas.svcs.status.client.jar: capabilityVerification, systemValidationService 
+Each of these depends on an id defined elsewhere for 'sas.svcs.cache'.
+-->
+  <import resource="classpath*:META-INF/wip-services-client-config.xml" />
+  <import resource="classpath*:META-INF/xss-config.xml" />
+  <import resource="classpath*:META-INF/spring-config/aop-config.xml" />
+  <import resource="classpath*:META-INF/spring-config/data-config.xml" />
+  <import resource="classpath*:META-INF/spring-config/presentation-config.xml" />
+  <import resource="classpath*:META-INF/aop-cache-config.xml" />
+<!-- END IMPORT -->
+
+    <bean id="environmentProperties"
+        class="com.sas.framework.services.config.dao.PropertySetFactoryBean">
+        <property name="dataSource" ref="datasource"/>
+    </bean>
+    <bean class="com.sas.svcs.springframework.config.DefaultProvidedPropertyPlaceholderConfigurer">
+        <property name="placeholderPrefix" value="@{"/>
+        <property name="placeholderSuffix" value="}"/>
+        <property name="properties" ref="environmentProperties" />
+    </bean>
+    
+    <bean id="localJpsProperties"
+        class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="properties" ref="environmentProperties" />
+        <property name="location" value="WEB-INF/conf/sas_metadata_source.properties" />
+    </bean>
+    <import resource="classpath:META-INF/local-jps.xml" />
+  
+    <context:annotation-config />
+
+    <sec:http pattern="/**/*.jar" security="none" />
+    <sec:http pattern="/**/*.properties" security="none" />
+    <sec:http pattern="/**/*.class" security="none" />        
+
+    <sas-sso:http stateless="true">
+      <sas-sso:accept-direct-credentials path="/*" />
+    </sas-sso:http>
+ 
+    <sas-web:theme-support-filter id="themeSupportFilter" />
+    <sas-web:locale-filter id="localeFilter" />
+    <sas-web:local-platform-services-filter id="localPlatformServicesFilter" />
+    <sas-web:logoff-servlet id="logoffServlet" />
+    <sas-web:director-servlet id="directorServlet" />
+    
+    <bean id="sasThemeResolver"
+        class="com.sas.svcs.prefs.client.PreferenceBasedThemeResolver" />
+
+    <bean id="userSessionFactory" class="com.sas.svcs.authentication.helper.UserSessionFactory">
+      <property name="domain" value="@{metadata.domain}"/>
+    </bean>
+      
+    <bean id="passwordRecoveryUtil" class="com.sas.svcs.authentication.helper.PasswordRecoveryUtil" />
+        
+    <bean class="com.sas.svcs.authentication.helper.TrustedUserFactory">
+        <constructor-arg index="0" ref="localUserService" />
+    </bean>
+    
+    <bean id="storedprocessservlet" class="com.sas.services.storedprocess.webapp.StoredProcessServlet" />
+    <bean id="SPFilter" class="com.sas.services.storedprocess.webapp.SPFilter" />
+    
+    <bean id="localSecuredUser"
+          class="com.sas.svcs.authentication.helper.UserContextFactoryBean">
+        <property name="userid" value="@{secure.userid}"/>
+        <property name="password" value="@{secure.password}"/>
+        <property name="domain" value="@{metadata.domain}"/>
+        <property name="userService" ref="localUserService"/>
+    </bean>
+
+    <!-- Following two beans are needed to set secured credentials in Report Repository -->
+    <!-- This ensures that non-admin user access to Report Repository is local and not through web service -->
+    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="staticMethod" value="com.sas.report.repository.OMRID.setInformationService"/>
+        <property name="arguments">
+            <list>
+                <ref bean="localInformationService"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="staticMethod" value="com.sas.report.repository.OMRID.setSecuredUser" />
+        <property name="arguments">
+            <list>
+                <ref bean="localSecuredUser" />
+            </list>
+        </property>
+   </bean>
+
+
+  	<context:property-placeholder location="/WEB-INF/config.properties" />
+  	<context:property-placeholder location="classpath:config.properties" />
+  	
+	<bean class="com.sas.hbi.property.PropertyHolder" id="propertyHolder">
+	    <property name="stpInstallPath" value="${stp.installpath}"/>
+	    <property name="stpConnMethod" value="stpConnMethod"/>
+	</bean>
+       
+	<bean class="com.sas.hbi.servlets.STPRVServlet" id="STPRVServlet">
+		<property name="informationService" ref="localInformationService"></property>
+		<property name="storedProcessService" ref="localStoredProcessService"></property>
+	</bean>
+    
+ </beans>

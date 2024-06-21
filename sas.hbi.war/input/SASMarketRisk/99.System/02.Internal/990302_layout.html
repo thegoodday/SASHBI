@@ -1,0 +1,71 @@
+<div id="dvTitle" style="display:none;"></div>
+<div id="dvTools" style="display:block;" align=right>
+</div>
+
+<table style="" border=0>
+	<tr>
+		<td style="width:450px;">
+			<div>&nbsp;</div>
+			<div id=sasGrid style="display:none;height:560px;width:450px;"></div>
+		</td>	
+		<td align=center  style="width:50px;">
+				<input type="button" value=">" id="btnDelete" class="condBtn btn_delete_r" onClick="fnAddHira();" />
+				<input type="button" value="<" id="btnDelete" class="condBtn btn_delete_l" onClick="fnDelHira();" />
+		</td>	
+		<td>
+			<div id=sasGridComment style="display:none;">계층 순서를 변경하려면 계층을 Drag & Drop 하세요.</div>
+			<div id=sasGrid2 style="display:block;height:560px;width:450px;"></div>
+		</td>	
+		<!--
+		<td align=center  style="width:50px;">
+				<input type="button" value="Up" id="btnUp" class="condBtn btn_delete_r" onClick="();" />
+				<input type="button" value="Down" id="btnDown" class="condBtn btn_delete_l" onClick="();" />
+		</td>	
+		-->
+	</tr>
+</table>
+<style>
+    .cell-reorder {
+      cursor: move;
+      background: url("/SASHBI/scripts/SlickGrid/images/drag-handle.png") no-repeat center center;
+    }	
+</style>
+
+
+<div id=msgLine style="display:none;"></div>
+
+
+<div id=dvModalWin class=popup1 style="display:none;;padding: 15px;position:absolute;z-index:100001;width:600px;" align=center>
+	<div align=left style="margin:3px;pardding:3px;">
+		<table border="0" class="popup_tbWrite" style="width:100%;">
+			<tr>
+				<th style="width:100px;">분석계층명</th>
+				<td colspan="3">
+					<input id="txtHierName" type="text" width="200" value="" >
+				</td>
+			</tr>
+			<tr>
+				<th>설명</th>
+				<td colspan="3">
+					<textarea id="txtHierDesc" type="text" width="200" value="" style="height:40px;"></textarea>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div align=center>
+		<input type=button id="btnRun" class="condBtn" value="Cancel" onclick="$('#dvModalWin').hide();$('#dvBG').hide();">
+		<input type=button id="btnRun" class="condBtn" value="Save" onclick="fnSave2();">
+	</div>
+</div>
+<div id=dvModalOpen class=popup1 style="display:none;width:700px;padding: 15px;position:absolute;z-index:100001;" align=center>
+	<div align=left>불러오고자 하는 계층명을 더블 클릭하세요.</div>
+	<div align=left style="margin:3px;pardding:3px;">
+		<div id=sasGrid3 style="display:block;height:300px"></div>
+	</div>
+	<div align=center>
+		<input type=button id="btnRun" class="condBtn" value="Cancel" onclick="$('#dvModalOpen').hide();$('#dvBG').hide();">
+		<input type=button id="btnRun" class="condBtn" value="Delete" onclick="fnDeleteHier();">
+		<input type=button id="btnRun" class="condBtn" value="Save" onclick="fnSaveHierList();">
+		<input type=button id="btnRun" class="condBtn" value="Open" onclick="fnOpenHier();">
+	</div>
+</div>
